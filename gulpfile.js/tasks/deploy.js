@@ -21,7 +21,6 @@ gulp.task('deploy-css', function() {
     .pipe(plugins.groupCssMediaQueries())
     .pipe(plugins.cssnano(deploy.css.cssnano))
     .pipe(plugins.concat(styles.main.filename))
-    .pipe(plugins.banner(copyright))
     .pipe(gulp.dest(styles.build))
 })
 
@@ -45,7 +44,6 @@ gulp.task('deploy-js', function() {
   return gulp.src(scripts.main.entry)
     .pipe(webpack(deploy.js.webpack))
     .pipe(plugins.optimizeJs(deploy.js.optimizejs.settings))
-    .pipe(plugins.banner(copyright))
     .pipe(gulp.dest(deploy.js.uglify.build))
 })
 
