@@ -1,0 +1,58 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb-base/legacy", "eslint-config-prettier", "prettier"],
+  "plugins": ["prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "gulpfile.js/",
+    "gulpconfig.js",
+    "src/assets/js/lib/"
+  ],
+  "globals": {
+    "Modernizr": true
+  },
+  "rules": {
+    "no-console": ["error", {
+      "allow": ["warn", "error"]
+    }],
+    "func-names": 0,
+    "guard-for-in": 0,
+    "new-cap": 0,
+    "prettier/prettier": ["error"],
+    "newline-per-chained-call": ["error", {
+      "ignoreChainWithDepth": 4
+    }],
+    "no-plusplus": [1, {
+      "allowForLoopAfterthoughts": true
+    }],
+    "no-unused-expressions": ["error", {
+      "allowShortCircuit": true,
+      "allowTernary": true
+    }],
+    "no-unused-vars": ["error", {
+      "varsIgnorePattern": "modernizr|$",
+      "argsIgnorePattern": "$"
+    }],
+    "no-nested-ternary": 0,
+    "lines-around-comment": [
+      "error",
+      {
+        "beforeBlockComment": true,
+        "afterBlockComment": true,
+        "beforeLineComment": true,
+        "afterLineComment": false,
+        "allowBlockStart": true,
+        "allowBlockEnd": true,
+        "allowObjectStart": true,
+        "allowObjectEnd": true,
+        "allowArrayStart": true,
+        "allowArrayEnd": true
+      }
+    ]
+  }
+}
