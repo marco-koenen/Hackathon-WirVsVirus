@@ -1,0 +1,29 @@
+# encoding: utf-8
+# vim: ft=ruby expandtab shiftwidth=2 tabstop=2
+
+# network
+hostname: wir-vs-virus.dev
+ip: 192.168.33.90
+
+# filenames
+filename_js: build
+filename_css: build
+
+# layout files
+layout_files: pug
+
+# organization
+build_src: ./src/
+build_build: ./build/
+build_assets: ./assets/
+build_js: ./js/
+build_lib: ./lib/
+build_scss: ./scss/
+build_css: ./css/
+build_images: ./img/
+build_data: ./data/
+build_fonts: ./fonts/
+
+# deploy options
+build_browsers: ['> 3%', 'last 2 versions', 'safari >= 8', 'ff >= 20', 'ie >= 9', 'ios 6', 'android 4']
+build_purifyWhitelist: []
