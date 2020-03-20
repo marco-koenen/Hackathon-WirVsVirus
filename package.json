@@ -2,7 +2,7 @@
   "name": "@hackathon/wir-vs-virus",
   "version": "0.0.3",
   "description": "",
-  "author": "Marco Koenen, Felix Scheinost",
+  "author": "Marco Koenen, Felix Scheinost, Max Duell",
   "license": "MIT",
   "scripts": {
     "prestart": "git checkout develop -q",
