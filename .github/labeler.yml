@@ -1,0 +1,15 @@
+repo:
+  - ./*
+
+documentation:
+  - docs/*
+  - src/docs/*
+
+styles:
+  - src/**/*.scss
+
+javascript:
+  - src/**/*.js
+
+layout:
+  - src/**/*.pug
