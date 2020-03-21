@@ -4,7 +4,7 @@ import storage from '@utils/localStorage'
 // send notification to patient
 // --------------------------------------------------
 
-export default event => {
+export default (event, onlyDelete = false) => {
   const button = event.target
   const wrapper = button.parentNode
   const user = button.getAttribute('user')
@@ -21,6 +21,8 @@ export default event => {
 
   // remove patient from dom
   wrapper.remove()
+
+  if (onlyDelete) return
 
   console.warn('send notification to user: ' + user)
 }

@@ -6,20 +6,26 @@ import notification from './notification'
 
 export default (name, phone, user = null) => {
   const div = document.createElement('div')
-  const button = document.createElement('button')
+  const buttonSend = document.createElement('button')
+  const buttonDelete = document.createElement('button')
   const spanUser = document.createElement('span')
   const spanPhone = document.createElement('span')
 
   div.className = 'user-wrapper'
-  button.innerHTML = 'SMS schicken'
+  buttonSend.innerHTML = 'SMS schicken'
+  buttonDelete.innerHTML = 'Patient löschen'
   spanUser.innerHTML = 'Patient: ' + name
   spanPhone.innerHTML = 'Telefon: ' + phone
 
-  div.append(button)
+  div.append(buttonSend)
+  div.append(buttonDelete)
   div.append(spanUser)
   div.append(spanPhone)
   document.body.append(div)
 
-  button.setAttribute('user', user)
-  button.addEventListener('click', event => notification(event))
+  buttonSend.setAttribute('user', user)
+  buttonDelete.setAttribute('user', user)
+
+  buttonSend.addEventListener('click', event => notification(event))
+  buttonDelete.addEventListener('click', event => notification(event, true))
 }
