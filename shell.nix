@@ -19,6 +19,7 @@ in mkShell {
     myFlask
     python38Packages.gunicorn
     python38Packages.boto3
+    python38Packages.flask-cors
     nix-prefetch-git
   ];
 }

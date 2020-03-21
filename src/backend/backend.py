@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-from flask import Flask, escape, request, abort, Response
+from flask import Flask, escape, request, abort, Response, redirect
 from datetime import datetime
 import sqlite3 
 import uuid
 import json
 
-from config import *
+from .config import *
 app = Flask(__name__)
 db=sqlite3.connect(DATABASE_FILE)
 
@@ -67,9 +67,13 @@ def call_user(user_hash):
 
 @app.route("/room/create")
 def create_room():
+    room_uuid=do_create_room()
+    return json.dumps({"room_hash": str(room_uuid)})
+
+def do_create_room():
     room_uuid=uuid.uuid1()
     rooms[room_uuid]={"created": datetime.now()}
-    return json.dumps({"room_hash": str(room_uuid)})
+    return room_uuid
 
 # for debugging
 
@@ -77,30 +81,25 @@ def create_room():
 def get_smslog():
     with open("smslog.txt","r") as f:
         return Response(f.read(), mimetype="text/plain")
-#old mockup client
+
+
+# old mockup client, rebuilt to use api
 
 @app.route('/')
-def hello():
-    name = request.args.get("name", "World")
-    return '''
-    <html>
-    <head>
-     <meta http-equiv="refresh" content="0; url=/register_client">
-     </head>
-    <body>
-    </body>
-    </html>
-    '''
+def root():
+    return redirect(f'/mockup')
 
-time=None
+@app.route('/mockup')
+def mockup_client_root():
+    new_room=do_create_room()
+    return redirect(f'/mockup/r/{new_room}')
 
-global name,arzt,tel,appTime
+@app.route('/mockup/r/<room_uuid>')
+def mockup_client_room_mgr(room_uuid):
+    return f'manager for room {room_uuid}'
 
-
-@app.route('/register_client')
+@app.route('/mockup/register_client')
 def register_client():
-    global name,arzt,tel,appTime
-  
     name=request.args.get("name", None)
     arzt=request.args.get("arzt", None)
     tel=request.args.get("tel", None)
@@ -133,7 +132,7 @@ def register_client():
      <meta http-equiv="refresh" content="0; url=/wait?id={clientid}">
      </head></html>'''
 
-@app.route('/wait')
+@app.route('/mockup/wait')
 def wait():
     idd = int(request.args.get('id', None))
     t2 = datetime.now()
@@ -159,7 +158,7 @@ def wait():
     </html>''' % (name, arzt, tel, appTime, url, dt.seconds)
     #% (name, url, 5)
 
-@app.route('/call')
+@app.route('/mockup/call')
 def call():
     idd=int(request.args.get('id',None))
     return f'''
@@ -182,7 +181,7 @@ def call():
     </html>
     '''
 
-@app.route('/do_call')
+@app.route('/mockup/do_call')
 def do_call():
     idd = int(request.args.get('id',None))
     if idd==None: return 'Error: not a waiting patient'
@@ -192,7 +191,7 @@ def do_call():
     clients[idd]['called']=True
     do_sms=int(request.args.get("sms","0"))
     if do_sms==1:
-        send_sms(tel, f"Sie wurden von {arzt} aufgerufen")
+        do_send_sms(tel, f"Sie wurden von {arzt} aufgerufen")
     return f'calling {name}'
 
 if __name__ == "__main__":
