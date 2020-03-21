@@ -12,8 +12,9 @@ myWerkzeug = python38Packages.werkzeug.overrideAttrs (oldAttrs: rec {
 });
 
 myFlask = python38Packages.flask.override { werkzeug = myWerkzeug; };
+myFlaskCors = python38Packages.flask-cors.override { flask = myFlask; };
 
 callPackagePy38 = newScope python38.pkgs;
-ourPackage = callPackagePy38 ./. { flask = myFlask; };
+ourPackage = callPackagePy38 ./. { flask = myFlask; flask-cors = myFlaskCors; };
 
 in python38.withPackages (ps: with ps; [ gunicorn] ++ ourPackage.propagatedBuildInputs)
