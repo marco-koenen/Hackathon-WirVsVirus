@@ -1,9 +1,9 @@
 import init from './init'
 import create from './create'
-import notification from './notification'
+import remove from './remove'
 
 export default {
   init: init,
   create: create,
-  notification: notification
+  remove: remove
 }

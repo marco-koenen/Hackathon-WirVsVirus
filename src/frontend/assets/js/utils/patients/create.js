@@ -1,4 +1,4 @@
-import notification from './notification'
+import remove from './remove'
 
 //
 // create a single patient
@@ -15,7 +15,7 @@ export default (name, phone, user = null) => {
   buttonSend.innerHTML = 'SMS schicken'
   buttonDelete.innerHTML = 'Patient löschen'
   spanUser.innerHTML = 'Patient: ' + name
-  spanPhone.innerHTML = 'Telefon: ' + phone
+  spanPhone.innerHTML = ' / Telefon: ' + phone + ' / hash: #' + user
 
   div.append(buttonSend)
   div.append(buttonDelete)
@@ -26,6 +26,6 @@ export default (name, phone, user = null) => {
   buttonSend.setAttribute('user', user)
   buttonDelete.setAttribute('user', user)
 
-  buttonSend.addEventListener('click', event => notification(event))
-  buttonDelete.addEventListener('click', event => notification(event, true))
+  buttonSend.addEventListener('click', event => remove(event))
+  buttonDelete.addEventListener('click', event => remove(event, true))
 }
