@@ -11,14 +11,9 @@ myWerkzeug = python38Packages.werkzeug.overrideAttrs (oldAttrs: rec {
   doCheck = false;
 });
 
-myFlask = python38Packages.flask.override ({ werkzeug = myWerkzeug; });
+myFlask = python38Packages.flask.override { werkzeug = myWerkzeug; };
 
-in mkShell {
-  buildInputs = [
-    python38
-    myFlask
-    python38Packages.gunicorn
-    python38Packages.boto3
-    nix-prefetch-git
-  ];
-}
+callPackagePy38 = newScope python38.pkgs;
+ourPackage = callPackagePy38 ./. { flask = myFlask; };
+
+in python38.withPackages (ps: with ps; [ gunicorn] ++ ourPackage.propagatedBuildInputs)
