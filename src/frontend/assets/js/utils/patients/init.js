@@ -1,3 +1,4 @@
+import config from 'config'
 import storage from '@utils/localStorage'
 import create from './create'
 
@@ -8,7 +9,7 @@ import create from './create'
 export default () => {
   const patients = storage.get('patients')
 
-  if (!patients) return
+  if (!patients || config.page !== 'waiting-room') return
 
   patients.forEach(patient => create(patient.name, patient.phone, patient.user))
 }
