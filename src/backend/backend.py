@@ -79,7 +79,7 @@ def call_user(user_hash):
         return jsonify({"success": "smserror"})
 
 
-@app.route("/room/create")
+@app.route("/room/create", methods=["POST", "GET"])
 @cross_origin()
 def create_room():
     room_uuid = do_create_room()
@@ -91,6 +91,12 @@ def do_create_room():
     rooms[room_uuid] = {"created": datetime.now()}
     return room_uuid
 
+
+@app.route("/room/<room_hash>/list_users")
+@cross_origin()
+def get_room_users(room_hash):
+    users_in_room = [hash for hash,user in users.items() if user["room"] == room_hash]
+    return jsonify(users_in_room)
 
 # for debugging
 @app.route("/smslog")
