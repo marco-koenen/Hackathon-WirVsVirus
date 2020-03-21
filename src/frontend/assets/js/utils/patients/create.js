@@ -1,7 +1,7 @@
 import notification from './notification'
 
 //
-// create a patient
+// create a single patient
 // --------------------------------------------------
 
 export default (name, phone, user = null) => {
