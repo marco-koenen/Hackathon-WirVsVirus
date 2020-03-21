@@ -5,8 +5,10 @@ import config from 'config'
 // --------------------------------------------------
 
 export default () => {
-  if (!config.hash) return
+  if (config.user || config.user === '') return
 
   const user = config.hash.replace('#', '')
+
+  localStorage.setItem('user', user)
   config.user = user
 }

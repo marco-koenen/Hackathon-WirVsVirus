@@ -7,7 +7,7 @@ import config from 'config'
 export default () => {
   if (!config.user) return
 
-  fetch(config.fetch.endpoint, {
+  fetch(config.fetch.endpoint + 'user/' + config.user, {
     method: 'GET',
     headers: config.fetch.headers,
     mode: config.fetch.mode
@@ -21,7 +21,7 @@ export default () => {
       const room = data.room
       const status = data.status
 
-      console.warn(phone)
+      console.warn(data)
     })
     .catch(function(error) {
       console.warn(error)

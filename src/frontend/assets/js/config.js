@@ -5,7 +5,7 @@
 const config = {
   fetch: {
     endpoint: 'http://dagobahsystem.no-ip.org:5000/',
-    mode: 'no-cors',
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     }
@@ -17,12 +17,16 @@ const config = {
   },
 
   // global classNames
+  roomCreate: '.room-create',
   userCreate: '.user-create',
+  userName: 'input.user-name',
+  userPhone: 'input.user-phone',
 
   // miscs
   hash: window.location.hash,
   lang: document.documentElement.lang,
-  user: null,
+  room: localStorage.getItem('room'),
+  user: localStorage.getItem('user'),
   poll: null,
   pollInterval: 1000 * 30,
   pollTimeout: 1000 * 60 * 30
