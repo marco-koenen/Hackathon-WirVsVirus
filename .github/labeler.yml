@@ -13,3 +13,6 @@ javascript:
 
 layout:
   - src/**/*.pug
+
+backend:
+  - src/**/*.py

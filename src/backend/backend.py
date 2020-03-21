@@ -22,7 +22,7 @@ def do_send_sms_real(num, text):
     if not num.startswith("+49"):
         return
     client.publish(PhoneNumber=num, Message=text)
-
+    
 
 def do_send_sms_debug(num, text):
     with open("smslog.txt", "a") as f:
