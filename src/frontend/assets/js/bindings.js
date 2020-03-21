@@ -1,4 +1,5 @@
 import config from 'config'
+import room from '@utils/room'
 import user from '@utils/user'
 
 //
@@ -6,8 +7,11 @@ import user from '@utils/user'
 // --------------------------------------------------
 
 export default () => {
+  // create new room
+  const roomCreate = document.querySelector(config.roomCreate)
+  roomCreate && roomCreate.addEventListener('click', room.create)
+
   // create user account
   const userCreate = document.querySelector(config.userCreate)
-
-  userCreate.addEventListener('click', user.create)
+  userCreate && userCreate.addEventListener('click', user.create)
 }
