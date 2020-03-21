@@ -10,7 +10,7 @@ const config = {
   },
   hash: window.location.hash,
   lang: document.documentElement.lang,
-  windowTop: window.pageYOffset
+  user: null
 }
 
 export default config

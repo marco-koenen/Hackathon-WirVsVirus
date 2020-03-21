@@ -79,6 +79,8 @@
   },
   "browser": {
     "package": "./package.json",
-    "config": "./src/frontend/assets/js/config"
+    "config": "./src/frontend/assets/js/config",
+    "@utils/database": "./src/frontend/assets/js/utils/database",
+    "@utils/user": "./src/frontend/assets/js/utils/user"
   }
 }
