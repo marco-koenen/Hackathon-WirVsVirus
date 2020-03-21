@@ -1,4 +1,5 @@
 import config from 'config'
+import modal from '@components/modal'
 
 //
 // create a new room
@@ -25,6 +26,7 @@ export default () => {
       }
     })
     .catch(error => {
+      modal.create(false, config.generalError)
       console.warn(error)
     })
 }
