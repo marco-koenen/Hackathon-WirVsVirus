@@ -28,8 +28,8 @@ const config = {
   // miscs
   hash: window.location.hash,
   lang: document.documentElement.lang,
-  room: localStorage.getItem('room'),
-  user: localStorage.getItem('user'),
+  room: localStorage.getItem('room') || null,
+  user: localStorage.getItem('user') || null,
   poll: null,
   pollInterval: 1000 * 30,
   pollTimeout: 1000 * 60 * 30
