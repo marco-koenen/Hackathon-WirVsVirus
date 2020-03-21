@@ -59,7 +59,7 @@ class TestStringMethods(unittest.TestCase):
 
     def test_api_user_call(self):
         """
-           Test /user/<hash>
+           Test /user/<hash>/call
         """
         user_hash = get_new_user_hash()
         res = requests.get(f"{host}/user/{user_hash}/call")
