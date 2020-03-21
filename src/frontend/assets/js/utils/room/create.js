@@ -11,10 +11,10 @@ export default () => {
     mode: config.fetch.mode,
     body: JSON.stringify({})
   })
-    .then(function(response) {
+    .then(response => {
       return response.json()
     })
-    .then(function(data) {
+    .then(data => {
       const room = data.room_hash
 
       if (room) {
@@ -24,7 +24,7 @@ export default () => {
         window.location.href = '/waiting-room.html'
       }
     })
-    .catch(function(error) {
+    .catch(error => {
       console.warn(error)
     })
 }

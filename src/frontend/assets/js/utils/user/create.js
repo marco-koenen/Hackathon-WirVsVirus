@@ -24,10 +24,10 @@ export default () => {
     mode: config.fetch.mode,
     body: JSON.stringify(body)
   })
-    .then(function(response) {
+    .then(response => {
       return response.json()
     })
-    .then(function(data) {
+    .then(data => {
       const user = data.user_hash
 
       if (user) {
@@ -46,7 +46,7 @@ export default () => {
         storage.set('patients', storagePatients)
       }
     })
-    .catch(function(error) {
+    .catch(error => {
       console.warn(error)
     })
 }
