@@ -13,7 +13,7 @@ filename_css: build
 layout_files: pug
 
 # organization
-build_src: ./src/
+build_src: ./src/frontend/
 build_build: ./build/
 build_assets: ./assets/
 build_js: ./js/

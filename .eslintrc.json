@@ -11,7 +11,7 @@
     "node_modules/",
     "gulpfile.js/",
     "gulpconfig.js",
-    "src/assets/js/lib/"
+    "src/frontend/assets/js/lib/"
   ],
   "globals": {
     "Modernizr": true

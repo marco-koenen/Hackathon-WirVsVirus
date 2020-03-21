@@ -2,7 +2,7 @@
   "name": "@hackathon/wir-vs-virus",
   "version": "0.0.2",
   "description": "",
-  "author": "Marco Koenen, Felix Scheinost",
+  "author": "Marco Koenen, Felix Scheinost, Max Duell",
   "license": "MIT",
   "scripts": {
     "prestart": "git checkout develop -q",
@@ -16,8 +16,8 @@
     "bump": "gulp publish:patch",
     "bump:minor": "gulp publish:minor",
     "bump:major": "gulp publish:major",
-    "lint": "./node_modules/.bin/eslint src/assets/js/**/*.js --color --quiet --fix",
-    "postlint": "./node_modules/.bin/stylelint src/assets/scss/**/*.scss --color --quiet --fix"
+    "lint": "./node_modules/.bin/eslint src/**/*.js --color --quiet --fix",
+    "postlint": "./node_modules/.bin/stylelint src/**/*.scss --color --quiet --fix"
   },
   "precommit": {
     "run": "lint"
@@ -79,6 +79,6 @@
   },
   "browser": {
     "package": "./package.json",
-    "config": "./src/assets/js/config"
+    "config": "./src/frontend/assets/js/config"
   }
 }
