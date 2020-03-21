@@ -51,6 +51,16 @@ def user_create():
     user_hash = uuid.uuid1()
     status = "waiting"
     users[user_hash] = {"phone": phone, "room": room, "status": status}
+
+    # todo: verify phone number
+
+    hostname_debug = "localhost"
+    hostname = hostname_debug
+
+    check_url = f"http://{hostname}/#{str(user_hash)}"
+    user_welcome_text = f"Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden sie unter {check_url}."
+
+    do_send_sms(phone, user_welcome_text)
     return jsonify(user_hash=str(user_hash))
 
 
@@ -65,7 +75,7 @@ def get_user(user_hash):
                     "room": user["room"]})
 
 
-@app.route("/user/<user_hash>/call")
+@app.route("/user/<user_hash>/call", methods=["POST", "GET"])
 @cross_origin()
 def call_user(user_hash):
     user_uuid = uuid.UUID(user_hash)
@@ -73,6 +83,7 @@ def call_user(user_hash):
     notify_text = "Hello, you have been called"
     if not user:
         abort(404)
+
     if do_send_sms(user["phone"], notify_text):
         return jsonify({"success": "sent"})
     else:
