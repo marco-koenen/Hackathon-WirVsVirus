@@ -20,6 +20,7 @@ export default user => {
       modal.create(success, message)
     })
     .catch(error => {
+      modal.create(false, config.generalError)
       console.warn(error)
     })
 }
