@@ -75,7 +75,9 @@
     "gift": "^0.10.2"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "es6-promise": "^4.2.8",
+    "isomorphic-fetch": "^2.2.1"
   },
   "browser": {
     "package": "./package.json",
