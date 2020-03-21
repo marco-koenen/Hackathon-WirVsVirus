@@ -3,8 +3,9 @@
 import {name, version} from 'package'
 import 'babel-polyfill'
 import config from 'config'
+import bindings from 'bindings'
 import user from '@utils/user'
-import data from '@utils/database'
+import poll from '@utils/poll'
 
 __webpack_public_path__ = config.assets.js
 
@@ -15,11 +16,17 @@ __webpack_public_path__ = config.assets.js
 const app = () => {
   console.log(`%c${name}: v${version}`, 'color: #6a6a6a')
 
-  // create the user and get the data
-  user.create()
-  data.get()
+  // add dom bindings
+  bindings()
+
+  // get user hash from url
+  user.hash()
+
+  // start polling to get user data
+  poll.start()
 }
 
+// initiate dom
 if (document.readyState !== 'loading') {
   app()
 } else {
