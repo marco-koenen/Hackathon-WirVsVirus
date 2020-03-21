@@ -1,7 +1,7 @@
-{ buildPythonPackage, flask, boto3 }:
+{ buildPythonPackage, flask, boto3, flask-cors }:
 
 buildPythonPackage rec {
   name = "wirvsvirus";
   src = ./.;
-  propagatedBuildInputs = [ flask boto3 ];
+  propagatedBuildInputs = [ flask boto3, flask-cors ];
 }
