@@ -1,5 +1,6 @@
 import config from 'config'
 import dashboard from './dashboard'
+import modal from '@components/modal'
 
 //
 // get user data from database
@@ -20,6 +21,7 @@ export default () => {
       dashboard(data)
     })
     .catch(error => {
+      modal.create(false, config.generalError)
       console.warn(error)
     })
 }

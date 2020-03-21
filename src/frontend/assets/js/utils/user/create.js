@@ -1,6 +1,7 @@
 import config from 'config'
 import storage from '@utils/localStorage'
 import patients from '@utils/patients'
+import modal from '@components/modal'
 
 //
 // create a new user
@@ -9,7 +10,7 @@ import patients from '@utils/patients'
 export default () => {
   const phone = document.querySelector(config.userPhone).value
   const name = document.querySelector(config.userName).value
-  const room = 'ö1358sfjf38'
+  const room = config.room
 
   if (!phone || !room || !name) return
 
@@ -47,6 +48,7 @@ export default () => {
       }
     })
     .catch(error => {
+      modal.create(false, config.generalError)
       console.warn(error)
     })
 }
