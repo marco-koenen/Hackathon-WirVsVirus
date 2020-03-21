@@ -1,0 +1,2 @@
+#! /usr/bin/env bash
+gunicorn src.backend.backend:app

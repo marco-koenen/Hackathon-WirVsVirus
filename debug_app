@@ -1,0 +1,2 @@
+#! /usr/bin/env bash
+env FLASK_APP=src/backend/backend.py FLASK_ENV=development flask run
