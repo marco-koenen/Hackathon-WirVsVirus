@@ -1,26 +1,27 @@
 import config from 'config'
 
 //
-// create a new user
+// get user data from database
 // --------------------------------------------------
 
 export default () => {
-  const body = {
-    phone: '+491752728244',
-    room: 'ö1358sfjf38'
-  }
+  if (!config.user) return
 
-  fetch(config.fetch.endpoint + 'user/create', {
-    method: 'POST',
+  fetch(config.fetch.endpoint, {
+    method: 'GET',
     headers: config.fetch.headers,
-    mode: config.fetch.mode,
-    body: JSON.stringify(body)
+    mode: config.fetch.mode
   })
     .then(function(response) {
       return response.json()
     })
     .then(function(data) {
-      console.warn(data)
+      const hash = data.hash
+      const phone = data.phone
+      const room = data.room
+      const status = data.status
+
+      console.warn(phone)
     })
     .catch(function(error) {
       console.warn(error)

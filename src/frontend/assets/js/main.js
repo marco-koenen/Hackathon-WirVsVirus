@@ -2,6 +2,9 @@
 
 import {name, version} from 'package'
 import 'babel-polyfill'
+import 'es6-promise'
+import 'isomorphic-fetch'
+import 'babel-polyfill'
 import config from 'config'
 import bindings from 'bindings'
 import user from '@utils/user'

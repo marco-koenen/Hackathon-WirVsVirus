@@ -4,7 +4,8 @@
 
 const config = {
   fetch: {
-    endpoint: 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits',
+    endpoint: 'http://dagobahsystem.no-ip.org:5000/',
+    mode: 'no-cors',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     }
