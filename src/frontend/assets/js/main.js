@@ -27,8 +27,9 @@ const app = () => {
   polyfill.closest()
   polyfill.append()
 
-  // update global variables
+  // update global variables and change view
   page.vars()
+  page.view()
 
   // add dom bindings
   bindings()
