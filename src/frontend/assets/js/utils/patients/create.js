@@ -1,25 +1,31 @@
-import notification from './notification'
+import remove from './remove'
 
 //
-// create a patient
+// create a single patient
 // --------------------------------------------------
 
 export default (name, phone, user = null) => {
   const div = document.createElement('div')
-  const button = document.createElement('button')
+  const buttonSend = document.createElement('button')
+  const buttonDelete = document.createElement('button')
   const spanUser = document.createElement('span')
   const spanPhone = document.createElement('span')
 
   div.className = 'user-wrapper'
-  button.innerHTML = 'SMS schicken'
+  buttonSend.innerHTML = 'SMS schicken'
+  buttonDelete.innerHTML = 'Patient löschen'
   spanUser.innerHTML = 'Patient: ' + name
-  spanPhone.innerHTML = 'Telefon: ' + phone
+  spanPhone.innerHTML = ' / Telefon: ' + phone + ' / hash: #' + user
 
-  div.append(button)
+  div.append(buttonSend)
+  div.append(buttonDelete)
   div.append(spanUser)
   div.append(spanPhone)
   document.body.append(div)
 
-  button.setAttribute('user', user)
-  button.addEventListener('click', event => notification(event))
+  buttonSend.setAttribute('user', user)
+  buttonDelete.setAttribute('user', user)
+
+  buttonSend.addEventListener('click', event => remove(event))
+  buttonDelete.addEventListener('click', event => remove(event, true))
 }

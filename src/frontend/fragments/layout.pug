@@ -4,6 +4,7 @@ html(lang='de')
   //- page specific variables
   block vars
     - var title = 'Default title'
+    - var slug = null
 
   include ./../inc/variables.pug
   include head.pug
@@ -11,7 +12,8 @@ html(lang='de')
 body.is-animating
 
   //- default content
-  block content
+  .page-content(page=slug)
+    block content
 
   //- default footer
   footer

@@ -7,6 +7,7 @@ import 'isomorphic-fetch'
 import 'babel-polyfill'
 import config from 'config'
 import bindings from 'bindings'
+import page from '@utils/page'
 import user from '@utils/user'
 import patients from '@utils/patients'
 import poll from '@utils/poll'
@@ -20,26 +21,31 @@ __webpack_public_path__ = config.assets.js
 
 const app = () => {
   console.log(`%c${name}: v${version}`, 'color: #6a6a6a')
-  console.log('hash: ' + config.hash)
-  console.log('room: ' + config.room)
-  console.log('user: ' + config.user)
 
   // pollyfills
   polyfill.forEach()
   polyfill.closest()
   polyfill.append()
 
-  // add dom bindings
-  bindings()
-
   // get user hash from url
   user.hash()
+
+  // update global variables and change view
+  page.vars()
+  page.view()
+
+  // add dom bindings
+  bindings()
 
   // create patient list
   patients.init()
 
   // start polling to get user data
   poll.start()
+
+  console.log('page: ' + config.page)
+  console.log('room: ' + config.room)
+  console.log('user: ' + config.user)
 }
 
 // initiate dom
