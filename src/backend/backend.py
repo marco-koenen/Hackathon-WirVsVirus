@@ -1,23 +1,87 @@
 #!/usr/bin/env python3
-from flask import Flask, escape, request
+from flask import Flask, escape, request, abort, Response
 from datetime import datetime
+import sqlite3 
+import uuid
+import json
 
+from config import *
 app = Flask(__name__)
+db=sqlite3.connect(DATABASE_FILE)
 
-from config import AID,KEY
 
 
 import boto3
-def send_sms(num,text):
+def do_send_sms(num,text):
     client = boto3.client("sns", aws_access_key_id=AID,
             aws_secret_access_key=KEY, region_name="eu-central-1") 
     if not num.startswith("+49"): return
     client.publish(PhoneNumber=num, Message=text)
 
+def do_send_sms_debug(num,text):
+    with open("smslog.txt","a") as f:
+        f.write(f"[{datetime.now()}] SMS to {num}: {text}\n")
+    return True
+
+# comment line below to send real sms
+do_send_sms = do_send_sms_debug
+    
+
+users={}
+rooms={}
+
+@app.route("/user/create",methods=["POST"])
+def user_create():
+    phone = request.form.get("phone",None)
+    room = request.form.get("room",None)
+    if not phone or not room:
+        abort(400)
+
+    # todo: check if room exists
+
+    user_hash=uuid.uuid1()
+    status="waiting"
+    users[user_hash]={ "phone":phone,"room":room, "status": status }
+    return json.dumps({"hash": str(user_hash)})
+
+@app.route("/user/<user_hash>")
+def get_user(user_hash):
+    user_uuid=uuid.UUID(user_hash)
+    user = users.get(user_uuid,None)
+    if not user: abort(404)
+    status = "status"
+    return json.dumps({"hash": user_hash, "phone": user["phone"], "room":
+        user["room"]})
+
+@app.route("/user/<user_hash>/call")
+def call_user(user_hash):
+    user_uuid=uuid.UUID(user_hash)
+    user = users.get(user_uuid,None)
+    notify_text = "Hello, you have been called"
+    if not user: abort(404)
+    if do_send_sms(user["phone"], notify_text ):
+        return json.dumps({"success":"sent"})
+    else: 
+        return json.dumps({"success":"smserror"})
+
+
+@app.route("/room/create")
+def create_room():
+    room_uuid=uuid.uuid1()
+    rooms[room_uuid]={"created": datetime.now()}
+    return json.dumps({"room_hash": str(room_uuid)})
+
+# for debugging
+
+@app.route("/smslog")
+def get_smslog():
+    with open("smslog.txt","r") as f:
+        return Response(f.read(), mimetype="text/plain")
+#old mockup client
+
 @app.route('/')
 def hello():
     name = request.args.get("name", "World")
-    #return f'Hello, {escape(name)}!'
     return '''
     <html>
     <head>
@@ -32,7 +96,6 @@ time=None
 
 global name,arzt,tel,appTime
 
-clients=[]
 
 @app.route('/register_client')
 def register_client():
