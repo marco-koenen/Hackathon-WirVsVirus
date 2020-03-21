@@ -27,15 +27,15 @@ const app = () => {
   polyfill.closest()
   polyfill.append()
 
+  // get user hash from url
+  user.hash()
+
   // update global variables and change view
   page.vars()
   page.view()
 
   // add dom bindings
   bindings()
-
-  // get user hash from url
-  user.hash()
 
   // create patient list
   patients.init()
@@ -44,7 +44,6 @@ const app = () => {
   poll.start()
 
   console.log('page: ' + config.page)
-  console.log('hash: ' + config.hash)
   console.log('room: ' + config.room)
   console.log('user: ' + config.user)
 }
