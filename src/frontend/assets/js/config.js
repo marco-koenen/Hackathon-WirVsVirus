@@ -16,6 +16,9 @@ const config = {
     js: '/assets/js/'
   },
 
+  // global selectors
+  content: document.querySelector('.page-content'),
+
   // global classNames
   roomCreate: '.room-create',
   userCreate: '.user-create',
