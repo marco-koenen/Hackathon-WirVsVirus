@@ -32,7 +32,12 @@ const config = {
   user: localStorage.getItem('user') || null,
   poll: null,
   pollInterval: 1000 * 30,
-  pollTimeout: 1000 * 60 * 30
+  pollTimeout: 1000 * 60 * 30,
+
+  // messages
+  notificationSuccess: 'Der Patient hat eine SMS erhalten',
+  notificationError: 'Es ist leider ein Fehler aufgetreten',
+  deleteSuccess: 'Der Patient wurde erfolgreich gelöscht.'
 }
 
 export default config
