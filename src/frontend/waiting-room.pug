@@ -3,12 +3,11 @@ extends fragments/layout.pug
 //- overwrite variables
 block vars
   - var title = 'Warteraum'
+  - var slug = 'waiting-room'
 
 //- page content
 block content
-
   h1 Warteraum
-
   h2 Neuen Patienten erstellen
   input.user-name(type='text', value='Marco', placeholder='Name')
   input.user-phone(type='text', value='123', placeholder='Telefonnummer')
