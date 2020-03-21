@@ -90,6 +90,7 @@
     "@utils/poll": "./src/frontend/assets/js/utils/poll",
     "@utils/room": "./src/frontend/assets/js/utils/room",
     "@utils/patients": "./src/frontend/assets/js/utils/patients",
-    "@utils/localStorage": "./src/frontend/assets/js/utils/localStorage"
+    "@utils/localStorage": "./src/frontend/assets/js/utils/localStorage",
+    "@components/modal": "./src/frontend/assets/js/components/modal"
   }
 }
