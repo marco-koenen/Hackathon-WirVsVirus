@@ -1,4 +1,5 @@
 import config from 'config'
+import dashboard from './dashboard'
 
 //
 // get user data from database
@@ -12,18 +13,13 @@ export default () => {
     headers: config.fetch.headers,
     mode: config.fetch.mode
   })
-    .then(function(response) {
+    .then(response => {
       return response.json()
     })
-    .then(function(data) {
-      const hash = data.hash
-      const phone = data.phone
-      const room = data.room
-      const status = data.status
-
-      console.warn(data)
+    .then(data => {
+      dashboard(data)
     })
-    .catch(function(error) {
+    .catch(error => {
       console.warn(error)
     })
 }

@@ -24,6 +24,7 @@ const config = {
   userCreate: '.user-create',
   userName: 'input.user-name',
   userPhone: 'input.user-phone',
+  userDashboard: '.user-dashboard',
 
   // miscs
   hash: window.location.hash,
