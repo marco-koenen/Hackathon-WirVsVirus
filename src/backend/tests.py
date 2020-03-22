@@ -65,19 +65,24 @@ class TestBackendAPICalls(unittest.TestCase):
         """
         user_hash = get_new_user_hash()
         res = requests.get(f"{HOST}/user/{user_hash}/call")
-        assert(res.ok)
-        print(res.json())
+        assert res.ok, "Error during API call" 
+
+        json=res.json()
+        print(json)
+        assert json['success']=='sent', "Error sending SMS" 
 
     def test_api_user_call_custom_text(self):
         """
            Test /user/<hash>/call with custom text
         """
         user_hash = get_new_user_hash()
-        res = requests.get(f"{HOST}/user/{user_hash}/call",
-                           json={"notify_text":
-                                 "Sie wurden von Dr. Maier aufgerufen."})
+        res = requests.get(f"{HOST}/user/{user_hash}/call", json={"notify_text":
+            "Sie wurden von Dr. Maier aufgerufen."})
         assert(res.ok)
-        print(res.json())
+
+        json=res.json()
+        print(json)
+        assert json['success']=='sent', "Error sending SMS" 
 
 
 class TestPhoneNumberVerifier(unittest.TestCase):
