@@ -25,15 +25,14 @@ phone_prefix_provider = \
 # admissible lengths with provider prefix and one leading zero
 phone_length_country = \
     {
-            "de": [11, 12]
+        "de": [11, 12]
     }
 
 
 def cleaned_number(num):
-    num_digitsonly = re.sub(r'^\number*', '', num)
-    num_cleaned = re.sub(r'^\+', '', num_digitsonly)
-    num_cleaned2 = re.sub(r'^0*', '', num_cleaned)
-    return num_cleaned2
+    num_digitsonly = re.sub(r'[^\d]*', '', num)
+    num_cleaned = re.sub(r'^0*', '', num_digitsonly)
+    return num_cleaned
 
 
 def check_validity_phone(num, country="de"):

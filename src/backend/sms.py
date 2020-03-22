@@ -16,7 +16,7 @@ def do_send_sms_aws(num, text):
     return 'MessageId' in response
 
 
-# documentation: https://www.spryng.be/en/developers/http-api/
+# provider documentation: https://docs.spryngsms.com/?version=latest
 def do_send_sms_spryng(num, text):
     """
     Send an SMS via Spryng REST API
@@ -34,15 +34,11 @@ def do_send_sms_spryng(num, text):
     if len(text) > app.config["MAX_SMS_LENGTH"]:
         return False
 
-    print("preparing spryng call")
-
     url = app.config["SPRYNG_API_URL"]
     token = app.config["SPRYNG_API_BEARER_TOKEN"]
     spryng_headers = {
                 "Accept": "application/json",
                 "Authorization": f"Bearer {token}",
-                # according to doc needed, but is automatic from request
-                # "Content-type": "application/json"
             }
 
     spryng_request = {
@@ -55,10 +51,8 @@ def do_send_sms_spryng(num, text):
             }
     print("spryng request", url, spryng_request, spryng_headers)
     response = requests.post(url, headers=spryng_headers, json=spryng_request)
-    print("spryng response", response)
-
     rj = response.json()
-    print("spryng response json content", rj)
+    print("spryng response", response, "json-content:", rj)
 
     if not response.ok:
         return False

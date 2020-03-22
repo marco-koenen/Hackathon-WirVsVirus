@@ -65,27 +65,40 @@ class TestBackendAPICalls(unittest.TestCase):
         """
         user_hash = get_new_user_hash()
         res = requests.get(f"{HOST}/user/{user_hash}/call")
-        assert res.ok, "Error during API call" 
+        assert res.ok, "Error during API call"
 
-        json=res.json()
+        json = res.json()
         print(json)
-        assert json['success']=='sent', "Error sending SMS" 
+        assert json['success'] == 'sent', "Error sending SMS"
 
     def test_api_user_call_custom_text(self):
         """
            Test /user/<hash>/call with custom text
         """
         user_hash = get_new_user_hash()
-        res = requests.get(f"{HOST}/user/{user_hash}/call", json={"notify_text":
-            "Sie wurden von Dr. Maier aufgerufen."})
+        res = requests.get(f"{HOST}/user/{user_hash}/call",
+                           json={"notify_text":
+                                 "Sie wurden von Dr. Maier aufgerufen."})
         assert(res.ok)
 
-        json=res.json()
+        json = res.json()
         print(json)
-        assert json['success']=='sent', "Error sending SMS" 
+        assert json['success'] == 'sent', "Error sending SMS"
 
 
 class TestPhoneNumberVerifier(unittest.TestCase):
+    def test_phone_number_cleaner(self):
+        from validphone import cleaned_number
+        test_cases = ["  004916083394427 ", "+49 170 839 59 30",
+                      "Handy: +49/174-33-33-665", "4917039572839"]
+
+        cleaned_results = ["4916083394427", "491708395930",
+                           "491743333665", "4917039572839"]
+
+        print({n: cleaned_number(n) for n in test_cases})
+        for idx, num in enumerate(test_cases):
+            assert cleaned_number(num) == cleaned_results[idx], \
+                    f"incorrectly cleaned: cleaned_number('{num}') != '{cleaned_results[idx]}'"
 
     def test_is_valid_phone_number(self):
         from validphone import is_valid_phone_number, check_validity_phone
