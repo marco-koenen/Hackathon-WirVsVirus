@@ -9,7 +9,7 @@ import create from './create'
 export default () => {
   const patients = storage.get('patients')
 
-  if (!patients || config.page !== 'waiting-room') return
+  if (!patients) return
 
   patients.forEach(patient => create(patient.name, patient.phone, patient.user, patient.doctor))
 }

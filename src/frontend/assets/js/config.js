@@ -20,9 +20,12 @@ const config = {
   isLoading: 'is-loading',
   isHidden: 'is-hidden',
   isVisible: 'is-visble',
+  isClose: 'is-close',
+  isOpen: 'is-open',
 
   // global selectors
   content: document.querySelector('.page-content'),
+  overlay: document.querySelector('.overlay'),
 
   // global classNames
   view: '.view',
@@ -47,6 +50,9 @@ const config = {
   poll: null,
   pollInterval: 1000 * 10,
   pollTimeout: 1000 * 60 * 30,
+
+  // timings
+  pageTransitionTime: 350,
 
   // messages
   messageLink: 'Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden Sie unter:',

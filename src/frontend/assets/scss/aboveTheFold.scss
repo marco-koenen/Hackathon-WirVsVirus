@@ -1,0 +1,15 @@
+@import '_variables.scss';
+
+//
+// general
+// --------------------------------------------------
+
+body {
+  width: 100%;
+  margin: 0;
+  background: white;
+  color: black;
+}
+
+// show overlay on init
+@import '_fragments/overlay.scss';
