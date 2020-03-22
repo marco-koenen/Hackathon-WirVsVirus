@@ -4,7 +4,7 @@
 
 const config = {
   fetch: {
-    endpoint: 'http://dagobahsystem.no-ip.org:5000/',
+    endpoint: 'https://backend.un-chain.us/',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
