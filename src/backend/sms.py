@@ -7,8 +7,9 @@ def do_send_sms_real(num, text):
                           aws_secret_access_key=app.config["AWS_SECRET_ACCESS_KEY"],
                           region_name="eu-central-1")
     if not num.startswith("+49"):
-        return
-    client.publish(PhoneNumber=num, Message=text)
+        return False
+    response = client.publish(PhoneNumber=num, Message=text)
+    return 'MessageId' in response
 
 
 def do_send_sms_debug(num, text):
@@ -18,8 +19,8 @@ def do_send_sms_debug(num, text):
 
 
 def do_send_sms(*args, **kwargs):
-    if app.config["SEND_SMS"]:
-        return do_send_sms_real(*args, **kwargs)
-    else:
+    if app.debug:
         return do_send_sms_debug(*args, **kwargs)
+    else:
+        return do_send_sms_real(*args, **kwargs)
 
