@@ -10,7 +10,7 @@ export default () => {
   const patients = storage.get('patients')
   const fallbackText = document.querySelector(config.userList).querySelector('p')
 
-  if (!patients) {
+  if (!patients || patients.length === 0) {
     fallbackText.classList.remove(config.isHidden)
     return
   }

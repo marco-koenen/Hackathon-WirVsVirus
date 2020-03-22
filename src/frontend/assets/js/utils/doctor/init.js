@@ -14,7 +14,7 @@ export default () => {
   const list = document.querySelector(config.doctorList)
   const fallbackText = document.querySelector(config.doctorList).querySelector('p')
 
-  if (!select || !doctors) {
+  if (!select || !doctors || doctors.length === 0) {
     fallbackText.classList.remove(config.isHidden)
     return
   }

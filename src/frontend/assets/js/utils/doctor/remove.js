@@ -23,4 +23,10 @@ export default (event, name) => {
 
   // remove doctors from dom
   wrapper.remove()
+
+  // show fallback text when no doctor is available
+  if (doctors.length === 0) {
+    const fallbackText = document.querySelector(config.doctorList).querySelector('p')
+    fallbackText.classList.remove(config.isHidden)
+  }
 }
