@@ -1,4 +1,12 @@
+#########
+# Default (development) values
+# overwrite in instance/config.py
+#########
+
+CORS_ORIGIN="*"
+HOSTNAME="localhost"
+SEND_SMS=False
+
 # API keys for AWS
-AID=""
-KEY=""
-DATABASE_FILE="sqlite3.db"
+AWS_ACCESS_KEY_ID=""
+AWS_SECRET_ACCESS_KEY=""

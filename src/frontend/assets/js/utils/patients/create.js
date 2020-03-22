@@ -1,3 +1,4 @@
+import config from 'config'
 import remove from './remove'
 
 //
@@ -5,6 +6,7 @@ import remove from './remove'
 // --------------------------------------------------
 
 export default (name, phone, user = null, doctor) => {
+  const content = document.querySelector(config.waitingRoom)
   const div = document.createElement('div')
   const buttonSend = document.createElement('button')
   const buttonDelete = document.createElement('button')
@@ -21,7 +23,7 @@ export default (name, phone, user = null, doctor) => {
   div.append(buttonDelete)
   div.append(spanUser)
   div.append(spanPhone)
-  document.body.append(div)
+  content.append(div)
 
   buttonSend.setAttribute('user', user)
   buttonDelete.setAttribute('user', user)
