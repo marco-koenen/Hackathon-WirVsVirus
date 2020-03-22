@@ -1,0 +1,27 @@
+//
+// normalize css
+// --------------------------------------------------
+
+@import 'normalize/variables';
+@import 'normalize/vertical-rhythm';
+@import 'normalize/normalize-mixin';
+
+// initiate
+@include normalize();
+
+//
+// custom resets
+// --------------------------------------------------
+
+// remove margin/paddings
+ul,
+form {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-block-start: 0;
+  padding-block-end: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}

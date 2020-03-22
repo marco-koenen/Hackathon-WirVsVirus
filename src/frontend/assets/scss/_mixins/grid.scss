@@ -1,0 +1,80 @@
+/* stylelint-disable order/order */
+
+//
+// grid elements
+// --------------------------------------------------
+
+@mixin make-container() {
+  width: 100%;
+  padding-right: $grid-gutter-width / 2;
+  padding-left: $grid-gutter-width / 2;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media-breakpoint-up($gutterBreak) {
+    padding-right: $grid-gutter-width-desktop / 2;
+    padding-left: $grid-gutter-width-desktop / 2;
+  }
+}
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      max-width: $container-max-width;
+    }
+  }
+}
+@mixin make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: ($grid-gutter-width / -2);
+  margin-left: ($grid-gutter-width / -2);
+
+  @include media-breakpoint-up($gutterBreak) {
+    margin-right: ($grid-gutter-width-desktop / -2);
+    margin-left: ($grid-gutter-width-desktop / -2);
+  }
+}
+@mixin make-col($size, $columns: $grid-columns) {
+  flex: 0 0 percentage($size / $columns);
+  max-width: percentage($size / $columns);
+}
+@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    // Allow columns to stretch full width below their breakpoints
+    @for $i from 1 through $columns {
+      .col#{$infix}-#{$i} {
+        @extend %grid-column;
+      }
+    }
+
+    .col#{$infix} {
+      @extend %grid-column;
+    }
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+          @include make-col($i, $columns);
+        }
+      }
+      .col#{$infix} {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+      }
+    }
+  }
+  %grid-column {
+    position: relative;
+    width: 100%;
+    padding-right: ($grid-gutter-width / 2);
+    padding-left: ($grid-gutter-width / 2);
+
+    @include media-breakpoint-up($gutterBreak) {
+      padding-right: ($grid-gutter-width-desktop / 2);
+      padding-left: ($grid-gutter-width-desktop / 2);
+    }
+  }
+}

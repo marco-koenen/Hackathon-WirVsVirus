@@ -1,4 +1,11 @@
+//
+// early imports
+// --------------------------------------------------
+
 @import '_variables.scss';
+@import '_mixins.scss';
+@import '_utilities/normalize.scss';
+@import '_utilities/grid.scss';
 
 //
 // general
@@ -6,9 +13,12 @@
 
 body {
   width: 100%;
-  margin: 0;
-  background: white;
-  color: black;
+  color: $color-body;
+  font-family: $font-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  font-size: $font-size-base;
+  background-color: $bg-body;
 
   // font rendering
   font-synthesis: none;
@@ -21,13 +31,22 @@ body {
 }
 
 //
-// utilities
-// --------------------------------------------------
-
-@import '_utilities/utilities.scss';
-
-//
 // fragments
 // --------------------------------------------------
 
 @import '_fragments/overlay.scss';
+@import '_fragments/content.scss';
+
+//
+// components
+// --------------------------------------------------
+
+@import '_components/button.scss';
+@import '_components/select.scss';
+@import '_components/input.scss';
+
+//
+// utilities
+// --------------------------------------------------
+
+@import '_utilities/utilities.scss';
