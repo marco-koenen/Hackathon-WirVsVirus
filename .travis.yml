@@ -1,0 +1,5 @@
+language: nix
+env:
+  - COMMAND=nix-shell --command ./debug_app
+  - COMMAND=nix-shell --command 'python src/backend/tests.py'
+script: "${COMMAND}"

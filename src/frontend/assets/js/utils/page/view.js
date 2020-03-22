@@ -16,7 +16,9 @@ export default () => {
     userDashboard && userDashboard.classList.remove(config.isHidden)
     localStorage.removeItem('patients')
     localStorage.removeItem('room')
+    localStorage.removeItem('doctors')
     config.room = ''
+    config.page = 'user-dashboard'
   }
 
   // show waitingRoom
@@ -26,6 +28,7 @@ export default () => {
     waitingRoom && waitingRoom.classList.remove(config.isHidden)
     localStorage.removeItem('user')
     config.user = ''
+    config.page = 'waiting-room'
   }
 
   // show createWaitingRoom
@@ -36,7 +39,9 @@ export default () => {
     localStorage.removeItem('patients')
     localStorage.removeItem('room')
     localStorage.removeItem('user')
+    localStorage.removeItem('doctors')
     config.room = ''
     config.user = ''
+    config.page = 'home'
   }
 }

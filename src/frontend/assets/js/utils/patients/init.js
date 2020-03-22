@@ -11,5 +11,5 @@ export default () => {
 
   if (!patients || config.page !== 'waiting-room') return
 
-  patients.forEach(patient => create(patient.name, patient.phone, patient.user))
+  patients.forEach(patient => create(patient.name, patient.phone, patient.user, patient.doctor))
 }
