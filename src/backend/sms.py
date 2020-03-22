@@ -19,7 +19,7 @@ def do_send_sms_debug(num, text):
 
 
 def do_send_sms(*args, **kwargs):
-    if app.debug:
-        return do_send_sms_debug(*args, **kwargs)
-    else:
+    if app.config["SEND_SMS"]:
         return do_send_sms_real(*args, **kwargs)
+    else:
+        return do_send_sms_debug(*args, **kwargs)
