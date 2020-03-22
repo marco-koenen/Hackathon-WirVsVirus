@@ -16,7 +16,11 @@ export default () => {
   const doctor = document.querySelector(config.doctorSelect).value
   const room = config.room
 
-  if (!phone || !room || !name) return
+  // required fields
+  if (!phone || !room || !name) {
+    modal.create(false, config.missingField)
+    return
+  }
 
   // force at least one doctor
   if (!doctor) {
