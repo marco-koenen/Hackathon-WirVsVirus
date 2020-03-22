@@ -10,11 +10,12 @@ import remove from './remove'
 
 export default () => {
   const input = document.querySelector(config.doctorName)
+  const inputFirstName = document.querySelector(config.doctorFirstName)
   const doctor = input.value
   const title = document.querySelector(config.doctorTitle).value
-  const label = document.querySelector(config.doctorList).querySelector('label')
+  const fallbackText = document.querySelector(config.doctorList).querySelector('p')
 
-  label.classList.remove(config.isClose)
+  fallbackText.classList.add(config.isHidden)
 
   if (!doctor) {
     modal.create(false, config.missingField)
@@ -41,6 +42,7 @@ export default () => {
 
     select.appendChild(option)
     input.value = ''
+    inputFirstName.value = ''
 
     // save to local storage
     let storageDoctors = storage.get('doctors')

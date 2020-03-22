@@ -8,4 +8,13 @@
   h1 {
     margin: 35px 0 80px;
   }
+
+  .patient-check-in,
+  .doctor-create-wrapper {
+    margin-bottom: 40px;
+
+    @include media-breakpoint-up($gutterBreak) {
+      margin-bottom: 0;
+    }
+  }
 }

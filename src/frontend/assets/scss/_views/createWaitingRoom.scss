@@ -6,11 +6,21 @@
   position: relative;
 
   h1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+
+    @include media-breakpoint-up($gutterBreak) {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
   }
 
   p {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
+
+    @include media-breakpoint-up($gutterBreak) {
+      margin-bottom: 60px;
+    }
   }
 
   img {
@@ -19,7 +29,10 @@
 
   button {
     display: block;
-    left: -10px;
     margin: 100px auto 0;
+
+    @include media-breakpoint-up($gutterBreak) {
+      left: -10px;
+    }
   }
 }

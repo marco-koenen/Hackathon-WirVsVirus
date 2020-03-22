@@ -18,9 +18,14 @@ input {
   -webkit-appearance: none;
   transition: background $time-opacity $ease-opacity;
   font-size: 14px;
+  margin-bottom: 20px;
 
   @include media-breakpoint-up($gutterBreak) {
     width: 200px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    margin-bottom: 0;
   }
 
   // adjust autofill styles

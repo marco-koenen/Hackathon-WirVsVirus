@@ -14,6 +14,14 @@ button,
   font-size: 14px;
   text-transform: uppercase;
   transition: background $time-opacity $ease-opacity;
+  margin-top: 20px;
+  float: right;
+
+  @include media-breakpoint-up($gutterBreak) {
+    margin-top: 0;
+    float: none;
+    clear: both;
+  }
 
   &:hover {
     background: $primary;

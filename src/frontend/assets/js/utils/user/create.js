@@ -55,6 +55,7 @@ export default () => {
         // clear inputs
         inputPhone.value = ''
         inputName.value = ''
+        inputFirstName.value = ''
 
         // save the user to the patients list
         storagePatients = storagePatients === null ? [] : storagePatients

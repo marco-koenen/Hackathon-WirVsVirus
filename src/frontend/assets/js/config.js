@@ -34,6 +34,7 @@ const config = {
   createWaitingRoom: '.create-waiting-room',
   doctorCreate: '.doctor-create',
   doctorName: '.doctor-name',
+  doctorFirstName: '.doctor-first-name',
   doctorList: '.doctor-list',
   doctorTitle: '.doctor-title',
   doctorSelect: '.doctor-select',

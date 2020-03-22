@@ -4,6 +4,7 @@
 
 select {
   position: relative;
+  display: block;
   width: 100%;
   height: $input-height;
   padding: 13px 15px;
@@ -11,9 +12,10 @@ select {
   color: #959d95;
   border: 0;
   border-radius: $border-radius;
-  direction: ltr;
   transition: background $time-opacity $ease-opacity;
+  direction: ltr;
   font-size: 14px;
+  margin-bottom: 20px;
 
   // hide nativ arrows
   -moz-appearance: none;
@@ -24,6 +26,7 @@ select {
 
   @include media-breakpoint-up($gutterBreak) {
     width: 200px;
+    margin-bottom: 0;
   }
 
   &:hover {
@@ -56,19 +59,27 @@ select {
 
 .select-wrapper {
   position: relative;
-  display: inline-block;
+  display: block;
+
+  @include media-breakpoint-up($gutterBreak) {
+    display: inline-block;
+  }
 
   // arrows
   &:after {
     content: '';
     position: absolute;
     top: 12px;
-    right: 30px + 10px;
+    right: 20px;
     width: 10px;
     height: 20px;
     background: url('./../img/icons/icon-select-arrows.svg');
     background-size: contain;
     background-repeat: no-repeat;
+
+    @include media-breakpoint-up($gutterBreak) {
+      right: 30px+10px;
+    }
   }
 
   select {
