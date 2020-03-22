@@ -38,6 +38,7 @@ const config = {
   roomCreate: '.room-create',
   roomRemove: '.room-remove',
   userCreate: '.user-create',
+  userFirstName: 'input.user-first-name',
   userName: 'input.user-name',
   userPhone: 'input.user-phone',
 
