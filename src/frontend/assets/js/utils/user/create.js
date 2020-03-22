@@ -11,6 +11,7 @@ import button from '@components/button'
 export default () => {
   const phone = document.querySelector(config.userPhone).value
   const name = document.querySelector(config.userName).value
+  const doctor = document.querySelector(config.doctorSelect).value
   const room = config.room
 
   if (!phone || !room || !name) return
@@ -35,14 +36,15 @@ export default () => {
       if (user) {
         let storagePatients = storage.get('patients')
 
-        patients.create(name, phone, user)
+        patients.create(name, phone, user, doctor)
 
         // save the user to the patients list
         storagePatients = storagePatients === null ? [] : storagePatients
         storagePatients.push({
           user: user,
           name: name,
-          phone: phone
+          phone: phone,
+          doctor: doctor
         })
 
         storage.set('patients', storagePatients)
