@@ -13,6 +13,7 @@ select {
   border-radius: $border-radius;
   direction: ltr;
   transition: background $time-opacity $ease-opacity;
+  font-size: 14px;
 
   // hide nativ arrows
   -moz-appearance: none;

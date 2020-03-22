@@ -2,6 +2,7 @@ import config from 'config'
 import modal from '@components/modal'
 import button from '@components/button'
 import storage from '@utils/localStorage'
+import remove from './remove'
 
 //
 // initiate doctor list
@@ -11,8 +12,14 @@ export default () => {
   const doctors = storage.get('doctors')
   const select = document.querySelector(config.doctorSelect)
   const list = document.querySelector(config.doctorList)
+  const label = document.querySelector(config.doctorList).querySelector('label')
 
-  if (!select || !doctors) return
+  if (!select || !doctors) {
+    label.classList.add(config.isClose)
+    return
+  }
+
+  label.classList.remove(config.isClose)
 
   doctors.forEach(doctor => {
     // append select items
@@ -27,16 +34,18 @@ export default () => {
     const div = document.createElement('div')
     const inner = document.createElement('div')
     const span = document.createElement('span')
-    const remove = document.createElement('button')
+    const buttonRemove = document.createElement('button')
 
     div.className = 'list-wrapper'
     inner.className = 'list-inner'
-    remove.className = 'doctor-remove icon icon-remove'
+    buttonRemove.className = 'doctor-remove icon icon-remove'
     span.innerHTML = doctor.name
 
     inner.append(span)
-    inner.append(remove)
+    inner.append(buttonRemove)
     div.append(inner)
     list.append(div)
+
+    buttonRemove.addEventListener('click', event => remove(event, doctor.name))
   })
 }

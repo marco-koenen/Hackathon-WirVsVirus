@@ -17,6 +17,7 @@ input {
   -webkit-rtl-ordering: logical;
   -webkit-appearance: none;
   transition: background $time-opacity $ease-opacity;
+  font-size: 14px;
 
   @include media-breakpoint-up($gutterBreak) {
     width: 200px;
@@ -59,7 +60,7 @@ label {
   color: $dark;
   font-family: $font-semiBold;
   line-height: 20px;
-  transition: all $time-opacity $ease-opacity;
+  transition: all 0.15s $ease-opacity;
   font-size: 16px;
   margin-bottom: 20px;
 
