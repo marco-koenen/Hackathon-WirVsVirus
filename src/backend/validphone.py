@@ -31,8 +31,9 @@ phone_length_country = \
 
 def cleaned_number(num):
     num_digitsonly = re.sub(r'^\number*', '', num)
-    num_cleaned = re.sub(r'^0*', '', num_digitsonly)
-    return num_cleaned
+    num_cleaned = re.sub(r'^\+', '', num_digitsonly)
+    num_cleaned2 = re.sub(r'^0*', '', num_cleaned)
+    return num_cleaned2
 
 
 def check_validity_phone(num, country="de"):
