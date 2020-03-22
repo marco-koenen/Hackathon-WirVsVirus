@@ -52,7 +52,7 @@ def do_send_sms_spryng(num, text):
     print("spryng request", url, spryng_request, spryng_headers)
     response = requests.post(url, headers=spryng_headers, json=spryng_request)
     rj = response.json()
-    print("spryng response", response, "json-content:", rj 
+    print("spryng response", response, "json-content:", rj)
 
     if not response.ok:
         return False
