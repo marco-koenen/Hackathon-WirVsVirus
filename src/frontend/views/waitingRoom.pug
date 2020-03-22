@@ -4,21 +4,42 @@
     .row
       .col-12.col-lg-6
         h1 Willkommen in deinem digitalen Warteraum
-      .col-12.col-lg-9
 
-        //- create doctor
-        label(for='doctor-name') Ärzte hinzufügen
-        input#doctor-name.doctor-name(type='text', placeholder='Name' autocomplete='off')
+      //- add patient
+      .col-12.col-lg-10
+        .input-wrapper
+          label(for='user-name') Patienten einchecken
+          input#user-name.user-first-name(type='text', placeholder='Vorname')
+          input.user-name(type='text', placeholder='Nachname')
+          input.user-phone(type='tel', placeholder='Telefonnummer')
+          .select-wrapper
+            select.doctor-select
+              option(hidden, selected='selected') Behandelnder Arzt
+          button.user-create.icon.icon-plus.inline Patient erstellen
+
+      //- patient list
+      .col-12.col-lg-11.patient-list
+        label Digitaler Warteraum
+        //- label.patient-count 3 Patienten
+
+      //- create doctor
+      .col-12.col-lg-8
+        .input-wrapper
+          label(for='doctor-name') Ärzte hinzufügen
+          .select-wrapper
+            select.doctor-title
+              option(value='Dr.') Dr.
+              option(value='Dr. med.') Dr. med.
+              option(value='Prof.') Prof.
+              option(value='Prof. Dr.') Prof. Dr.
+              option(value='Prof. Dr. med.') Prof. Dr. med.
+          input.doctor-forname(type='text', placeholder='Vorname', name='doctor-forname' autocomplete='off')
+          input#doctor-name.doctor-name(type='text', placeholder='Name', name='doctor-name' autocomplete='off')
+          button.doctor-create.icon.icon-plus.inline Arzt erstellen
+
+      //- doctor list
+      .col-12.col-lg-7.doctor-list
+        label Ärzteliste
 
 
-        button.doctor-create Arzt erstellen
-        br
-        br
-        input.user-first-name(type='text', value='Marco', placeholder='Vorname')
-        input.user-name(type='text', value='Koenen', placeholder='Nachname')
-        input.user-phone(type='text', value='123', placeholder='Telefonnummer')
-        select.doctor-select
-        button.user-create Patient erstellen
-        br
-        br
-        button.room-remove Warteraum entfernen
+    //- button.room-remove Warteraum entfernen

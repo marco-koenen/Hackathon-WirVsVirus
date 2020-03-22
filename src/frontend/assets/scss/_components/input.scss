@@ -5,21 +5,119 @@
 input {
   position: relative;
   display: block;
-  height: 44px;
+  width: 100%;
+  height: $input-height;
   padding: 13px 15px;
   background: $light;
   color: $dark;
   border: 0;
   border-radius: $border-radius;
-  appearance: none;
+  direction: ltr;
+  -webkit-appearance: textfield;
+  -webkit-rtl-ordering: logical;
+  -webkit-appearance: none;
+  transition: background $time-opacity $ease-opacity;
+
+  @include media-breakpoint-up($gutterBreak) {
+    width: 200px;
+  }
+
+  // adjust autofill styles
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 30px $light inset;
+    -webkit-text-fill-color: $light !important;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &:hover {
+    background: #dcebdd;
+  }
+}
+
+.input-wrapper {
+  display: block;
+  margin-bottom: 30px;
+
+  @include media-breakpoint-up($gutterBreak) {
+    margin-bottom: 60px;
+  }
+
+  input {
+    display: inline-block;
+    margin-right: 30px;
+  }
 }
 
 label {
   position: relative;
   display: block;
+  opacity: 1;
   color: $dark;
   font-family: $font-semiBold;
   line-height: 20px;
+  transition: all $time-opacity $ease-opacity;
   font-size: 16px;
   margin-bottom: 20px;
+
+  &.is-close {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+//
+// crossbrowser adjustments
+// --------------------------------------------------
+
+$placeholder-color: #959d95;
+
+// placeholder color
+*::-webkit-input-placeholder {
+  color: $placeholder-color;
+}
+
+*:-moz-placeholder {
+  opacity: 1;
+  color: $placeholder-color;
+}
+
+*::-moz-placeholder {
+  opacity: 1;
+  color: $placeholder-color;
+}
+
+*:-ms-input-placeholder {
+  color: $placeholder-color;
+}
+
+*::-ms-input-placeholder {
+  color: $placeholder-color;
+}
+
+*::placeholder {
+  color: $placeholder-color;
+}
+
+// hide autofill button
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-caps-lock-indicator,
+input::-webkit-decoration,
+input::-webkit-cancel-button,
+input::-webkit-results-button,
+input::-webkit-results-decoration {
+  position: absolute;
+  display: none !important;
+  right: 0;
+  visibility: hidden;
+  pointer-events: none;
 }

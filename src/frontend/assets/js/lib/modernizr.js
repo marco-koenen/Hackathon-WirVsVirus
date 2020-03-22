@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.9.1
- * Build https://modernizr.com/download?-supports-userselect-setclasses-dontmin
+ * Build https://modernizr.com/download?-arrow-supports-svg-userselect-setclasses-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -231,6 +231,31 @@
   ;
 /*!
 {
+  "name": "SVG",
+  "property": "svg",
+  "caniuse": "svg",
+  "tags": ["svg"],
+  "authors": ["Erik Dahlstrom"],
+  "polyfills": [
+    "svgweb",
+    "raphael",
+    "amplesdk",
+    "canvg",
+    "svg-boilerplate",
+    "sie",
+    "dojogfx",
+    "fabricjs"
+  ]
+}
+!*/
+/* DOC
+Detects support for SVG in `<embed>` or `<object>` elements.
+*/
+
+  Modernizr.addTest('svg', !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect);
+
+/*!
+{
   "name": "CSS Supports",
   "property": "supports",
   "caniuse": "css-featurequeries",
@@ -252,6 +277,28 @@
   var newSyntax = 'CSS' in window && 'supports' in window.CSS;
   var oldSyntax = 'supportsCSS' in window;
   Modernizr.addTest('supports', newSyntax || oldSyntax);
+
+/*!
+{
+  "name": "ES6 Arrow Functions",
+  "property": "arrow",
+  "authors": ["Vincent Riemer"],
+  "tags": ["es6"]
+}
+!*/
+/* DOC
+Check if browser implements ECMAScript 6 Arrow Functions per specification.
+*/
+
+  Modernizr.addTest('arrow', function() {
+    try {
+      // eslint-disable-next-line
+      eval('()=>{}');
+    } catch (e) {
+      return false;
+    }
+    return true;
+  });
 
 
   /**

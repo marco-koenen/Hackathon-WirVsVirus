@@ -8,6 +8,7 @@ import create from './create'
 
 export default () => {
   const patients = storage.get('patients')
+  const label = document.querySelector(config.userList).querySelector('label')
 
   if (!patients) return
 
