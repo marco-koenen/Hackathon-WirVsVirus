@@ -11,8 +11,9 @@ export default () => {
 
   // show user dashboard
   if (config.user && config.hash) {
-    waitingRoom && waitingRoom.remove()
-    createWaitingRoom && createWaitingRoom.remove()
+    waitingRoom && waitingRoom.classList.add(config.isHidden)
+    createWaitingRoom && createWaitingRoom.classList.add(config.isHidden)
+    userDashboard && userDashboard.classList.remove(config.isHidden)
     localStorage.removeItem('patients')
     localStorage.removeItem('room')
     config.room = ''
@@ -20,16 +21,18 @@ export default () => {
 
   // show waitingRoom
   if (config.room) {
-    userDashboard && userDashboard.remove()
-    createWaitingRoom && createWaitingRoom.remove()
+    userDashboard && userDashboard.classList.add(config.isHidden)
+    createWaitingRoom && createWaitingRoom.classList.add(config.isHidden)
+    waitingRoom && waitingRoom.classList.remove(config.isHidden)
     localStorage.removeItem('user')
     config.user = ''
   }
 
   // show createWaitingRoom
   if (!config.room && !config.user && !config.hash) {
-    waitingRoom && waitingRoom.remove()
-    userDashboard && userDashboard.remove()
+    waitingRoom && waitingRoom.classList.add(config.isHidden)
+    userDashboard && userDashboard.classList.add(config.isHidden)
+    createWaitingRoom && createWaitingRoom.classList.remove(config.isHidden)
     localStorage.removeItem('patients')
     localStorage.removeItem('room')
     localStorage.removeItem('user')

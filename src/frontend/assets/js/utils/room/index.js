@@ -1,5 +1,7 @@
 import create from './create'
+import remove from './remove'
 
 export default {
-  create: create
+  create: create,
+  remove: remove
 }

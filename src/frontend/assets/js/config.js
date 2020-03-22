@@ -16,6 +16,11 @@ const config = {
     js: '/assets/js/'
   },
 
+  // conditionals
+  isLoading: 'is-loading',
+  isHidden: 'is-hidden',
+  isVisible: 'is-visble',
+
   // global selectors
   content: document.querySelector('.page-content'),
 
@@ -25,6 +30,7 @@ const config = {
   waitingRoom: '.waiting-room',
   createWaitingRoom: '.create-waiting-room',
   roomCreate: '.room-create',
+  roomRemove: '.room-remove',
   userCreate: '.user-create',
   userName: 'input.user-name',
   userPhone: 'input.user-phone',
