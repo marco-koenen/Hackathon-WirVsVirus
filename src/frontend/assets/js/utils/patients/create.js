@@ -15,6 +15,9 @@ export default (name, phone, user = null, doctor) => {
   const spanPhone = document.createElement('span')
   const spanTime = document.createElement('span')
   const spanDoctor = document.createElement('span')
+  const label = document.querySelector(config.userList).querySelector('label')
+
+  label.classList.remove(config.isClose)
 
   div.className = 'list-wrapper'
   inner.className = 'list-inner'

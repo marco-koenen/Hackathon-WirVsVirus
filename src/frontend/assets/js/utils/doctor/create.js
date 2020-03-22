@@ -2,6 +2,7 @@ import config from 'config'
 import modal from '@components/modal'
 import button from '@components/button'
 import storage from '@utils/localStorage'
+import remove from './remove'
 
 //
 // create a new doctor
@@ -11,6 +12,9 @@ export default () => {
   const input = document.querySelector(config.doctorName)
   const doctor = input.value
   const title = document.querySelector(config.doctorTitle).value
+  const label = document.querySelector(config.doctorList).querySelector('label')
+
+  label.classList.remove(config.isClose)
 
   if (!doctor) {
     modal.create(false, config.missingField)
@@ -54,16 +58,18 @@ export default () => {
     const div = document.createElement('div')
     const inner = document.createElement('div')
     const span = document.createElement('span')
-    const remove = document.createElement('button')
+    const buttonRemove = document.createElement('button')
 
     div.className = 'list-wrapper'
     inner.className = 'list-inner'
-    remove.className = 'doctor-remove icon icon-remove'
+    buttonRemove.className = 'doctor-remove icon icon-remove'
     span.innerHTML = title + ' ' + doctor
 
     inner.append(span)
-    inner.append(remove)
+    inner.append(buttonRemove)
     div.append(inner)
     list.append(div)
+
+    buttonRemove.addEventListener('click', event => remove(event, doctor.name))
   }
 }
