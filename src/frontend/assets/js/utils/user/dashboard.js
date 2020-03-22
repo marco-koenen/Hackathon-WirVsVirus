@@ -5,18 +5,24 @@ import config from 'config'
 // --------------------------------------------------
 
 export default data => {
+  const content = document.querySelector(config.userDashboard)
   const div = document.createElement('div')
   const p = document.createElement('p')
   const hash = data.hash
   const phone = data.phone
-  const room = data.room
   const status = data.status
-
-  div.className = 'dashboard-item'
-  p.innerHTML = 'Status: ' + status
-
-  div.append(p)
-  document.body.append(div)
+  const time = data.time_created
 
   console.warn(data)
+
+  div.className = 'dashboard-item ' + status
+  p.innerHTML = 'Status: ' + status
+
+  // check if this status is already visible
+  const divStatus = document.querySelector('dashboard-item ' + status)
+  if (divStatus) return
+
+  // append new dashboard item
+  div.append(p)
+  content.append(div)
 }
