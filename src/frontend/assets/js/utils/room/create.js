@@ -25,6 +25,7 @@ export default () => {
         localStorage.setItem('patients', null)
         localStorage.removeItem('user')
         config.room = room
+        config.user = null
         page.view()
       }
 
