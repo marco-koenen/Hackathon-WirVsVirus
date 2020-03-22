@@ -6,19 +6,22 @@ import button from '@components/button'
 // send user a notification
 // --------------------------------------------------
 
-export default user => {
+export default (user, doctor = false) => {
+  const message = doctor ? doctor + ' ' + config.messageCall : config.messageLink + ' ' + config.origin + '/#' + user
+  const body = {notify_text: message}
+
   fetch(config.fetch.endpoint + 'user/' + user + '/call', {
-    method: 'GET',
+    method: 'POST',
     headers: config.fetch.headers,
-    mode: config.fetch.mode
+    mode: config.fetch.mode,
+    body: JSON.stringify(body)
   })
     .then(response => {
       return response.json()
     })
     .then(data => {
       const success = data.success === 'sent'
-      const message = success ? config.notificationSuccess : config.notificationError
-      modal.create(success, message)
+      modal.create(success, success ? config.notificationSuccess : config.notificationError)
       button.state()
     })
     .catch(error => {

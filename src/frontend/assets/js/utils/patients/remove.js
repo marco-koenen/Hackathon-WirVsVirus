@@ -12,10 +12,14 @@ export default (event, onlyDelete = false) => {
   const wrapper = button.parentNode
   const userHash = button.getAttribute('user')
   const patients = storage.get('patients')
+  let doctor
+
+  if (!patients) return
 
   // remove patient from local storage
   patients.forEach((patient, index) => {
     if (patient.user === userHash) {
+      doctor = patient.doctor
       patients.splice(index, 1)
     }
   })
@@ -28,8 +32,7 @@ export default (event, onlyDelete = false) => {
   // only delete without notification
   if (onlyDelete) {
     modal.create(true, config.deleteSuccess)
-    return
   }
 
-  user.notification(userHash)
+  user.notification(userHash, doctor)
 }

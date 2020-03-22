@@ -16,6 +16,12 @@ export default () => {
 
   if (!phone || !room || !name) return
 
+  // force at least one doctor
+  if (!doctor) {
+    modal.create(false, config.doctorMissing)
+    return
+  }
+
   const body = {
     phone: phone,
     room: room
