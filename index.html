@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
-    <title>WirVsVirus</title>
+    <title>Patient Pager</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Reduziere das Infektionsrisiko. Dein digitaler Warteraum. Patientenaufruf per SMS.">
     <meta name="HandheldFriendly" content="true">
     <meta name="robots" content="nofollow, noindex">
     <meta name="audience" content="all">
@@ -13,8 +13,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <style></style>
-    <link rel="preload" href="/assets/css/build.css?rel=9759296" as="style" onload="this.rel=&quot;stylesheet&quot;">
-    <link rel="preload" href="/assets/css/fonts.css?rel=9759296" as="style" onload="this.rel=&quot;stylesheet&quot;">
+    <link rel="preload" href="/assets/css/build.css?rel=4979324" as="style" onload="this.rel=&quot;stylesheet&quot;">
+    <link rel="preload" href="/assets/css/fonts.css?rel=4979324" as="style" onload="this.rel=&quot;stylesheet&quot;">
     <script>
       (function(w){"use strict";var loadCSS=function(href,before,media){var doc=w.document;var ss=doc.createElement("link");var ref;if(before){ref=before}else{var refs=(doc.body||doc.getElementsByTagName("head")[0]).childNodes;ref=refs[refs.length-1]}var sheets=doc.styleSheets;ss.rel="stylesheet";ss.href=href;ss.media="only x";function ready(cb){if(doc.body){return cb()}setTimeout(function(){ready(cb)})}ready(function(){ref.parentNode.insertBefore(ss,(before?ref:ref.nextSibling))});var onloadcssdefined=function(cb){var resolvedHref=ss.href;var i=sheets.length;while(i--){if(sheets[i].href===resolvedHref){return cb()}}setTimeout(function(){onloadcssdefined(cb)})};function loadCB(){if(ss.addEventListener){ss.removeEventListener("load",loadCB)}ss.media=media||"all"}if(ss.addEventListener){ss.addEventListener("load",loadCB)}ss.onloadcssdefined=onloadcssdefined;onloadcssdefined(loadCB);return ss};if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this));
       (function(w){if(!w.loadCSS){return}var rp=loadCSS.relpreload={};rp.support=function(){try{return w.document.createElement("link").relList.supports("preload")}catch(e){return!1}};rp.poly=function(){var links=w.document.getElementsByTagName("link");for(var i=0;i<links.length;i++){var link=links[i];if(link.rel==="preload"&&link.getAttribute("as")==="style"){w.loadCSS(link.href,link,link.getAttribute("media"));link.rel=null}}};if(!rp.support()){rp.poly();var run=w.setInterval(rp.poly,300);if(w.addEventListener){w.addEventListener("load",function(){rp.poly();w.clearInterval(run)})}if(w.attachEvent){w.attachEvent("onload",function(){w.clearInterval(run)})}}}(this));
@@ -22,27 +22,76 @@
     </script>
     <style></style>
     <noscript>
-      <link rel="stylesheet" href="assets/css/main.css?rel=9759296">
-      <link rel="stylesheet" href="assets/css/fonts.css?rel=9759296">
+      <link rel="stylesheet" href="assets/css/main.css?rel=4979324">
+      <link rel="stylesheet" href="assets/css/fonts.css?rel=4979324">
       <style></style>
     </noscript>
   </head>
 </html>
 <body class="is-animating">
   <div class="overlay"></div>
+  <header class="no-userselect container">
+    <div class="row">
+      <div class="col-12"><span>Patient Pager</span></div>
+    </div>
+  </header>
   <div class="page-content">
     <div class="view create-waiting-room">
-      <h2>Warteraum erstellen</h2>
-      <button class="room-create">Warteraum erstellen</button>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>Reduziere das Infektionsrisiko. <br/>Dein digitaler Warteraum. <br/>Patientenaufruf per SMS.</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><img src="/assets/img/patient-call.png" title="" alt="">
+            <button class="room-create primary">Warteraum erstellen</button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="view waiting-room">
-      <input class="doctor-name" type="text" placeholder="Arztname">
-      <button class="doctor-create">Arzt erstellen</button><br><br>
-      <input class="user-name" type="text" value="Marco" placeholder="Name">
-      <input class="user-phone" type="text" value="123" placeholder="Telefonnummer">
-      <select class="doctor-select"></select>
-      <button class="user-create">Patient erstellen</button><br><br>
-      <button class="room-remove">Warteraum entfernen</button>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <h1>Willkommen in deinem digitalen Warteraum</h1>
+          </div>
+          <div class="col-12 col-lg-10">
+            <div class="input-wrapper">
+              <label for="user-name">Patienten einchecken</label>
+              <input class="user-first-name" id="user-name" type="text" placeholder="Vorname">
+              <input class="user-name" type="text" placeholder="Nachname">
+              <input class="user-phone" type="tel" placeholder="Telefonnummer">
+              <div class="select-wrapper">
+                <select class="doctor-select">
+                  <option hidden selected="selected">Behandelnder Arzt</option>
+                </select>
+              </div>
+              <button class="user-create icon icon-plus inline">Patient erstellen</button>
+            </div>
+          </div>
+          <div class="col-12 col-lg-11 patient-list">
+            <label>Digitaler Warteraum</label>
+          </div>
+          <div class="col-12 col-lg-8">
+            <div class="input-wrapper">
+              <label for="doctor-name">Ärzte hinzufügen</label>
+              <div class="select-wrapper">
+                <select class="doctor-title">
+                  <option value="Dr.">Dr.</option>
+                  <option value="Dr. med.">Dr. med.</option>
+                  <option value="Prof.">Prof.</option>
+                  <option value="Prof. Dr.">Prof. Dr.</option>
+                  <option value="Prof. Dr. med.">Prof. Dr. med.</option>
+                </select>
+              </div>
+              <input class="doctor-forname" type="text" placeholder="Vorname" name="doctor-forname" autocomplete="off">
+              <input class="doctor-name" id="doctor-name" type="text" placeholder="Name" name="doctor-name" autocomplete="off">
+              <button class="doctor-create icon icon-plus inline">Arzt erstellen</button>
+            </div>
+          </div>
+          <div class="col-12 col-lg-7 doctor-list">
+            <label>Ärzteliste</label>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="view user-dashboard">
       <h2>User information</h2>
@@ -50,5 +99,5 @@
   </div>
   <footer>
   </footer>
-  <script src="/assets/js/build.js?rel=9759296" defer="defer"></script>
+  <script src="/assets/js/build.js?rel=4979324" defer="defer"></script>
 </body>
