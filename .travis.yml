@@ -1,2 +1,4 @@
 language: nix
-script: nix-shell --command 'python src/backend/tests.py'
+script:
+  - cp src/instance/config.py.example src/instance/config.py
+  - nix-shell --command 'python src/backend/tests.py'
