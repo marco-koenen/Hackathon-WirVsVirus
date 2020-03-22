@@ -1,6 +1,4 @@
 language: nix
-install:
-  - nix-shell
 script:
-  - ./debug_app &
-  - python src/backend/tests.py
+  - nix-shell --command ./debug_app &
+  - nix-shell --command python src/backend/tests.py
