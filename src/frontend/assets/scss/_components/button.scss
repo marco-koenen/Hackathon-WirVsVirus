@@ -51,4 +51,9 @@ button,
     margin-left: -4px;
     vertical-align: top;
   }
+
+  &.is-loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
