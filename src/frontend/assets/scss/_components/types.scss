@@ -1,0 +1,37 @@
+//
+// typography
+// --------------------------------------------------
+
+h1,
+h2,
+h3 {
+  display: block;
+  color: $color-headline;
+  font-family: $font-semiBold;
+
+  &.primary {
+    color: $primary;
+  }
+
+  &.white {
+    color: $white;
+  }
+}
+
+h1,
+.h1 {
+  font-size: 45px;
+  line-height: 57px;
+
+  @include media-breakpoint-up($gutterBreak) {
+    font-size: 45px;
+    line-height: 57px;
+  }
+}
+
+p,
+.p {
+  font-family: $font-base;
+  font-size: 16px;
+  line-height: 20px;
+}

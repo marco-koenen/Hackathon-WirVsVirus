@@ -1,3 +1,61 @@
+// colors
+$primary: #00c853;
+$black: #000;
+$white: #fff;
+$light: #e8f5e9;
+$grey: #929a9e;
+$dark: #191919;
+
+$color-body: $black;
+$color-text: $black;
+$color-headline: $black;
+$color-link: $primary;
+$color-link-hover: $primary;
+
+$bg-body: $white;
+
+// typography
+$font-base: 'EuclidCircularA-Medium', Helvetica, Arial, sans-serif;
+$font-semiBold: 'EuclidCircularA-Semibold', Helvetica, Arial, sans-serif;
+$font-bold: 'EuclidCircularA-Bold', Helvetica, Arial, sans-serif;
+$font-regular: 'EuclidCircularA-Regular', Helvetica, Arial, sans-serif;
+$font-italic: 'EuclidCircularA-RegularItalic', Helvetica, Arial, sans-serif;
+$font-size-base: 16px;
+$line-height-base: 19px;
+$font-weight-base: 400;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// grid
+$grid-columns: 12;
+$grid-gutter-width: 20px;
+$grid-gutter-width-desktop: 60px;
+$grid-max-width: 760px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1440px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 768px,
+  xl: 1180px,
+  xxl: 1360px
+);
+
+// borders
+$border-radius: 4px;
+
+// switch gutter-width from mobile to desktop
+$gutterBreak: lg;
+
 // easings
 $ease-transform: cubic-bezier(0.2, 1, 0.25, 1);
 $ease-opacity: cubic-bezier(0.75, 0.1, 0.175, 1);

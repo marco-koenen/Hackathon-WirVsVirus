@@ -1,0 +1,31 @@
+//
+// page content
+// --------------------------------------------------
+
+.page-content {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: $header-height;
+  width: 100%;
+  height: calc(100% - #{$header-height});
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include media-breakpoint-up($gutterBreak) {
+    top: $header-height-desktop;
+    height: calc(100% - #{$header-height-desktop});
+  }
+
+  .view.create-waiting-room {
+    position: relative;
+    width: 100%;
+
+    @include media-breakpoint-up($gutterBreak) {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

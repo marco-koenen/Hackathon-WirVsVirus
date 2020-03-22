@@ -11,13 +11,15 @@ import button from '@components/button'
 export default () => {
   const inputPhone = document.querySelector(config.userPhone)
   const phone = inputPhone.value
+  const inputFirstName = document.querySelector(config.userFirstName)
+  const firstName = inputFirstName.value
   const inputName = document.querySelector(config.userName)
   const name = inputName.value
   const doctor = document.querySelector(config.doctorSelect).value
   const room = config.room
 
   // required fields
-  if (!phone || !room || !name) {
+  if (!phone || !room || !name || !firstName) {
     modal.create(false, config.missingField)
     return
   }
@@ -48,7 +50,7 @@ export default () => {
       if (user) {
         let storagePatients = storage.get('patients')
 
-        patients.create(name, phone, user, doctor)
+        patients.create(firstName + ' ' + name, phone, user, doctor)
 
         // clear inputs
         inputPhone.value = ''
@@ -58,7 +60,7 @@ export default () => {
         storagePatients = storagePatients === null ? [] : storagePatients
         storagePatients.push({
           user: user,
-          name: name,
+          name: firstName + ' ' + name,
           phone: phone,
           doctor: doctor
         })
