@@ -60,8 +60,15 @@
   }
 }
 
-.doctor-list .list-inner {
-  width: 100%;
+.doctor-list {
+  p {
+    font-size: 14px;
+    font-family: $font-regular;
+    line-height: 18px;
+  }
+  .list-inner {
+    width: 100%;
+  }
 }
 
 .patient-list {
