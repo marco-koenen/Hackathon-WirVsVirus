@@ -1,4 +1,4 @@
 language: nix
 script:
-  - nohup nix-shell --command ./debug_app &
+  - cp src/instance/config.py.example src/instance/config.py
   - nix-shell --command 'python src/backend/tests.py'

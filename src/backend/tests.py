@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import unittest
 import requests
+import subprocess
+import time
 
 HOST = "http://localhost:5000"
 HASH_SIZE = 32
@@ -31,6 +33,7 @@ class TestStringMethods(unittest.TestCase):
         assert(res_json)
         room_hash = res_json.get("room_hash")
         assert(len(room_hash) == HASH_SIZE)
+        print(res_json)
 
     def test_api_create_user(self):
         """
@@ -44,6 +47,7 @@ class TestStringMethods(unittest.TestCase):
         assert(res_json)
         user_hash = res_json["user_hash"]
         assert(len(user_hash) == HASH_SIZE)
+        print(res_json)
 
     def test_api_query_user(self):
         """
@@ -53,6 +57,7 @@ class TestStringMethods(unittest.TestCase):
         res = requests.get(f"{HOST}/user/{user_hash}")
         assert(res.ok)
         assert(res.json()['phone'] == example_phone)
+        print(res.json())
 
 
     def test_api_user_call(self):
@@ -62,8 +67,26 @@ class TestStringMethods(unittest.TestCase):
         user_hash = get_new_user_hash()
         res = requests.get(f"{HOST}/user/{user_hash}/call")
         assert(res.ok)
+        print(res.json())
+
+
+    def test_api_user_call_custom_text(self):
+
+        """
+           Test /user/<hash>/call with custom text
+        """
+        user_hash = get_new_user_hash()
+        res = requests.get(f"{host}/user/{user_hash}/call", json={"notify_text":
+            "Sie wurden von Dr. Maier aufgerufen."})
+        assert(res.ok)
+        print(res.json())
+
+
 
 
 
 if __name__ == '__main__':
+    subprocess.Popen("./debug_app")
+    time.sleep(2)
+    print("here")
     unittest.main()
