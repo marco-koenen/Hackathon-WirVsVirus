@@ -4,4 +4,70 @@
 
 select {
   position: relative;
+  width: 100%;
+  height: $input-height;
+  padding: 13px 15px;
+  background: $light;
+  color: #959d95;
+  border: 0;
+  border-radius: $border-radius;
+  direction: ltr;
+  transition: background $time-opacity $ease-opacity;
+
+  // hide nativ arrows
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+
+  @include media-breakpoint-up($gutterBreak) {
+    width: 200px;
+  }
+
+  &:hover {
+    background: #dcebdd;
+  }
+
+  // options
+  option {
+    color: $dark;
+    font-family: $font-base;
+    line-height: 18px;
+    font-size: 14px;
+
+    // hide empty and hidden options
+    &:empty,
+    &[hidden] {
+      display: none !important;
+      width: 0px;
+      height: 0px;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+  }
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+
+  // arrows
+  &:after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: 30px + 10px;
+    width: 10px;
+    height: 20px;
+    background: url('./../img/icons/icon-select-arrows.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  select {
+    display: inline-block;
+    margin-right: 30px;
+  }
 }

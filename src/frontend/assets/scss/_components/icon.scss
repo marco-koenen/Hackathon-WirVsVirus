@@ -1,0 +1,55 @@
+//
+// icon
+// --------------------------------------------------
+
+.icon {
+  $icon-size: 18px;
+  $icon-weight: 2px;
+  position: relative;
+  font-size: 0;
+
+  &.icon-plus {
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      left: 50%;
+      top: 50%;
+      width: $icon-size;
+      height: $icon-weight;
+      background: $primary;
+      margin-top: -$icon-weight/2;
+      margin-left: -$icon-size/2;
+      border-radius: 1.5px;
+      transition: background $time-opacity $ease-opacity;
+    }
+
+    &:after {
+      transform: rotate(90deg);
+    }
+  }
+
+  &.icon-remove {
+    transform: rotate(45deg);
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      left: 50%;
+      top: 50%;
+      width: $icon-size;
+      height: $icon-weight;
+      background: $primary;
+      margin-top: -$icon-weight/2;
+      margin-left: -$icon-size/2;
+      border-radius: 1.5px;
+      transition: background $time-opacity $ease-opacity;
+    }
+
+    &:after {
+      transform: rotate(90deg);
+    }
+  }
+}

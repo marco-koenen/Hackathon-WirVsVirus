@@ -6,11 +6,41 @@ button,
 .button {
   position: relative;
   padding: 13px 25px;
-  background: $primary;
+  background: $light;
   color: $white;
   border-radius: 22px;
   font-family: $font-semiBold;
   line-height: 14px;
   font-size: 14px;
   text-transform: uppercase;
+  transition: background $time-opacity $ease-opacity;
+
+  &:hover {
+    background: $primary;
+
+    &.icon {
+      &:after,
+      &:before {
+        background: $white;
+      }
+    }
+  }
+
+  &.primary {
+    background: $primary;
+    color: $white;
+  }
+
+  &.icon {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  &.inline {
+    display: inline-block;
+    margin-left: -4px;
+    vertical-align: top;
+  }
 }

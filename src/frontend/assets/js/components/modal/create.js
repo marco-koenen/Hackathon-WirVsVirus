@@ -7,7 +7,8 @@ import config from 'config'
 export default (success, message) => {
   const div = document.createElement('div')
   const p = document.createElement('p')
-  const animationTime = 3000
+  const showTime = 3000
+  const animationTime = 400
 
   div.className += 'modal-wrapper '
   div.className += success ? 'is-success' : 'is-error'
@@ -16,6 +17,10 @@ export default (success, message) => {
   div.append(p)
   document.body.append(div)
 
+  // add it
+  setTimeout(() => div.classList.add(config.isOpen), 50)
+
   // remove it
-  setTimeout(() => div.remove(), animationTime)
+  setTimeout(() => div.classList.remove(config.isOpen), showTime)
+  setTimeout(() => div.remove(), showTime + animationTime)
 }

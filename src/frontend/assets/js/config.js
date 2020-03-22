@@ -34,6 +34,8 @@ const config = {
   createWaitingRoom: '.create-waiting-room',
   doctorCreate: '.doctor-create',
   doctorName: '.doctor-name',
+  doctorList: '.doctor-list',
+  doctorTitle: '.doctor-title',
   doctorSelect: '.doctor-select',
   roomCreate: '.room-create',
   roomRemove: '.room-remove',
@@ -41,6 +43,7 @@ const config = {
   userFirstName: 'input.user-first-name',
   userName: 'input.user-name',
   userPhone: 'input.user-phone',
+  userList: '.patient-list',
 
   // miscs
   origin: window.location.origin,

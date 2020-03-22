@@ -6,24 +6,36 @@ import remove from './remove'
 // --------------------------------------------------
 
 export default (name, phone, user = null, doctor) => {
-  const content = document.querySelector(config.waitingRoom)
+  const list = document.querySelector(config.userList)
   const div = document.createElement('div')
+  const inner = document.createElement('div')
   const buttonSend = document.createElement('button')
   const buttonDelete = document.createElement('button')
   const spanUser = document.createElement('span')
   const spanPhone = document.createElement('span')
+  const spanTime = document.createElement('span')
+  const spanDoctor = document.createElement('span')
 
-  div.className = 'patient-wrapper'
+  div.className = 'list-wrapper'
+  inner.className = 'list-inner'
   buttonSend.innerHTML = 'SMS schicken'
+  buttonSend.className = 'send primary'
   buttonDelete.innerHTML = 'Patient löschen'
-  spanUser.innerHTML = 'Patient: ' + name
-  spanPhone.innerHTML = ' / Telefon: ' + phone + ' / Doktor: ' + doctor + ' / hash: #' + user
+  buttonDelete.className = 'doctor-remove icon icon-remove'
 
+  spanUser.innerHTML = name
+  spanPhone.innerHTML = phone
+  spanTime.innerHTML = 'Time'
+  spanDoctor.innerHTML = doctor
+
+  inner.append(buttonDelete)
+  inner.append(spanUser)
+  inner.append(spanPhone)
+  inner.append(spanTime)
+  inner.append(spanDoctor)
+  div.append(inner)
   div.append(buttonSend)
-  div.append(buttonDelete)
-  div.append(spanUser)
-  div.append(spanPhone)
-  content.append(div)
+  list.append(div)
 
   buttonSend.setAttribute('user', user)
   buttonDelete.setAttribute('user', user)

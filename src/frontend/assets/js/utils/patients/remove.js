@@ -9,7 +9,7 @@ import modal from '@components/modal'
 
 export default (event, onlyDelete = false) => {
   const button = event.target
-  const wrapper = button.parentNode
+  const wrapper = button.parentNode.parentNode
   const userHash = button.getAttribute('user')
   const patients = storage.get('patients')
   let doctor

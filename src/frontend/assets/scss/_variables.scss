@@ -5,6 +5,7 @@ $white: #fff;
 $light: #e8f5e9;
 $grey: #929a9e;
 $dark: #191919;
+$error: #e64a19;
 
 $color-body: $black;
 $color-text: $black;
@@ -46,9 +47,12 @@ $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 768px,
-  xl: 1180px,
-  xxl: 1360px
+  xl: 1230px,
+  xxl: 1400px
 );
+
+// sizes
+$input-height: 44px;
 
 // borders
 $border-radius: 4px;
@@ -59,3 +63,6 @@ $gutterBreak: lg;
 // easings
 $ease-transform: cubic-bezier(0.2, 1, 0.25, 1);
 $ease-opacity: cubic-bezier(0.75, 0.1, 0.175, 1);
+
+// timings
+$time-opacity: 0.23s;
