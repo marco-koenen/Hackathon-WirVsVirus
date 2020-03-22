@@ -76,17 +76,13 @@ class TestStringMethods(unittest.TestCase):
            Test /user/<hash>/call with custom text
         """
         user_hash = get_new_user_hash()
-        res = requests.get(f"{host}/user/{user_hash}/call", json={"notify_text":
+        res = requests.get(f"{HOST}/user/{user_hash}/call", json={"notify_text":
             "Sie wurden von Dr. Maier aufgerufen."})
         assert(res.ok)
         print(res.json())
 
 
-
-
-
 if __name__ == '__main__':
     subprocess.Popen("./debug_app")
     time.sleep(2)
-    print("here")
     unittest.main()
