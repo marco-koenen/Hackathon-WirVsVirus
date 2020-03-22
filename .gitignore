@@ -116,3 +116,4 @@ dmypy.json
 
 /python-environment
 
+/src/instance/config.py
