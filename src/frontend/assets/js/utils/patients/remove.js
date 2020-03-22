@@ -30,6 +30,12 @@ export default (event, onlyDelete = false) => {
   // remove patient from dom
   wrapper.remove()
 
+  // show fallback text when no patient is available
+  if (patients.length === 0) {
+    const fallbackText = document.querySelector(config.userList).querySelector('p')
+    fallbackText.classList.remove(config.isHidden)
+  }
+
   // only delete without notification
   if (onlyDelete) {
     modal.create(true, config.deleteSuccess)

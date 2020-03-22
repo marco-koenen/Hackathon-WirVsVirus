@@ -1,0 +1,13 @@
+//
+// page footer
+// --------------------------------------------------
+
+footer {
+  position: relative;
+  display: block;
+  height: 50px;
+
+  @include media-breakpoint-up($gutterBreak) {
+    height: 100px;
+  }
+}

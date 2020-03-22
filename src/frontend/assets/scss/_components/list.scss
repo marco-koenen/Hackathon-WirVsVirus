@@ -11,20 +11,33 @@
 
   span {
     display: inline-block;
-    width: 25%;
+    width: 60%;
     color: $dark;
     font-family: $font-base;
     line-height: 18px;
     font-size: 14px;
+
+    @include media-breakpoint-up($gutterBreak) {
+      width: 25%;
+    }
   }
 
   .list-inner {
     position: relative;
     display: inline-block;
-    width: calc(100% - 267px);
+    width: 100%;
     padding: 12px 15px 13px;
     background: $light;
     border-radius: $border-radius;
+
+    @include media-breakpoint-up($gutterBreak) {
+      width: calc(100% - 200px);
+      max-width: 900px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      width: calc(100% - 267px);
+    }
   }
 
   // remove button
@@ -33,6 +46,7 @@
     top: 0;
     right: 0;
     background: transparent !important;
+    margin-top: 0;
 
     &:before,
     &:after {
@@ -46,12 +60,29 @@
   }
 }
 
-.doctor-list .list-inner {
-  width: 100%;
+.doctor-list {
+  p {
+    font-size: 14px;
+    font-family: $font-regular;
+    line-height: 18px;
+  }
+  .list-inner {
+    width: 100%;
+  }
 }
 
 .patient-list {
-  margin-bottom: 100px;
+  margin-bottom: 40px;
+
+  @include media-breakpoint-up($gutterBreak) {
+    margin-bottom: 100px;
+  }
+
+  p {
+    font-size: 14px;
+    font-family: $font-regular;
+    line-height: 18px;
+  }
 
   label {
     display: inline-block;

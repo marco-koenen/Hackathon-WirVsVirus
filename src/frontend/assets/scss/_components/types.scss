@@ -20,8 +20,8 @@ h3 {
 
 h1,
 .h1 {
-  font-size: 45px;
-  line-height: 57px;
+  font-size: 26px;
+  line-height: 36px;
 
   @include media-breakpoint-up($gutterBreak) {
     font-size: 45px;

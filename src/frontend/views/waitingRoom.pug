@@ -2,11 +2,11 @@
 .view.waiting-room
   .container
     .row
-      .col-12.col-lg-6
+      .col-12.col-xl-6
         h1 Willkommen in deinem digitalen Warteraum
 
       //- add patient
-      .col-12.col-lg-10
+      .col-12.col-xl-10.patient-check-in
         .input-wrapper
           label(for='user-name') Patienten einchecken
           input#user-name.user-first-name(type='text', placeholder='Vorname')
@@ -14,16 +14,17 @@
           input.user-phone(type='tel', placeholder='Telefonnummer')
           .select-wrapper
             select.doctor-select
-              option(hidden, selected='selected') Behandelnder Arzt
+              option(value='', disabled, hidden, selected='selected') Behandelnder Arzt
           button.user-create.icon.icon-plus.inline Patient erstellen
 
       //- patient list
-      .col-12.col-lg-11.patient-list
+      .col-12.col-xl-11.patient-list
         label Digitaler Warteraum
+        p Aktuell sind keine Patienten eingetragen
         //- label.patient-count 3 Patienten
 
       //- create doctor
-      .col-12.col-lg-8
+      .col-12.col-xl-8.doctor-create-wrapper
         .input-wrapper
           label(for='doctor-name') Ärzte hinzufügen
           .select-wrapper
@@ -33,13 +34,14 @@
               option(value='Prof.') Prof.
               option(value='Prof. Dr.') Prof. Dr.
               option(value='Prof. Dr. med.') Prof. Dr. med.
-          input.doctor-forname(type='text', placeholder='Vorname', name='doctor-forname' autocomplete='off')
+          input.doctor-first-name(type='text', placeholder='Vorname', name='doctor-first-name' autocomplete='off')
           input#doctor-name.doctor-name(type='text', placeholder='Name', name='doctor-name' autocomplete='off')
           button.doctor-create.icon.icon-plus.inline Arzt erstellen
 
       //- doctor list
-      .col-12.col-lg-7.doctor-list
+      .col-12.col-lg-9.col-xl-7.doctor-list
         label Ärzteliste
+        p Aktuell sind keine Ärzte eingetragen
 
 
-    //- button.room-remove Warteraum entfernen
+    //- button.room-remove.primary Warteraum entfernen

@@ -12,14 +12,14 @@ export default () => {
   const doctors = storage.get('doctors')
   const select = document.querySelector(config.doctorSelect)
   const list = document.querySelector(config.doctorList)
-  const label = document.querySelector(config.doctorList).querySelector('label')
+  const fallbackText = document.querySelector(config.doctorList).querySelector('p')
 
-  if (!select || !doctors) {
-    label.classList.add(config.isClose)
+  if (!select || !doctors || doctors.length === 0) {
+    fallbackText.classList.remove(config.isHidden)
     return
   }
 
-  label.classList.remove(config.isClose)
+  fallbackText.classList.add(config.isHidden)
 
   doctors.forEach(doctor => {
     // append select items

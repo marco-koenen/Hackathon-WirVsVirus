@@ -8,13 +8,13 @@ import create from './create'
 
 export default () => {
   const patients = storage.get('patients')
-  const label = document.querySelector(config.userList).querySelector('label')
+  const fallbackText = document.querySelector(config.userList).querySelector('p')
 
-  if (!patients) {
-    label.classList.add(config.isClose)
+  if (!patients || patients.length === 0) {
+    fallbackText.classList.remove(config.isHidden)
     return
   }
-  label.classList.remove(config.isClose)
 
+  fallbackText.classList.add(config.isHidden)
   patients.forEach(patient => create(patient.name, patient.phone, patient.user, patient.doctor))
 }
