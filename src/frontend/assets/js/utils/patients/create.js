@@ -13,7 +13,7 @@ export default (name, phone, user = null, doctor) => {
   const spanUser = document.createElement('span')
   const spanPhone = document.createElement('span')
 
-  div.className = 'user-wrapper'
+  div.className = 'patient-wrapper'
   buttonSend.innerHTML = 'SMS schicken'
   buttonDelete.innerHTML = 'Patient löschen'
   spanUser.innerHTML = 'Patient: ' + name

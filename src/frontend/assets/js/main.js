@@ -33,7 +33,7 @@ const app = () => {
 
   // update global variables and change view
   page.vars()
-  page.view()
+  page.view(true)
 
   // add dom bindings
   bindings()

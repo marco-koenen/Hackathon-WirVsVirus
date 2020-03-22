@@ -1,0 +1,24 @@
+//
+// overlay
+// --------------------------------------------------
+
+.overlay {
+  $time-opacity: 0.35s;
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background: white;
+  transition: opacity $time-opacity $ease-opacity, visibility $time-opacity $ease-opacity;
+  z-index: 10;
+
+  &.is-close {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

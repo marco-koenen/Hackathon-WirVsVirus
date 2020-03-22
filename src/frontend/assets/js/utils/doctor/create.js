@@ -8,7 +8,8 @@ import storage from '@utils/localStorage'
 // --------------------------------------------------
 
 export default () => {
-  const doctor = document.querySelector(config.doctorName).value
+  const input = document.querySelector(config.doctorName)
+  const doctor = input.value
 
   if (!doctor) return
 
@@ -31,6 +32,7 @@ export default () => {
     option.value = doctor
 
     select.appendChild(option)
+    input.value = ''
 
     // save to local storage
     let storageDoctors = storage.get('doctors')
