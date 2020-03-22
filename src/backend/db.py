@@ -1,6 +1,7 @@
 from peewee import *
 import os
 import logging
+from datetime import datetime
 
 db = SqliteDatabase('app.sqlite3')
 
@@ -25,6 +26,7 @@ class User(BaseModel):
     phone = CharField(null=False)
     room = ForeignKeyField(Room, backref='users', on_delete='CASCADE', null=False)
     called = BooleanField(null=False, default=lambda: False)
+    time_created = DateTimeField(default=datetime.now)
 
 
 db.create_tables(models=[User, Room])

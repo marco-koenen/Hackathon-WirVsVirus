@@ -11,6 +11,8 @@ print(app.debug)
 CORS(app, origin="*" if app.debug else "un-chain.us")
 #CORS(app)
 
+default_notify_text = "Sie wurden aufgerufen."
+
 
 @app.route("/user/create", methods=["POST", "GET"])
 @cross_origin()
@@ -47,9 +49,16 @@ def user_create():
 def get_user(user_hash):
     user = User.get(hash=user_hash)
     if not user:
-        abort(404)
+        return jsonify({"status": "error"})
+
+    if user.called:
+        status = "called"
+    else:
+        status = "waiting"
+
     return jsonify({"hash": user_hash, "phone": user.phone,
-                    "room": user.room.hash})
+                    "status": status,
+                    "time_created": str(user.time_created)})
 
 
 @app.route("/user/<user_hash>/call", methods=["POST", "GET"])
@@ -59,7 +68,15 @@ def call_user(user_hash):
         user = User.get(hash=user_hash)
     except:
         abort(404)
-    notify_text = "Hello, you have been called"
+
+
+    try:
+        json = request.get_json(force=True)
+        notify_text = json.get("notify_text", default_notify_text)
+        print("custom:", notify_text)
+    except:
+        notify_text = default_notify_text
+
 
     if do_send_sms(user.phone, notify_text):
         return jsonify({"success": "sent"})
