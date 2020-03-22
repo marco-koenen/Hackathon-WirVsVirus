@@ -69,7 +69,6 @@ class TestBackendAPICalls(unittest.TestCase):
         print(res.json())
 
     def test_api_user_call_custom_text(self):
-
         """
            Test /user/<hash>/call with custom text
         """

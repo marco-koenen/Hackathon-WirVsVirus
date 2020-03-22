@@ -6,8 +6,11 @@ import re
 import peewee
 from .db import * # Import after app is defined
 
-app = Flask(__name__, instance_relative_config=True)
+app = Flask(__name__)
 app.config.from_pyfile('config.py')
+
+if "APP_CONFIG_FILE" in os.environ:
+    app.config.from_envvar("APP_CONFIG_FILE")
 
 print("#####################")
 print("# APP CONFIGURATION #")
