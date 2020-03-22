@@ -20,11 +20,14 @@ const config = {
   content: document.querySelector('.page-content'),
 
   // global classNames
+  view: '.view',
+  userDashboard: '.user-dashboard',
+  waitingRoom: '.waiting-room',
+  createWaitingRoom: '.create-waiting-room',
   roomCreate: '.room-create',
   userCreate: '.user-create',
   userName: 'input.user-name',
   userPhone: 'input.user-phone',
-  userDashboard: '.user-dashboard',
 
   // miscs
   hash: window.location.hash,
