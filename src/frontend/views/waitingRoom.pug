@@ -14,7 +14,7 @@
           input.user-phone(type='tel', placeholder='Telefonnummer')
           .select-wrapper
             select.doctor-select
-              option(hidden, selected='selected') Behandelnder Arzt
+              option(value='', disabled, hidden, selected='selected') Behandelnder Arzt
           button.user-create.icon.icon-plus.inline Patient erstellen
 
       //- patient list
@@ -44,4 +44,4 @@
         p Aktuell sind keine Ärzte eingetragen
 
 
-    //- button.room-remove Warteraum entfernen
+    //- button.room-remove.primary Warteraum entfernen
