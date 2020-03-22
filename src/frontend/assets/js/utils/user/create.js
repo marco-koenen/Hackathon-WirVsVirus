@@ -2,6 +2,7 @@ import config from 'config'
 import storage from '@utils/localStorage'
 import patients from '@utils/patients'
 import modal from '@components/modal'
+import button from '@components/button'
 
 //
 // create a new user
@@ -46,9 +47,12 @@ export default () => {
 
         storage.set('patients', storagePatients)
       }
+
+      button.state()
     })
     .catch(error => {
       modal.create(false, config.generalError)
+      button.state()
       console.warn(error)
     })
 }

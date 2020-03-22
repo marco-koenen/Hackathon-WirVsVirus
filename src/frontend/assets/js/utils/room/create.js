@@ -1,5 +1,6 @@
 import config from 'config'
 import modal from '@components/modal'
+import button from '@components/button'
 
 //
 // create a new room
@@ -24,9 +25,12 @@ export default () => {
         config.room = room
         window.location.href = '/waiting-room.html'
       }
+
+      button.state()
     })
     .catch(error => {
       modal.create(false, config.generalError)
+      button.state()
       console.warn(error)
     })
 }

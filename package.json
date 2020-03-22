@@ -91,6 +91,7 @@
     "@utils/room": "./src/frontend/assets/js/utils/room",
     "@utils/patients": "./src/frontend/assets/js/utils/patients",
     "@utils/localStorage": "./src/frontend/assets/js/utils/localStorage",
+    "@components/button": "./src/frontend/assets/js/components/button",
     "@components/modal": "./src/frontend/assets/js/components/modal"
   }
 }
