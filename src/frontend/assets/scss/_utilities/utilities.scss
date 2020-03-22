@@ -14,9 +14,14 @@
 
 .is-hidden,
 [hidden] {
+  position: absolute !important;
   visibility: hidden !important;
 }
 
 .is-visible {
   visibility: visible !important;
+}
+
+.text-center {
+  text-align: center;
 }

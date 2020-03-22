@@ -1,0 +1,35 @@
+//
+// page header
+// --------------------------------------------------
+
+$header-height: 56px;
+$header-height-desktop: 110px;
+
+header {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: $header-height;
+  background: $white;
+
+  @include media-breakpoint-up($gutterBreak) {
+    height: $header-height-desktop;
+  }
+
+  & > div {
+    height: 100%;
+  }
+
+  span {
+    position: absolute;
+    color: $primary;
+    font-family: $font-semiBold;
+    line-height: $header-height;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    @include media-breakpoint-up($gutterBreak) {
+      line-height: $header-height-desktop;
+    }
+  }
+}

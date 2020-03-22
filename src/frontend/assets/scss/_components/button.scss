@@ -5,4 +5,12 @@
 button,
 .button {
   position: relative;
+  padding: 13px 25px;
+  background: $primary;
+  color: $white;
+  border-radius: 22px;
+  font-family: $font-semiBold;
+  line-height: 14px;
+  font-size: 14px;
+  text-transform: uppercase;
 }

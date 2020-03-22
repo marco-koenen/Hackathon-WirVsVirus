@@ -1,0 +1,25 @@
+//
+// create waiting room view
+// --------------------------------------------------
+
+.view.create-waiting-room {
+  position: relative;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: 60px;
+  }
+
+  img {
+    width: 280px;
+  }
+
+  button {
+    display: block;
+    left: -10px;
+    margin: 100px auto 0;
+  }
+}

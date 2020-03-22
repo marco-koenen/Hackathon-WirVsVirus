@@ -1,14 +1,24 @@
 //- waiting room
 .view.waiting-room
-  input.doctor-name(type='text', placeholder='Arztname')
-  button.doctor-create Arzt erstellen
-  br
-  br
-  input.user-first-name(type='text', value='Marco', placeholder='Vorname')
-  input.user-name(type='text', value='Koenen', placeholder='Nachname')
-  input.user-phone(type='text', value='123', placeholder='Telefonnummer')
-  select.doctor-select
-  button.user-create Patient erstellen
-  br
-  br
-  button.room-remove Warteraum entfernen
+  .container
+    .row
+      .col-12.col-lg-6
+        h1 Willkommen in deinem digitalen Warteraum
+      .col-12.col-lg-9
+
+        //- create doctor
+        label(for='doctor-name') Ärzte hinzufügen
+        input#doctor-name.doctor-name(type='text', placeholder='Name' autocomplete='off')
+
+
+        button.doctor-create Arzt erstellen
+        br
+        br
+        input.user-first-name(type='text', value='Marco', placeholder='Vorname')
+        input.user-name(type='text', value='Koenen', placeholder='Nachname')
+        input.user-phone(type='text', value='123', placeholder='Telefonnummer')
+        select.doctor-select
+        button.user-create Patient erstellen
+        br
+        br
+        button.room-remove Warteraum entfernen

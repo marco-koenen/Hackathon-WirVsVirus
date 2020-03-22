@@ -5,7 +5,7 @@
 @import '_variables.scss';
 @import '_mixins.scss';
 @import '_utilities/normalize.scss';
-@import '_utilities/grid.scss';
+@import '_bootstrap/bootstrap.scss';
 
 //
 // general
@@ -35,15 +35,25 @@ body {
 // --------------------------------------------------
 
 @import '_fragments/overlay.scss';
+@import '_fragments/header.scss';
 @import '_fragments/content.scss';
 
 //
 // components
 // --------------------------------------------------
 
+@import '_components/types.scss';
 @import '_components/button.scss';
 @import '_components/select.scss';
 @import '_components/input.scss';
+
+//
+// views
+// --------------------------------------------------
+
+@import '_views/createWaitingRoom.scss';
+@import '_views/userDashboard.scss';
+@import '_views/waitingRoom.scss';
 
 //
 // utilities
