@@ -42,7 +42,7 @@ def user_create():
 
     user = User.create(phone=cleaned_phone, room=room)
 
-    check_url = f"http://{app.config['HOSTNAME']}/#{user.hash}"
+    check_url = f"https://{app.config['HOSTNAME']}/#{user.hash}"
     user_welcome_text = f"Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden sie unter {check_url}."
 
     do_send_sms(phone, user_welcome_text)
