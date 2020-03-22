@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import unittest
 import requests
+import subprocess
+import time
 
 HOST = "http://localhost:5000"
 HASH_SIZE = 32
@@ -84,4 +86,7 @@ class TestStringMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    subprocess.Popen("./debug_app")
+    time.sleep(2)
+    print("here")
     unittest.main()
