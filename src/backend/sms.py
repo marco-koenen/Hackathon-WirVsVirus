@@ -1,6 +1,7 @@
 import boto3
 from flask import current_app as app
 from datetime import datetime
+from .validphone import *
 
 def do_send_sms_real(num, text):
     client = boto3.client("sns", aws_access_key_id=app.config["AWS_ACCESS_KEY_ID"],
@@ -22,4 +23,3 @@ def do_send_sms(*args, **kwargs):
         return do_send_sms_debug(*args, **kwargs)
     else:
         return do_send_sms_real(*args, **kwargs)
-
