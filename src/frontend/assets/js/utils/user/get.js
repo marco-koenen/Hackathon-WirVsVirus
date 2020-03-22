@@ -1,6 +1,7 @@
 import config from 'config'
 import dashboard from './dashboard'
 import modal from '@components/modal'
+import button from '@components/button'
 
 //
 // get user data from database
@@ -19,9 +20,11 @@ export default () => {
     })
     .then(data => {
       dashboard(data)
+      button.state()
     })
     .catch(error => {
       modal.create(false, config.generalError)
+      button.state()
       console.warn(error)
     })
 }

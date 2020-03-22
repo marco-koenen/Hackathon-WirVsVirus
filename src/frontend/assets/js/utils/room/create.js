@@ -1,5 +1,7 @@
 import config from 'config'
 import modal from '@components/modal'
+import button from '@components/button'
+import page from '@utils/page'
 
 //
 // create a new room
@@ -21,12 +23,16 @@ export default () => {
       if (room) {
         localStorage.setItem('room', room)
         localStorage.setItem('patients', null)
+        localStorage.removeItem('user')
         config.room = room
-        window.location.href = '/waiting-room.html'
+        page.view()
       }
+
+      button.state()
     })
     .catch(error => {
       modal.create(false, config.generalError)
+      button.state()
       console.warn(error)
     })
 }

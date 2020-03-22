@@ -1,35 +1,15 @@
 from flask import Flask, request, abort, Response, redirect, jsonify
 from flask_cors import CORS, cross_origin
 from datetime import datetime
-import sqlite3
-import uuid
-import boto3
-from .config import AID, KEY, DATABASE_FILE
 from .db import *
+from .sms import *
 import re
 
-from .config import AID, KEY, DATABASE_FILE
 app = Flask(__name__)
 
+print(app.debug)
 CORS(app, origin="*" if app.debug else "un-chain.us")
-
-def do_send_sms_real(num, text):
-    client = boto3.client("sns", aws_access_key_id=AID,
-                          aws_secret_access_key=KEY,
-                          region_name="eu-central-1")
-    if not num.startswith("+49"):
-        return
-    client.publish(PhoneNumber=num, Message=text)
-    
-
-def do_send_sms_debug(num, text):
-    with open("smslog.txt", "a") as f:
-        f.write(f"[{datetime.now()}] SMS to {num}: {text}\n")
-    return True
-
-
-# use dummy sms send or real API
-do_send_sms = do_send_sms_debug
+#CORS(app)
 
 
 @app.route("/user/create", methods=["POST", "GET"])
@@ -38,24 +18,28 @@ def user_create():
     payload = request.get_json(force=True)
 
     phone, roomHash = payload.get("phone"), payload.get("room")
-    room = Room.get(hash=roomHash)
+    try:
+        room = Room.get(hash=roomHash)
+    except:
+        print("Room not found: %s" % roomHash)
+        abort(404)
     if not phone or not roomHash or not room:
         abort(400)
 
-    # todo: check phone number
     cleaned_phone = re.sub('[^\\d+]', '', phone)
 
     user = User.create(phone=cleaned_phone, room=room)
     # todo: verify phone number
 
     hostname_debug = "localhost"
-    hostname = hostname_debug
+    hostname_prod = "un-chain.us"
+    hostname = hostname_prod
 
-    check_url = f"http://{hostname}/#{str(user_hash)}"
+    check_url = f"http://{hostname}/#{user.hash}"
     user_welcome_text = f"Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden sie unter {check_url}."
 
     do_send_sms(phone, user_welcome_text)
-    return jsonify(user_hash=str(user_hash))
+    return jsonify(user_hash=str(user.hash))
 
 
 @app.route("/user/<user_hash>")
@@ -64,19 +48,20 @@ def get_user(user_hash):
     user = User.get(hash=user_hash)
     if not user:
         abort(404)
-    return jsonify({"hash": user_hash, "phone": user["phone"],
-                    "room": user["room"]})
+    return jsonify({"hash": user_hash, "phone": user.phone,
+                    "room": user.room.hash})
 
 
 @app.route("/user/<user_hash>/call", methods=["POST", "GET"])
 @cross_origin()
 def call_user(user_hash):
-    user = User.get(hash=user_hash)
-    notify_text = "Hello, you have been called"
-    if not user:
+    try:
+        user = User.get(hash=user_hash)
+    except:
         abort(404)
+    notify_text = "Hello, you have been called"
 
-    if do_send_sms(user["phone"], notify_text):
+    if do_send_sms(user.phone, notify_text):
         return jsonify({"success": "sent"})
     else:
         return jsonify({"success": "smserror"})
