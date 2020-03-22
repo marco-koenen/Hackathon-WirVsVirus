@@ -9,8 +9,10 @@ import button from '@components/button'
 // --------------------------------------------------
 
 export default () => {
-  const phone = document.querySelector(config.userPhone).value
-  const name = document.querySelector(config.userName).value
+  const inputPhone = document.querySelector(config.userPhone)
+  const phone = inputPhone.value
+  const inputName = document.querySelector(config.userName)
+  const name = inputName.value
   const doctor = document.querySelector(config.doctorSelect).value
   const room = config.room
 
@@ -43,6 +45,10 @@ export default () => {
         let storagePatients = storage.get('patients')
 
         patients.create(name, phone, user, doctor)
+
+        // clear inputs
+        inputPhone.value = ''
+        inputName.value = ''
 
         // save the user to the patients list
         storagePatients = storagePatients === null ? [] : storagePatients
