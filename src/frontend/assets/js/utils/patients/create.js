@@ -23,9 +23,12 @@ export default (name, phone, user = null, doctor) => {
   buttonDelete.innerHTML = 'Patient löschen'
   buttonDelete.className = 'doctor-remove icon icon-remove'
 
+  const d = new Date()
+  const time = d.toLocaleTimeString() + ' Uhr'
+
   spanUser.innerHTML = name
   spanPhone.innerHTML = phone
-  spanTime.innerHTML = 'Time'
+  spanTime.innerHTML = time
   spanDoctor.innerHTML = doctor
 
   inner.append(buttonDelete)

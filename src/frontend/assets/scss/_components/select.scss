@@ -29,6 +29,10 @@ select {
     background: #dcebdd;
   }
 
+  &:not([value='']) {
+    color: $dark;
+  }
+
   // options
   option {
     color: $dark;

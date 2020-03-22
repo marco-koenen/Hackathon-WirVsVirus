@@ -10,11 +10,7 @@ export default () => {
   const patients = storage.get('patients')
   const label = document.querySelector(config.userList).querySelector('label')
 
-  if (patients.length === 0) {
-    // label.classList.add(config.isClose)
-    return
-  }
-  label.classList.remove(config.isClose)
+  if (!patients) return
 
   patients.forEach(patient => create(patient.name, patient.phone, patient.user, patient.doctor))
 }
