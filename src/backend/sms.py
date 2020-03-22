@@ -19,7 +19,7 @@ def do_send_sms_debug(num, text):
 
 def do_send_sms(*args, **kwargs):
     if app.debug:
-        do_send_sms_debug(*args, **kwargs)
+        return do_send_sms_debug(*args, **kwargs)
     else:
-        do_send_sms_real(*args, **kwargs)
+        return do_send_sms_real(*args, **kwargs)
 
