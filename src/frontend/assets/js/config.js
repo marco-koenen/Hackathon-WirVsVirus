@@ -44,7 +44,7 @@ const config = {
   room: localStorage.getItem('room') || null,
   user: localStorage.getItem('user') || null,
   poll: null,
-  pollInterval: 1000 * 30,
+  pollInterval: 1000 * 10,
   pollTimeout: 1000 * 60 * 30,
 
   // messages
