@@ -6,8 +6,11 @@ import re
 import peewee
 from .db import * # Import after app is defined
 
-app = Flask(__name__, instance_relative_config=True)
+app = Flask(__name__)
 app.config.from_pyfile('config.py')
+
+if "APP_CONFIG_FILE" in os.environ:
+    app.config.from_envvar("APP_CONFIG_FILE")
 
 print("#####################")
 print("# APP CONFIGURATION #")
@@ -39,7 +42,7 @@ def user_create():
 
     user = User.create(phone=cleaned_phone, room=room)
 
-    check_url = f"http://{app.config['HOSTNAME']}/#{user.hash}"
+    check_url = f"https://{app.config['HOSTNAME']}/#{user.hash}"
     user_welcome_text = f"Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden sie unter {check_url}."
 
     do_send_sms(phone, user_welcome_text)
