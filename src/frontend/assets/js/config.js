@@ -33,6 +33,7 @@ const config = {
 
   // global classNames
   view: '.view',
+  modal: '.modal-wrapper',
   userDashboard: '.user-dashboard',
   waitingRoom: '.waiting-room',
   createWaitingRoom: '.create-waiting-room',
@@ -60,18 +61,18 @@ const config = {
   pageTransitionTime: 350,
 
   // messages
-  messageLink: 'Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden Sie unter:',
-  messageCall: 'empfängt Sie jetzt. Bitte betreten Sie die Praxis.',
-  notificationSuccess: 'Der Patient hat eine SMS erhalten.',
-  notificationError: 'Es ist leider ein Fehler aufgetreten.',
-  deleteSuccess: 'Der Patient wurde erfolgreich gelöscht.',
-  doctorAlreadyAvailable: 'Dieser Arzt ist bereits in der Liste.',
-  doctorMissing: 'Sie müssen mindestens einen Arzt erstellen.',
-  generalError: 'Es ist leider ein Problem aufgetreten. Bitte versuchen Sie es später noch einmal.',
-  missingField: 'Bitte füllen Sie alle benötigten Felder aus.',
-  statusWaiting: 'Sie befinden sich aktuell in der Warteschlange.',
-  statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis',
-  waitingTime: 'Wartezeit:'
+  _errorGeneral: 'Es ist leider ein Problem aufgetreten. Bitte versuchen Sie es später noch einmal.',
+  _messageLink: 'Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden Sie unter:',
+  _messageCall: 'empfängt Sie jetzt. Bitte betreten Sie die Praxis.',
+  _messageSuccess: 'Der Patient hat eine SMS erhalten.',
+  _patientDelete: 'Der Patient wurde erfolgreich gelöscht.',
+  _doctorExists: 'Dieser Arzt ist bereits in der Liste.',
+  _doctorMissing: 'Sie müssen mindestens einen Arzt erstellen.',
+  _missingField: 'Bitte füllen Sie alle benötigten Felder aus.',
+  _statusWaiting: 'Sie befinden sich aktuell in der Warteschlange.',
+  _statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis',
+  _waitingTime: 'Wartezeit:',
+  _wrongPhone: 'Bitte geben Sie eine gültige Handynummer ein. (z.B. +491758462456)'
 }
 
 export default config

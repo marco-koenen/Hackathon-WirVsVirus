@@ -32,7 +32,7 @@ export default () => {
       button.state()
     })
     .catch(error => {
-      modal.create(false, config.generalError)
+      modal.create(false, config._errorGeneral)
       button.state()
       console.warn(error)
     })

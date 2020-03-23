@@ -13,5 +13,5 @@ export default data => {
 
   console.warn(data)
 
-  content.innerHTML = status === 'waiting' ? config.statusWaiting : config.statusReady
+  content.innerHTML = status === 'waiting' ? config._statusWaiting : config._statusReady
 }

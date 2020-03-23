@@ -9,9 +9,9 @@ export default (time, element) => {
   const timer = element
 
   // prevent the time from being displayed too late
-  timer.innerHTML = config.waitingTime + ' ' + timeSince(time)
+  timer.innerHTML = config._waitingTime + ' ' + timeSince(time)
 
   setInterval(() => {
-    timer.innerHTML = config.waitingTime + ' ' + timeSince(time)
+    timer.innerHTML = config._waitingTime + ' ' + timeSince(time)
   }, 1000)
 }

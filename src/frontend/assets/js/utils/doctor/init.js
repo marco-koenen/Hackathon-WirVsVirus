@@ -45,4 +45,7 @@ export default (array = false) => {
 
     buttonRemove.addEventListener('click', event => remove(event, doctor.name))
   })
+
+  // select the first doctor
+  select.selectedIndex = select.length === 1 ? 0 : 1
 }

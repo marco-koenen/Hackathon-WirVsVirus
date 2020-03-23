@@ -7,7 +7,7 @@ import button from '@components/button'
 // --------------------------------------------------
 
 export default (user, doctor = false) => {
-  const message = doctor ? doctor + ' ' + config.messageCall : config.messageLink + ' ' + config.origin + '/#' + user
+  const message = doctor ? doctor + ' ' + config._messageCall : config._messageLink + ' ' + config.origin + '/#' + user
   const body = {notify_text: message}
 
   // only log message for development
@@ -27,11 +27,11 @@ export default (user, doctor = false) => {
     })
     .then(data => {
       const success = data.success === 'sent'
-      modal.create(success, success ? config.notificationSuccess : config.notificationError)
+      modal.create(success, success ? config._messageSuccess : config._errorGeneral)
       button.state()
     })
     .catch(error => {
-      modal.create(false, config.generalError)
+      modal.create(false, config._errorGeneral)
       button.state()
       console.warn(error)
     })

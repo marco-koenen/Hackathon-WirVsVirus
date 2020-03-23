@@ -6,30 +6,36 @@
   position: fixed;
   top: 45px;
   right: 20px;
-  width: 100%;
-  max-width: 210px;
-  padding: 15px;
-  opacity: 0;
-  background: $primary;
-  border-radius: $border-radius;
-  transition: transform 0.65s $ease-transform 0.75s, opacity 0.35s $ease-opacity;
-  transform: translateY(15px);
   z-index: 50;
+  pointer-events: none;
 
-  &.is-error {
-    background: $error;
-  }
+  .modal {
+    position: relative;
+    width: 100%;
+    max-width: 210px;
+    padding: 15px;
+    opacity: 0;
+    background: $primary;
+    border-radius: $border-radius;
+    transition: transform 0.65s $ease-transform 0.75s, opacity 0.35s $ease-opacity;
+    transform: translateY(15px);
+    margin-bottom: 20px;
 
-  &.is-open {
-    opacity: 1;
-    transition: transform 0.65s $ease-transform, opacity 0.35s $ease-opacity;
-    transform: translateY(0);
-  }
+    &.is-error {
+      background: $error;
+    }
 
-  p {
-    color: $white;
-    font-family: $font-base;
-    line-height: 18px;
-    font-size: 14px;
+    &.is-open {
+      opacity: 1;
+      transition: transform 0.65s $ease-transform, opacity 0.35s $ease-opacity;
+      transform: translateY(0);
+    }
+
+    p {
+      color: $white;
+      font-family: $font-base;
+      line-height: 18px;
+      font-size: 14px;
+    }
   }
 }
