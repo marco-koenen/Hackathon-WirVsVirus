@@ -8,8 +8,8 @@ import remove from './remove'
 // initiate doctor list
 // --------------------------------------------------
 
-export default () => {
-  const doctors = storage.get('doctors')
+export default (array = false) => {
+  const doctors = array || storage.get('doctors')
   const select = document.querySelector(config.doctorSelect)
   const list = document.querySelector(config.doctorList)
 

@@ -10,13 +10,17 @@ export default (event, name) => {
   const button = event.target
   const wrapper = button.parentNode.parentNode
   const doctors = storage.get('doctors')
+  const select = document.querySelector(config.doctorSelect)
+  const options = select.querySelectorAll('option')
 
   if (!doctors) return
 
   // remove patient from local storage
   doctors.forEach((doctor, index) => {
     if (doctor.name === name) {
+      let optionIndex = index + 1 >= doctors.length ? doctors.length : index + 1
       doctors.splice(index, 1)
+      options[optionIndex].remove()
     }
   })
 
