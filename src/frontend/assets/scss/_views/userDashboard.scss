@@ -4,5 +4,22 @@
 
 .view.user-dashboard {
   position: relative;
-  background: red;
+
+  h1 {
+    margin-bottom: 10px;
+    margin-top: 40px;
+
+    @include media-breakpoint-up($gutterBreak) {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  p {
+    margin-bottom: 40px;
+
+    @include media-breakpoint-up($gutterBreak) {
+      margin-bottom: 60px;
+    }
+  }
 }
