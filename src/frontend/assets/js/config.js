@@ -71,7 +71,8 @@ const config = {
   missingField: 'Bitte füllen Sie alle benötigten Felder aus.',
   statusWaiting: 'Sie befinden sich aktuell in der Warteschlange.',
   statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis',
-  waitingTime: 'Wartezeit:'
+  waitingTime: 'Wartezeit:',
+  messageWrongPhone: 'Bitte geben Sie eine gültige Handynummer ein. (z.B. +491758462456)'
 }
 
 export default config

@@ -4,6 +4,7 @@ import patients from '@utils/patients'
 import modal from '@components/modal'
 import button from '@components/button'
 import notification from './notification'
+import validate from '@utils/validate'
 
 //
 // create a new user
@@ -28,6 +29,12 @@ export default () => {
   // force at least one doctor
   if (!doctor) {
     modal.create(false, config.doctorMissing)
+    return
+  }
+
+  // validate phone numnber
+  if (!validate.phone(phone)) {
+    modal.create(false, config.messageWrongPhone)
     return
   }
 
