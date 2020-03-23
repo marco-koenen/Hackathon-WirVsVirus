@@ -1,7 +1,7 @@
 import config from 'config'
-import modal from '@components/modal'
 import button from '@components/button'
 import storage from '@utils/localStorage'
+import fallbackText from '@utils/fallbackText'
 import remove from './remove'
 
 //
@@ -12,14 +12,11 @@ export default () => {
   const doctors = storage.get('doctors')
   const select = document.querySelector(config.doctorSelect)
   const list = document.querySelector(config.doctorList)
-  const fallbackText = document.querySelector(config.doctorList).querySelector('p')
 
-  if (!select || !doctors || doctors.length === 0) {
-    fallbackText.classList.remove(config.isHidden)
-    return
-  }
+  // show fallback text
+  fallbackText.create(!doctors || doctors.length === 0, config.doctorList)
 
-  fallbackText.classList.add(config.isHidden)
+  if (!select || !doctors) return
 
   doctors.forEach(doctor => {
     // append select items

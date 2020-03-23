@@ -1,5 +1,6 @@
 import config from 'config'
 import storage from '@utils/localStorage'
+import fallbackText from '@utils/fallbackText'
 import create from './create'
 
 //
@@ -8,13 +9,12 @@ import create from './create'
 
 export default () => {
   const patients = storage.get('patients')
-  const fallbackText = document.querySelector(config.userList).querySelector('p')
 
-  if (!patients || patients.length === 0) {
-    fallbackText.classList.remove(config.isHidden)
-    return
-  }
+  // show fallback text
+  fallbackText.create(!patients || patients.length === 0, config.userList)
 
-  fallbackText.classList.add(config.isHidden)
+  if (!patients) return
+
+  // show patients list
   patients.forEach(patient => create(patient.name, patient.phone, patient.user, patient.doctor))
 }

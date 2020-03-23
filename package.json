@@ -86,6 +86,7 @@
     "@utils/page": "./src/frontend/assets/js/utils/page",
     "@utils/dom": "./src/frontend/assets/js/utils/dom",
     "@utils/doctor": "./src/frontend/assets/js/utils/doctor",
+    "@utils/fallbackText": "./src/frontend/assets/js/utils/fallbackText",
     "@utils/polyfill": "./src/frontend/assets/js/utils/polyfill",
     "@utils/user": "./src/frontend/assets/js/utils/user",
     "@utils/poll": "./src/frontend/assets/js/utils/poll",

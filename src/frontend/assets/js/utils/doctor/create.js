@@ -2,7 +2,9 @@ import config from 'config'
 import modal from '@components/modal'
 import button from '@components/button'
 import storage from '@utils/localStorage'
+import fallbackText from '@utils/fallbackText'
 import remove from './remove'
+import init from './init'
 
 //
 // create a new doctor
@@ -13,12 +15,10 @@ export default () => {
   const inputFirstName = document.querySelector(config.doctorFirstName)
   const doctor = input.value
   const title = document.querySelector(config.doctorTitle).value
-  const fallbackText = document.querySelector(config.doctorList).querySelector('p')
-
-  fallbackText.classList.add(config.isHidden)
 
   if (!doctor) {
     modal.create(false, config.missingField)
+    fallbackText.create(!doctor, config.doctorList)
     return
   }
 
@@ -35,12 +35,15 @@ export default () => {
   if (alreadyAvailable) {
     modal.create(false, config.doctorAlreadyAvailable)
   } else {
+    // store new doctor to select element
     const option = document.createElement('option')
 
     option.text = title + ' ' + doctor
     option.value = title + ' ' + doctor
 
     select.appendChild(option)
+
+    // clear input fields
     input.value = ''
     inputFirstName.value = ''
 
@@ -56,22 +59,6 @@ export default () => {
     storage.set('doctors', storageDoctors)
 
     // add doctor to doctor list
-    const list = document.querySelector(config.doctorList)
-    const div = document.createElement('div')
-    const inner = document.createElement('div')
-    const span = document.createElement('span')
-    const buttonRemove = document.createElement('button')
-
-    div.className = 'list-wrapper'
-    inner.className = 'list-inner'
-    buttonRemove.className = 'doctor-remove icon icon-remove'
-    span.innerHTML = title + ' ' + doctor
-
-    inner.append(span)
-    inner.append(buttonRemove)
-    div.append(inner)
-    list.append(div)
-
-    buttonRemove.addEventListener('click', event => remove(event, doctor.name))
+    init()
   }
 }
