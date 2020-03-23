@@ -14,7 +14,7 @@ import patients from '@utils/patients'
 import poll from '@utils/poll'
 import polyfill from '@utils/polyfill'
 
-__webpack_public_path__ = config.assets.js
+__webpack_public_path__ = config.webpack
 
 //
 // main javascript file

@@ -3,17 +3,19 @@
 // --------------------------------------------------
 
 const config = {
+  webpack: '/assets/js/',
+  origin: window.location.origin,
+  hash: window.location.hash,
+  lang: document.documentElement.lang,
+  localhost: window.location.hostname === 'localhost',
+  room: localStorage.getItem('room') || null,
+  user: localStorage.getItem('user') || null,
   fetch: {
     endpoint: 'https://backend.un-chain.us/',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     }
-  },
-  assets: {
-    icons: '/assets/img/icons/',
-    css: '/assets/css/',
-    js: '/assets/js/'
   },
 
   // conditionals
@@ -50,11 +52,6 @@ const config = {
   userStatus: '.user-status',
 
   // miscs
-  origin: window.location.origin,
-  hash: window.location.hash,
-  lang: document.documentElement.lang,
-  room: localStorage.getItem('room') || null,
-  user: localStorage.getItem('user') || null,
   poll: null,
   pollInterval: 1000 * 10,
   pollTimeout: 1000 * 60 * 30,

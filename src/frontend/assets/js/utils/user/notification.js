@@ -10,6 +10,12 @@ export default (user, doctor = false) => {
   const message = doctor ? doctor + ' ' + config.messageCall : config.messageLink + ' ' + config.origin + '/#' + user
   const body = {notify_text: message}
 
+  // only log message for development
+  if (config.localhost) {
+    console.warn(message)
+    return
+  }
+
   fetch(config.fetch.endpoint + 'user/' + user + '/call', {
     method: 'POST',
     headers: config.fetch.headers,
