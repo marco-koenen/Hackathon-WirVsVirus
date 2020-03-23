@@ -17,24 +17,24 @@ export default () => {
   let doctor = input.value
 
   if (!doctor) {
-    modal.create(false, config.missingField)
+    modal.create(false, config._missingField)
     return
   }
 
   const select = document.querySelector(config.doctorSelect)
   const options = select.querySelectorAll('option')
-  let alreadyAvailable = false
+  let doctorExists = false
 
   // check if doctor is already in list
   doctor = title + ' ' + doctor
 
   options.forEach(option => {
     const value = option.value
-    if (value === doctor) alreadyAvailable = true
+    if (value === doctor) doctorExists = true
   })
 
-  if (alreadyAvailable) {
-    modal.create(false, config.doctorAlreadyAvailable)
+  if (doctorExists) {
+    modal.create(false, config._doctorExists)
   } else {
     // clear input fields
     input.value = ''

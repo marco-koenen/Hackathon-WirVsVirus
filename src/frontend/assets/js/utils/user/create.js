@@ -22,19 +22,19 @@ export default () => {
 
   // required fields
   if (!phone || !room || !name || !firstName) {
-    modal.create(false, config.missingField)
+    modal.create(false, config._missingField)
     return
   }
 
   // force at least one doctor
   if (!doctor) {
-    modal.create(false, config.doctorMissing)
+    modal.create(false, config._doctorMissing)
     return
   }
 
   // validate phone numnber
   if (!validate.phone(phone)) {
-    modal.create(false, config.messageWrongPhone)
+    modal.create(false, config._wrongPhone)
     return
   }
 
@@ -87,7 +87,7 @@ export default () => {
       button.state()
     })
     .catch(error => {
-      modal.create(false, config.generalError)
+      modal.create(false, config._errorGeneral)
       button.state()
       console.warn(error)
     })

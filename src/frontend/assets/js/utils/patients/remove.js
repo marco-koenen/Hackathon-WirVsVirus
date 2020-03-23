@@ -36,7 +36,7 @@ export default (event, onlyDelete = false) => {
 
   // only delete without notification
   if (onlyDelete) {
-    modal.create(true, config.deleteSuccess)
+    modal.create(true, config._patientDelete)
     return
   }
 
