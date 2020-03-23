@@ -3,6 +3,7 @@ import storage from '@utils/localStorage'
 import patients from '@utils/patients'
 import modal from '@components/modal'
 import button from '@components/button'
+import notification from './notification'
 
 //
 // create a new user
@@ -14,9 +15,9 @@ export default () => {
   const inputFirstName = document.querySelector(config.userFirstName)
   const firstName = inputFirstName.value
   const inputName = document.querySelector(config.userName)
-  const name = inputName.value
   const doctor = document.querySelector(config.doctorSelect).value
   const room = config.room
+  let name = inputName.value
 
   // required fields
   if (!phone || !room || !name || !firstName) {
@@ -46,27 +47,34 @@ export default () => {
     })
     .then(data => {
       const user = data.user_hash
+      const time = new Date(Date.now())
 
       if (user) {
         let storagePatients = storage.get('patients')
+        name = firstName + ' ' + name
 
-        patients.create(firstName + ' ' + name, phone, user, doctor)
+        // create dom elements
+        patients.create(name, phone, user, doctor, time)
 
         // clear inputs
         inputPhone.value = ''
         inputName.value = ''
         inputFirstName.value = ''
 
-        // save the user to the patients list
+        // save the user to local storage
         storagePatients = storagePatients === null ? [] : storagePatients
         storagePatients.push({
           user: user,
-          name: firstName + ' ' + name,
+          name: name,
           phone: phone,
-          doctor: doctor
+          doctor: doctor,
+          time: time
         })
 
         storage.set('patients', storagePatients)
+
+        // send new patient his dashboard link
+        notification(user)
       }
 
       button.state()

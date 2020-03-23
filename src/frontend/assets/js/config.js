@@ -3,17 +3,19 @@
 // --------------------------------------------------
 
 const config = {
+  webpack: '/assets/js/',
+  origin: window.location.origin,
+  hash: window.location.hash,
+  lang: document.documentElement.lang,
+  localhost: window.location.hostname === 'localhost',
+  room: localStorage.getItem('room') || null,
+  user: localStorage.getItem('user') || null,
   fetch: {
     endpoint: 'https://backend.un-chain.us/',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     }
-  },
-  assets: {
-    icons: '/assets/img/icons/',
-    css: '/assets/css/',
-    js: '/assets/js/'
   },
 
   // conditionals
@@ -50,11 +52,6 @@ const config = {
   userStatus: '.user-status',
 
   // miscs
-  origin: window.location.origin,
-  hash: window.location.hash,
-  lang: document.documentElement.lang,
-  room: localStorage.getItem('room') || null,
-  user: localStorage.getItem('user') || null,
   poll: null,
   pollInterval: 1000 * 10,
   pollTimeout: 1000 * 60 * 30,
@@ -73,7 +70,8 @@ const config = {
   generalError: 'Es ist leider ein Problem aufgetreten. Bitte versuchen Sie es später noch einmal.',
   missingField: 'Bitte füllen Sie alle benötigten Felder aus.',
   statusWaiting: 'Sie befinden sich aktuell in der Warteschlange.',
-  statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis'
+  statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis',
+  waitingTime: 'Wartezeit:'
 }
 
 export default config

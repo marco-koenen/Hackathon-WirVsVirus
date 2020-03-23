@@ -16,5 +16,5 @@ export default () => {
   if (!patients) return
 
   // show patients list
-  patients.forEach(patient => create(patient.name, patient.phone, patient.user, patient.doctor))
+  patients.forEach(patient => create(patient.name, patient.phone, patient.user, patient.doctor, patient.time))
 }

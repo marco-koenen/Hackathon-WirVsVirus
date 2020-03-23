@@ -1,6 +1,6 @@
 {
   "name": "@hackathon/wir-vs-virus",
-  "version": "0.0.14",
+  "version": "0.1.3",
   "description": "",
   "author": "Marco Koenen, Felix Scheinost, Max Duell",
   "license": "MIT",
@@ -94,6 +94,7 @@
     "@utils/patients": "./src/frontend/assets/js/utils/patients",
     "@utils/localStorage": "./src/frontend/assets/js/utils/localStorage",
     "@components/button": "./src/frontend/assets/js/components/button",
-    "@components/modal": "./src/frontend/assets/js/components/modal"
+    "@components/modal": "./src/frontend/assets/js/components/modal",
+    "@components/timer": "./src/frontend/assets/js/components/timer"
   }
 }

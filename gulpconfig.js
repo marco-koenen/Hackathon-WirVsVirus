@@ -179,7 +179,6 @@ module.exports = {
     logPrefix: hostname,
     logLevel: 'silent',
     notify: false,
-    open: 'external',
     server: {
       baseDir: './'+build,
       middleware: [

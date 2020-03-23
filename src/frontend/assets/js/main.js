@@ -14,7 +14,7 @@ import patients from '@utils/patients'
 import poll from '@utils/poll'
 import polyfill from '@utils/polyfill'
 
-__webpack_public_path__ = config.assets.js
+__webpack_public_path__ = config.webpack
 
 //
 // main javascript file
@@ -47,9 +47,11 @@ const app = () => {
   // start polling to get user data
   poll.start()
 
-  console.log('page: ' + config.page)
-  console.log('room: ' + config.room)
-  console.log('user: ' + config.user)
+  // only log message for development
+  if (config.localhost) {
+    console.log('room: ' + config.room)
+    console.log('user: ' + config.user)
+  }
 }
 
 // initiate dom

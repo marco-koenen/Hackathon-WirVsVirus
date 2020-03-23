@@ -1,12 +1,13 @@
 import config from 'config'
 import remove from './remove'
 import fallbackText from '@utils/fallbackText'
+import timer from '@components/timer'
 
 //
 // create a single patient
 // --------------------------------------------------
 
-export default (name, phone, user = null, doctor) => {
+export default (name, phone, user = null, doctor, time) => {
   const list = document.querySelector(config.userList)
   const div = document.createElement('div')
   const inner = document.createElement('div')
@@ -27,12 +28,11 @@ export default (name, phone, user = null, doctor) => {
   buttonDelete.innerHTML = 'Patient löschen'
   buttonDelete.className = 'doctor-remove icon icon-remove'
 
-  const d = new Date()
-  const time = d.toLocaleTimeString() + ' Uhr'
+  // start timer
+  timer.start(time, spanTime)
 
   spanUser.innerHTML = name
   spanPhone.innerHTML = phone
-  spanTime.innerHTML = time
   spanDoctor.innerHTML = doctor
 
   inner.append(buttonDelete)
