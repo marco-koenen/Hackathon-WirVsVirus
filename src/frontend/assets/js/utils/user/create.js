@@ -3,6 +3,7 @@ import storage from '@utils/localStorage'
 import patients from '@utils/patients'
 import modal from '@components/modal'
 import button from '@components/button'
+import notification from './notification'
 
 //
 // create a new user
@@ -67,6 +68,9 @@ export default () => {
         })
 
         storage.set('patients', storagePatients)
+
+        // send new patient his dashboard link
+        notification(user)
       }
 
       button.state()
