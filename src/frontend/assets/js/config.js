@@ -18,6 +18,8 @@ const config = {
 
   // conditionals
   isLoading: 'is-loading',
+  isError: 'is-error',
+  isSuccess: 'is-success',
   isHidden: 'is-hidden',
   isVisible: 'is-visble',
   isClose: 'is-close',

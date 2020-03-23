@@ -11,13 +11,13 @@ export default (success, message) => {
   const animationTime = 400
 
   div.className += 'modal-wrapper '
-  div.className += success ? 'is-success' : 'is-error'
+  div.className += success ? config.isSuccess : config.isError
   p.innerHTML = message
 
   div.append(p)
   document.body.append(div)
 
-  // add it
+  // we need a small delay here for the css animation
   setTimeout(() => div.classList.add(config.isOpen), 50)
 
   // remove it

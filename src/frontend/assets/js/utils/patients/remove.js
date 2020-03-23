@@ -2,6 +2,7 @@ import config from 'config'
 import storage from '@utils/localStorage'
 import user from '@utils/user'
 import modal from '@components/modal'
+import fallbackText from '@utils/fallbackText'
 import dom from '@utils/dom'
 
 //
@@ -31,10 +32,7 @@ export default (event, onlyDelete = false) => {
   wrapper.remove()
 
   // show fallback text when no patient is available
-  if (patients.length === 0) {
-    const fallbackText = document.querySelector(config.userList).querySelector('p')
-    fallbackText.classList.remove(config.isHidden)
-  }
+  fallbackText.create(!patients || patients.length === 0, config.userList)
 
   // only delete without notification
   if (onlyDelete) {

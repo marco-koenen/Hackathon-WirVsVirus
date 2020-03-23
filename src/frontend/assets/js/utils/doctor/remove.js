@@ -1,5 +1,6 @@
 import config from 'config'
 import storage from '@utils/localStorage'
+import fallbackText from '@utils/fallbackText'
 
 //
 // remove a doctor
@@ -25,8 +26,5 @@ export default (event, name) => {
   wrapper.remove()
 
   // show fallback text when no doctor is available
-  if (doctors.length === 0) {
-    const fallbackText = document.querySelector(config.doctorList).querySelector('p')
-    fallbackText.classList.remove(config.isHidden)
-  }
+  fallbackText.create(doctors.length === 0, config.doctorList)
 }

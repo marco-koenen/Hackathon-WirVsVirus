@@ -1,5 +1,6 @@
 import config from 'config'
 import remove from './remove'
+import fallbackText from '@utils/fallbackText'
 
 //
 // create a single patient
@@ -15,9 +16,9 @@ export default (name, phone, user = null, doctor) => {
   const spanPhone = document.createElement('span')
   const spanTime = document.createElement('span')
   const spanDoctor = document.createElement('span')
-  const fallbackText = document.querySelector(config.userList).querySelector('p')
 
-  fallbackText.classList.add(config.isHidden)
+  // remove fallback text
+  fallbackText.create(!doctor, config.userList)
 
   div.className = 'list-wrapper'
   inner.className = 'list-inner'
