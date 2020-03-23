@@ -47,9 +47,11 @@ const app = () => {
   // start polling to get user data
   poll.start()
 
-  console.log('page: ' + config.page)
-  console.log('room: ' + config.room)
-  console.log('user: ' + config.user)
+  // only log message for development
+  if (config.localhost) {
+    console.log('room: ' + config.room)
+    console.log('user: ' + config.user)
+  }
 }
 
 // initiate dom
