@@ -5,17 +5,18 @@ import config from 'config'
 // --------------------------------------------------
 
 export default (success, message) => {
+  const wrapper = document.querySelector(config.modal)
   const div = document.createElement('div')
   const p = document.createElement('p')
   const showTime = 3000
   const animationTime = 400
 
-  div.className += 'modal-wrapper '
+  div.className += 'modal '
   div.className += success ? config.isSuccess : config.isError
   p.innerHTML = message
 
   div.append(p)
-  document.body.append(div)
+  wrapper.append(div)
 
   // we need a small delay here for the css animation
   setTimeout(() => div.classList.add(config.isOpen), 50)
