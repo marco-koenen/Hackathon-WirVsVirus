@@ -70,7 +70,8 @@ const config = {
   generalError: 'Es ist leider ein Problem aufgetreten. Bitte versuchen Sie es später noch einmal.',
   missingField: 'Bitte füllen Sie alle benötigten Felder aus.',
   statusWaiting: 'Sie befinden sich aktuell in der Warteschlange.',
-  statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis'
+  statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis',
+  waitingTime: 'Wartezeit:'
 }
 
 export default config
