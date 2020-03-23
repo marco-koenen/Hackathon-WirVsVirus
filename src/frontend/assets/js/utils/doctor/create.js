@@ -13,12 +13,11 @@ import init from './init'
 export default () => {
   const input = document.querySelector(config.doctorName)
   const inputFirstName = document.querySelector(config.doctorFirstName)
-  const doctor = input.value
   const title = document.querySelector(config.doctorTitle).value
+  let doctor = input.value
 
   if (!doctor) {
     modal.create(false, config.missingField)
-    fallbackText.create(!doctor, config.doctorList)
     return
   }
 
@@ -27,6 +26,8 @@ export default () => {
   let alreadyAvailable = false
 
   // check if doctor is already in list
+  doctor = title + ' ' + doctor
+
   options.forEach(option => {
     const value = option.value
     if (value === doctor) alreadyAvailable = true
@@ -35,14 +36,6 @@ export default () => {
   if (alreadyAvailable) {
     modal.create(false, config.doctorAlreadyAvailable)
   } else {
-    // store new doctor to select element
-    const option = document.createElement('option')
-
-    option.text = title + ' ' + doctor
-    option.value = title + ' ' + doctor
-
-    select.appendChild(option)
-
     // clear input fields
     input.value = ''
     inputFirstName.value = ''
@@ -52,13 +45,18 @@ export default () => {
 
     storageDoctors = storageDoctors === null ? [] : storageDoctors
     storageDoctors.push({
-      name: title + ' ' + doctor,
-      value: title + ' ' + doctor
+      name: doctor,
+      value: doctor
     })
 
     storage.set('doctors', storageDoctors)
 
     // add doctor to doctor list
-    init()
+    init([
+      {
+        name: doctor,
+        value: doctor
+      }
+    ])
   }
 }
