@@ -5,9 +5,7 @@ import config from 'config'
 // --------------------------------------------------
 
 export default data => {
-  const content = document.querySelector(config.userDashboard)
-  const div = document.createElement('div')
-  const p = document.createElement('p')
+  const content = document.querySelector(config.userStatus)
   const hash = data.hash
   const phone = data.phone
   const status = data.status
@@ -15,14 +13,5 @@ export default data => {
 
   console.warn(data)
 
-  div.className = 'dashboard-item ' + status
-  p.innerHTML = 'Status: ' + status
-
-  // check if this status is already visible
-  const divStatus = document.querySelector('dashboard-item ' + status)
-  if (divStatus) return
-
-  // append new dashboard item
-  div.append(p)
-  content.append(div)
+  content.innerHTML = status === 'waiting' ? config.statusWaiting : config.statusReady
 }

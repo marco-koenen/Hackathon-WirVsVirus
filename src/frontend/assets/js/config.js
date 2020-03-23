@@ -47,6 +47,7 @@ const config = {
   userName: 'input.user-name',
   userPhone: 'input.user-phone',
   userList: '.patient-list',
+  userStatus: '.user-status',
 
   // miscs
   origin: window.location.origin,
@@ -70,7 +71,9 @@ const config = {
   doctorAlreadyAvailable: 'Dieser Arzt ist bereits in der Liste.',
   doctorMissing: 'Sie müssen mindestens einen Arzt erstellen.',
   generalError: 'Es ist leider ein Problem aufgetreten. Bitte versuchen Sie es später noch einmal.',
-  missingField: 'Bitte füllen Sie alle benötigten Felder aus.'
+  missingField: 'Bitte füllen Sie alle benötigten Felder aus.',
+  statusWaiting: 'Sie befinden sich aktuell in der Warteschlange.',
+  statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis'
 }
 
 export default config
