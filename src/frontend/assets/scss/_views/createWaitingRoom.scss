@@ -30,6 +30,7 @@
   button {
     display: block;
     margin: 100px auto 0;
+    float: none;
 
     @include media-breakpoint-up($gutterBreak) {
       left: -10px;
