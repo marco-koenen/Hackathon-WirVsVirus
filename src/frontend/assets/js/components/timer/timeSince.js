@@ -9,26 +9,17 @@ export default time => {
     date = new Date(date)
   }
 
-  const seconds = Math.floor((new Date() - date) / 1000)
-  let interval = Math.floor(seconds / 3600)
-  let intervalType
+  const now = new Date()
+  let diff = Math.abs(date - now)
 
-  if (interval >= 1) {
-    intervalType = 'Stunde'
-  } else {
-    interval = Math.floor(seconds / 60)
+  const ms = diff % 1000
+  diff = (diff - ms) / 1000
 
-    if (interval >= 1) {
-      intervalType = 'Minute'
-    } else {
-      interval = seconds
-      intervalType = 'Sekunde'
-    }
-  }
+  const ss = diff % 60
+  diff = (diff - ss) / 60
 
-  if (interval > 1 || interval === 0) {
-    intervalType += 'n'
-  }
+  const mm = diff % 60
+  diff = (diff - mm) / 60
 
-  return interval + ' ' + intervalType
+  return (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss)
 }
