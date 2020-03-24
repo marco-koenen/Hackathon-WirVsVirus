@@ -2,7 +2,7 @@ import config from 'config'
 import modal from '@components/modal'
 import button from '@components/button'
 import storage from '@utils/localStorage'
-import fallbackText from '@utils/fallbackText'
+import error from '@utils/error'
 import remove from './remove'
 import init from './init'
 
@@ -11,57 +11,43 @@ import init from './init'
 // --------------------------------------------------
 
 export default () => {
-  const input = document.querySelector(config.doctorName)
-  const inputFirstName = document.querySelector(config.doctorFirstName)
-  const wrapper = input.parentNode
-  const title = document.querySelector(config.doctorTitle).value
-  let doctor = input.value
+  const lastName = document.querySelector(config.doctorLastName)
+  const firstName = document.querySelector(config.doctorFirstName)
+  const title = document.querySelector(config.doctorTitle)
+  const wrapper = lastName.parentNode
 
-  if (!doctor) {
+  // force at least the last name
+  if (!lastName.value) {
     modal.create(false, config._missingField, wrapper)
     return
   }
 
+  // check if doctor is already in list
+  const doctor = title.value + ' ' + lastName.value
   const select = document.querySelector(config.doctorSelect)
   const options = select.querySelectorAll('option')
   let doctorExists = false
 
-  // check if doctor is already in list
-  doctor = title + ' ' + doctor
-
   options.forEach(option => {
-    const value = option.value
-    if (value === doctor) doctorExists = true
+    if (option.value === doctor) doctorExists = true
   })
 
   if (doctorExists) {
     modal.create(false, config._doctorExists)
-  } else {
-    // remove error states
-    input.classList.remove(config.isError)
-    inputFirstName.classList.remove(config.isError)
-
-    // clear input fields
-    input.value = ''
-    inputFirstName.value = ''
-
-    // save to local storage
-    let storageDoctors = storage.get('doctors')
-
-    storageDoctors = storageDoctors === null ? [] : storageDoctors
-    storageDoctors.push({
-      name: doctor,
-      value: doctor
-    })
-
-    storage.set('doctors', storageDoctors)
-
-    // add doctor to doctor list
-    init([
-      {
-        name: doctor,
-        value: doctor
-      }
-    ])
+    return
   }
+
+  // remove error states
+  error.remove(wrapper)
+
+  // save the doctor to local storage
+  const data = {name: doctor, value: doctor}
+  let storageDoctors = storage.get('doctors')
+
+  storageDoctors = storageDoctors === null ? [] : storageDoctors
+  storageDoctors.push(data)
+  storage.set('doctors', storageDoctors)
+
+  // add doctor to doctor list
+  init([data])
 }
