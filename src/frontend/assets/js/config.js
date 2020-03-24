@@ -26,6 +26,7 @@ const config = {
   isVisible: 'is-visble',
   isClose: 'is-close',
   isOpen: 'is-open',
+  isHover: 'is-hover',
 
   // global selectors
   content: document.querySelector('.page-content'),

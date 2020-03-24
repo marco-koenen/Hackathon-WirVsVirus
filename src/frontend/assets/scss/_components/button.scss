@@ -23,6 +23,7 @@ button,
     clear: both;
   }
 
+  &.is-hover,
   &:hover {
     background: $primary;
 

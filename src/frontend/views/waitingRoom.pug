@@ -11,11 +11,11 @@
           label(for='user-name') Patienten einchecken
           input#user-name.user-first-name(type='text', placeholder='Vorname')
           input.user-name(type='text', placeholder='Nachname')
-          input.user-phone(type='tel', placeholder='Telefonnummer')
+          input.user-phone.trigger-enter(type='tel', placeholder='Telefonnummer')
           .select-wrapper
             select.doctor-select
               option(value='', disabled, hidden, selected='selected') Behandelnder Arzt
-          button.user-create.icon.icon-plus.inline Patient erstellen
+          button.user-create.icon.icon-plus.inline.js-enter Patient erstellen
 
       //- patient list
       .col-12.col-xl-11.patient-list
@@ -35,8 +35,8 @@
               option(value='Prof. Dr.') Prof. Dr.
               option(value='Prof. Dr. med.') Prof. Dr. med.
           input.doctor-first-name(type='text', placeholder='Vorname', name='doctor-first-name' autocomplete='off')
-          input#doctor-name.doctor-name(type='text', placeholder='Name', name='doctor-name' autocomplete='off')
-          button.doctor-create.icon.icon-plus.inline Arzt erstellen
+          input#doctor-name.doctor-name.trigger-enter(type='text', placeholder='Name', name='doctor-name' autocomplete='off')
+          button.doctor-create.icon.icon-plus.inline.js-enter Arzt erstellen
 
       //- doctor list
       .col-12.col-lg-9.col-xl-7.doctor-list
