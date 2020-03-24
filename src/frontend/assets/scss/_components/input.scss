@@ -16,7 +16,7 @@ input {
   -webkit-appearance: textfield;
   -webkit-rtl-ordering: logical;
   -webkit-appearance: none;
-  transition: background $time-opacity $ease-opacity;
+  transition: all $time-opacity $ease-opacity;
   font-size: 14px;
   margin-bottom: 20px;
 
@@ -41,6 +41,36 @@ input {
 
   &:hover {
     background: #dcebdd;
+  }
+
+  &.is-error {
+    background: $error;
+
+    &::-webkit-input-placeholder {
+      color: $white;
+    }
+
+    &:-moz-placeholder {
+      opacity: 1;
+      color: $white;
+    }
+
+    &::-moz-placeholder {
+      opacity: 1;
+      color: $white;
+    }
+
+    &:-ms-input-placeholder {
+      color: $white;
+    }
+
+    &::-ms-input-placeholder {
+      color: $white;
+    }
+
+    &::placeholder {
+      color: $white;
+    }
   }
 }
 

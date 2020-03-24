@@ -13,11 +13,12 @@ import init from './init'
 export default () => {
   const input = document.querySelector(config.doctorName)
   const inputFirstName = document.querySelector(config.doctorFirstName)
+  const wrapper = input.parentNode
   const title = document.querySelector(config.doctorTitle).value
   let doctor = input.value
 
   if (!doctor) {
-    modal.create(false, config._missingField)
+    modal.create(false, config._missingField, wrapper)
     return
   }
 
@@ -36,6 +37,10 @@ export default () => {
   if (doctorExists) {
     modal.create(false, config._doctorExists)
   } else {
+    // remove error states
+    input.classList.remove(config.isError)
+    inputFirstName.classList.remove(config.isError)
+
     // clear input fields
     input.value = ''
     inputFirstName.value = ''

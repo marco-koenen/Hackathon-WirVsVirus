@@ -16,25 +16,27 @@ export default () => {
   const inputFirstName = document.querySelector(config.userFirstName)
   const firstName = inputFirstName.value
   const inputName = document.querySelector(config.userName)
-  const doctor = document.querySelector(config.doctorSelect).value
+  const doctorSelect = document.querySelector(config.doctorSelect)
+  const doctor = doctorSelect.value
+  const wrapper = inputName.parentNode
   const room = config.room
   let name = inputName.value
 
   // required fields
   if (!phone || !room || !name || !firstName) {
-    modal.create(false, config._missingField)
+    modal.create(false, config._missingField, wrapper)
     return
   }
 
   // force at least one doctor
   if (!doctor) {
-    modal.create(false, config._doctorMissing)
+    modal.create(false, config._doctorMissing, wrapper)
     return
   }
 
   // validate phone numnber
   if (!validate.phone(phone)) {
-    modal.create(false, config._wrongPhone)
+    modal.create(false, config._wrongPhone, wrapper)
     return
   }
 
@@ -62,6 +64,12 @@ export default () => {
 
         // create dom elements
         patients.create(name, phone, user, doctor, time)
+
+        // remove error states
+        inputPhone.classList.remove(config.isError)
+        inputName.classList.remove(config.isError)
+        inputFirstName.classList.remove(config.isError)
+        doctorSelect.classList.remove(config.isError)
 
         // clear inputs
         inputPhone.value = ''
