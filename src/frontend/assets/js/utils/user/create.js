@@ -63,9 +63,6 @@ export default () => {
         return
       }
 
-      // remove error states
-      error.remove(wrapper)
-
       // save the user to local storage
       let storagePatients = storage.get('patients')
       const data = {
@@ -85,6 +82,9 @@ export default () => {
 
       // send new patient his dashboard link
       notification(user)
+
+      // remove error states
+      error.remove(wrapper)
     })
 
     // show error message to user
