@@ -68,6 +68,7 @@ const config = {
   _patientDelete: 'Der Patient wurde erfolgreich gelöscht.',
   _doctorExists: 'Dieser Arzt ist bereits in der Liste.',
   _doctorMissing: 'Sie müssen mindestens einen Arzt erstellen.',
+  _doctorRemove: 'Ihr Arzt wurde erfolgreich gelöscht.',
   _missingField: 'Bitte füllen Sie alle benötigten Felder aus.',
   _statusWaiting: 'Sie befinden sich aktuell in der Warteschlange.',
   _statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis',

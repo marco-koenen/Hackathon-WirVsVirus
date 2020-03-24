@@ -1,6 +1,7 @@
 import config from 'config'
 import storage from '@utils/localStorage'
 import fallbackText from '@utils/fallbackText'
+import modal from '@components/modal'
 
 //
 // remove a doctor
@@ -28,6 +29,9 @@ export default (event, name) => {
 
   // remove doctors from dom
   wrapper.remove()
+
+  // show success modal
+  modal.create(true, config._doctorRemove)
 
   // show fallback text when no doctor is available
   fallbackText.create(doctors.length === 0, config.doctorList)
