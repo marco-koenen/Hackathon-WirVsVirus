@@ -13,3 +13,5 @@ AWS_SECRET_ACCESS_KEY = ""
 
 DEBUG_USER="debuguser"
 DEBUG_PASSWORD="random"
+
+DEFAULT_NOTIFY_TEXT = "Sie wurden aufgerufen."

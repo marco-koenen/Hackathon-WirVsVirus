@@ -7,7 +7,8 @@ import time
 HOST = "http://localhost:5000"
 HASH_SIZE = 32
 
-example_phone = "123456789"
+example_phone = "491706994326"
+example_phone2 = "4917513449251"
 
 
 def get_new_room_hash():
@@ -15,9 +16,9 @@ def get_new_room_hash():
     return res.json().get("room_hash")
 
 
-def get_new_user_hash():
-    room_hash = get_new_room_hash()
-    phone = example_phone
+def get_new_user_hash(room_hash=None, phone=example_phone):
+    if not room_hash:
+        room_hash = get_new_room_hash()
     res = requests.post(f"{HOST}/user/create",
                         json={"room": room_hash, "phone": phone})
 
@@ -41,9 +42,8 @@ class TestBackendAPICalls(unittest.TestCase):
            Test /user/create
         """
         room_hash = get_new_room_hash()
-        phone = "987654321"
         res = requests.post(f"{HOST}/user/create",
-                            json={"room": room_hash, "phone": phone})
+                            json={"room": room_hash, "phone": example_phone})
         res_json = res.json()
         assert(res_json)
         user_hash = res_json["user_hash"]
@@ -53,7 +53,7 @@ class TestBackendAPICalls(unittest.TestCase):
     def test_api_query_user(self):
         """
            Test /user/<hash> """
-        user_hash = get_new_user_hash()
+        user_hash = get_new_user_hash(phone=example_phone)
         res = requests.get(f"{HOST}/user/{user_hash}")
         assert(res.ok)
         assert(res.json()['phone'] == example_phone)

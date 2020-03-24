@@ -1,10 +1,9 @@
-from flask import Flask, request, abort, Response, redirect, jsonify
+from flask import Flask, request, Response, jsonify
 from flask_cors import CORS, cross_origin
-from datetime import datetime
 from .sms import *
-import re
 import peewee
 from .db import * # Import after app is defined
+from .validphone import is_valid_phone_number, cleaned_number
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -20,8 +19,6 @@ for k in app.config:
 
 CORS(app, origin=app.config["CORS_ORIGIN"])
 
-default_notify_text = "Sie wurden aufgerufen."
-
 
 @app.route("/user/create", methods=["POST", "GET"])
 @cross_origin()
@@ -30,19 +27,21 @@ def user_create():
 
     phone, room_hash = payload.get("phone"), payload.get("room")
     if not phone or not room_hash:
-        abort(400)
+        return jsonify(success="invalid-request")
 
     room = Room.get_or_none(hash=room_hash)
     if not room:
         print("Room not found: %s" % room_hash)
-        abort(404)
+        return jsonify(success="invalid-room")
 
     # todo: verify phone number
-    cleaned_phone = re.sub('[^\\d+]', '', phone)
+    cleaned_phone = cleaned_number(phone)
+    if not is_valid_phone_number(phone):
+        return jsonify(success="invalid-phone")
 
     user = User.create(phone=cleaned_phone, room=room)
 
-    return jsonify(user_hash=str(user.hash))
+    return jsonify(user_hash=str(user.hash), success="created")
 
 
 @app.route("/user/<user_hash>")
@@ -50,7 +49,7 @@ def user_create():
 def get_user(user_hash):
     user = User.get_or_none(hash=user_hash)
     if not user:
-        return jsonify({"status": "error"})
+        return jsonify(status="userinvalid")
 
     if user.called:
         status = "called"
@@ -67,26 +66,26 @@ def get_user(user_hash):
 def call_user(user_hash):
     user = User.get_or_none(hash=user_hash)
     if not user:
-        abort(404)
+        return jsonify(success="usererror")
 
     try:
         json = request.get_json(force=True)
-        notify_text = json.get("notify_text", default_notify_text)
-        print("custom:", notify_text)
+        notify_text = json.get("notify_text", app.config["DEFAULT_NOTIFY_TEXT"])
+
     except:
-        notify_text = default_notify_text
+        notify_text = app.config["DEFAULT_NOTIFY_TEXT"]
 
     if do_send_sms(user.phone, notify_text):
-        return jsonify({"success": "sent"})
+        return jsonify(success="sent")
     else:
-        return jsonify({"success": "smserror"})
+        return jsonify(success="smserror")
 
 
 @app.route("/room/create", methods=["POST", "GET"])
 @cross_origin()
 def create_room():
     room_uuid = do_create_room()
-    return jsonify({"room_hash": room_uuid})
+    return jsonify(room_hash=room_uuid)
 
 
 def do_create_room():
