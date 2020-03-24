@@ -86,17 +86,18 @@
     "@utils/page": "./src/frontend/assets/js/utils/page",
     "@utils/dom": "./src/frontend/assets/js/utils/dom",
     "@utils/error": "./src/frontend/assets/js/utils/error",
-    "@utils/doctor": "./src/frontend/assets/js/utils/doctor",
     "@utils/fallbackText": "./src/frontend/assets/js/utils/fallbackText",
     "@utils/polyfill": "./src/frontend/assets/js/utils/polyfill",
     "@utils/user": "./src/frontend/assets/js/utils/user",
     "@utils/poll": "./src/frontend/assets/js/utils/poll",
     "@utils/room": "./src/frontend/assets/js/utils/room",
-    "@utils/patients": "./src/frontend/assets/js/utils/patients",
     "@utils/localStorage": "./src/frontend/assets/js/utils/localStorage",
     "@utils/validate": "./src/frontend/assets/js/utils/validate",
     "@components/button": "./src/frontend/assets/js/components/button",
+    "@components/dashboard": "./src/frontend/assets/js/components/dashboard",
+    "@components/doctor": "./src/frontend/assets/js/components/doctor",
     "@components/modal": "./src/frontend/assets/js/components/modal",
+    "@components/patient": "./src/frontend/assets/js/components/patient",
     "@components/timer": "./src/frontend/assets/js/components/timer"
   }
 }

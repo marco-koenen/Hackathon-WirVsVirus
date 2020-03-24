@@ -48,6 +48,6 @@ export default () => {
   storageDoctors.push(data)
   storage.set('doctors', storageDoctors)
 
-  // add doctor to doctor list
+  // create doctor dom element
   init([data])
 }

@@ -8,8 +8,8 @@ import remove from './remove'
 // initiate doctor list
 // --------------------------------------------------
 
-export default (array = false) => {
-  const doctors = array || storage.get('doctors')
+export default (data = false) => {
+  const doctors = data || storage.get('doctors')
   const select = document.querySelector(config.doctorSelect)
   const list = document.querySelector(config.doctorList)
 
@@ -46,6 +46,6 @@ export default (array = false) => {
     buttonRemove.addEventListener('click', event => remove(event, doctor.name))
   })
 
-  // select the first doctor
+  // always select the first doctor
   select.selectedIndex = select.length === 1 ? 0 : 1
 }

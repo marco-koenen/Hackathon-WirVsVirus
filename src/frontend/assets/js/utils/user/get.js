@@ -1,5 +1,5 @@
 import config from 'config'
-import dashboard from './dashboard'
+import dashboard from '@components/dashboard'
 import modal from '@components/modal'
 import button from '@components/button'
 
@@ -19,7 +19,7 @@ export default () => {
       return response.json()
     })
     .then(data => {
-      dashboard(data)
+      dashboard.init(data)
       button.state()
     })
     .catch(error => {

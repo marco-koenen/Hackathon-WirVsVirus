@@ -1,7 +1,7 @@
 import config from 'config'
 import room from '@utils/room'
 import user from '@utils/user'
-import doctor from '@utils/doctor'
+import doctor from '@components/doctor'
 import button from '@components/button'
 
 //

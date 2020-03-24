@@ -1,6 +1,6 @@
 import config from 'config'
 import storage from '@utils/localStorage'
-import patients from '@utils/patients'
+import patient from '@components/patient'
 import modal from '@components/modal'
 import button from '@components/button'
 import notification from './notification'
@@ -52,8 +52,8 @@ export default () => {
     .then(response => {
       return response.json()
     })
-    .then(data => {
-      const user = data.user_hash
+    .then(response => {
+      const user = response.user_hash
       const name = firstName.value + ' ' + lastName.value
       const time = new Date(Date.now())
 
@@ -66,22 +66,22 @@ export default () => {
         return
       }
 
-      // create dom element
-      patients.create(name, phone.value, user, doctor.value, time)
-
       // save the user to local storage
       let storagePatients = storage.get('patients')
-
-      storagePatients = storagePatients === null ? [] : storagePatients
-      storagePatients.push({
+      const data = {
         user: user,
         name: name,
         phone: phone.value,
         doctor: doctor.value,
         time: time
-      })
+      }
 
+      storagePatients = storagePatients === null ? [] : storagePatients
+      storagePatients.push(data)
       storage.set('patients', storagePatients)
+
+      // create patient dom element
+      patient.init([data])
 
       // send new patient his dashboard link
       notification(user)

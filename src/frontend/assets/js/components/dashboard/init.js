@@ -1,10 +1,10 @@
 import config from 'config'
 
 //
-// update user's dashboard
+// initiate user dashboard
 // --------------------------------------------------
 
-export default data => {
+export default (data = false) => {
   const content = document.querySelector(config.userStatus)
   const hash = data.hash
   const phone = data.phone
