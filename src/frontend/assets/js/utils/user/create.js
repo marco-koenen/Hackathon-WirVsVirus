@@ -36,9 +36,6 @@ export default () => {
     return
   }
 
-  // remove error states
-  error.remove(wrapper)
-
   // create new user
   fetch(config.fetch.endpoint + 'user/create', {
     method: 'POST',
@@ -65,6 +62,9 @@ export default () => {
         modal.create(false, config._errorGeneral)
         return
       }
+
+      // remove error states
+      error.remove(wrapper)
 
       // save the user to local storage
       let storagePatients = storage.get('patients')
