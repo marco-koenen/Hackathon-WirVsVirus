@@ -42,10 +42,6 @@ def user_create():
 
     user = User.create(phone=cleaned_phone, room=room)
 
-    check_url = f"https://{app.config['HOSTNAME']}/#{user.hash}"
-    user_welcome_text = f"Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden sie unter {check_url}."
-
-    do_send_sms(phone, user_welcome_text)
     return jsonify(user_hash=str(user.hash))
 
 
@@ -99,7 +95,21 @@ def do_create_room():
 
 
 # for debugging
+import flask_httpauth
+from werkzeug.security import generate_password_hash, check_password_hash
+auth = flask_httpauth.HTTPBasicAuth()
+password_hash = generate_password_hash(app.config["DEBUG_PASSWORD"])
+
+@auth.verify_password
+def verify_password(username, password):
+    print(request.remote_addr)
+    if username == '' and request.remote_addr == '127.0.0.1':
+        return True
+    return (username == app.config["DEBUG_USER"]) and \
+             check_password_hash(password_hash, password)
+
 @app.route("/smslog")
+@auth.login_required
 def get_smslog():
     with open("smslog.txt", "r") as f:
         return Response(f.read(), mimetype="text/plain")
