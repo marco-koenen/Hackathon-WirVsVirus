@@ -41,8 +41,12 @@ export default (data = false) => {
     // start timer
     timer.start(patient.time, spanTime)
 
+    // format the phone number
+    const phone =
+      patient.phone.substring(0, 3) + ' ' + patient.phone.substring(3, 6) + ' ' + patient.phone.substring(6, 14)
+
+    spanPhone.innerHTML = phone
     spanUser.innerHTML = patient.name
-    spanPhone.innerHTML = patient.phone
     spanDoctor.innerHTML = patient.doctor
 
     inner.append(buttonDelete)
