@@ -34,7 +34,7 @@ export default (data = false) => {
     div.className = 'list-wrapper'
     inner.className = 'list-inner'
     buttonSend.innerHTML = 'SMS schicken'
-    buttonSend.className = 'send primary'
+    buttonSend.className = 'send'
     buttonDelete.innerHTML = 'Patient löschen'
     buttonDelete.className = 'doctor-remove icon icon-remove'
 
