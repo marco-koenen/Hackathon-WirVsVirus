@@ -58,6 +58,7 @@ select {
 
   &.is-error {
     background: $error;
+    color: $white;
 
     &::-webkit-input-placeholder {
       color: $white;

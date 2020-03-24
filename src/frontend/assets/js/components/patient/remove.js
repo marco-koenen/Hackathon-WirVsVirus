@@ -14,6 +14,7 @@ export default (event, onlyDelete = false) => {
   const wrapper = dom.hasClass(button, 'send') ? button.parentNode : button.parentNode.parentNode
   const userHash = button.getAttribute('user')
   const patients = storage.get('patients')
+  let removedPatient = []
   let doctor
 
   if (!patients) return
@@ -22,6 +23,7 @@ export default (event, onlyDelete = false) => {
   patients.forEach((patient, index) => {
     if (patient.user === userHash) {
       doctor = patient.doctor
+      removedPatient = patient
       patients.splice(index, 1)
     }
   })
@@ -40,5 +42,5 @@ export default (event, onlyDelete = false) => {
     return
   }
 
-  user.notification(userHash, doctor)
+  user.notification(userHash, doctor, removedPatient)
 }
