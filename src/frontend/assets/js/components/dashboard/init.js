@@ -6,10 +6,11 @@ import config from 'config'
 
 export default (data = false) => {
   const content = document.querySelector(config.userStatus)
-  const hash = data.hash
-  const phone = data.phone
   const status = data.status
-  const time = data.time_created
+
+  // const hash = data.hash
+  // const phone = data.phone
+  // const time = data.time_created
 
   console.warn(data)
 

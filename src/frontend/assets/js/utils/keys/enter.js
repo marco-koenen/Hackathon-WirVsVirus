@@ -13,7 +13,7 @@ export default event => {
   if (enter) {
     const wrapper = element.parentNode
     const button = wrapper.querySelector('.js-enter')
-    const buttonClickDuration = 150
+    const buttonClickDuration = 130
 
     button.click()
     button.classList.add(config.isHover)

@@ -1,9 +1,7 @@
 import config from 'config'
 import modal from '@components/modal'
-import button from '@components/button'
 import storage from '@utils/localStorage'
 import error from '@utils/error'
-import remove from './remove'
 import init from './init'
 
 //
@@ -12,7 +10,6 @@ import init from './init'
 
 export default () => {
   const lastName = document.querySelector(config.doctorLastName)
-  const firstName = document.querySelector(config.doctorFirstName)
   const title = document.querySelector(config.doctorTitle)
   const wrapper = lastName.parentNode
 

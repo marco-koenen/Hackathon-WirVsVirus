@@ -1,5 +1,4 @@
 import config from 'config'
-import button from '@components/button'
 import storage from '@utils/localStorage'
 import fallbackText from '@utils/fallbackText'
 import remove from './remove'
