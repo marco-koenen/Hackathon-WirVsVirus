@@ -55,6 +55,36 @@ select {
       overflow: hidden;
     }
   }
+
+  &.is-error {
+    background: $error;
+
+    &::-webkit-input-placeholder {
+      color: $white;
+    }
+
+    &:-moz-placeholder {
+      opacity: 1;
+      color: $white;
+    }
+
+    &::-moz-placeholder {
+      opacity: 1;
+      color: $white;
+    }
+
+    &:-ms-input-placeholder {
+      color: $white;
+    }
+
+    &::-ms-input-placeholder {
+      color: $white;
+    }
+
+    &::placeholder {
+      color: $white;
+    }
+  }
 }
 
 .select-wrapper {
