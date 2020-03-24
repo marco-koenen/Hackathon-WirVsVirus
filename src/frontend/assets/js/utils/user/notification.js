@@ -8,7 +8,6 @@ import button from '@components/button'
 
 export default (user, doctor = false) => {
   const message = doctor ? doctor + ' ' + config._messageCall : config._messageLink + ' ' + config.origin + '/#' + user
-  const body = {notify_text: message}
 
   // only log message for development
   if (config.localhost) {
@@ -20,7 +19,9 @@ export default (user, doctor = false) => {
     method: 'POST',
     headers: config.fetch.headers,
     mode: config.fetch.mode,
-    body: JSON.stringify(body)
+    body: JSON.stringify({
+      notify_text: message
+    })
   })
     .then(response => {
       return response.json()

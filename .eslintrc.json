@@ -36,8 +36,7 @@
       "allowTernary": true
     }],
     "no-unused-vars": ["error", {
-      "varsIgnorePattern": "modernizr|$",
-      "argsIgnorePattern": "$"
+      "varsIgnorePattern": "modernizr"
     }],
     "no-nested-ternary": 0,
     "lines-around-comment": [

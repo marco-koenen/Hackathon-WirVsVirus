@@ -4,7 +4,7 @@ import config from 'config'
 // update global variables
 // --------------------------------------------------
 
-export default (name, phone, user = null) => {
+export default () => {
   config.page = config.content.getAttribute('page')
   config.room = config.page === 'home' ? '' : config.room
   config.user = !config.hash ? null : config.user

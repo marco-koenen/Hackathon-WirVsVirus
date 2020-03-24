@@ -1,5 +1,3 @@
-import config from 'config'
-
 //
 // validates a phone number
 // --------------------------------------------------

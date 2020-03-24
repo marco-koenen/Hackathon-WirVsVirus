@@ -9,8 +9,8 @@ import config from 'config'
 import bindings from 'bindings'
 import page from '@utils/page'
 import user from '@utils/user'
-import doctor from '@utils/doctor'
-import patients from '@utils/patients'
+import doctor from '@components/doctor'
+import patient from '@components/patient'
 import poll from '@utils/poll'
 import polyfill from '@utils/polyfill'
 
@@ -38,10 +38,8 @@ const app = () => {
   // add dom bindings
   bindings()
 
-  // create patient list
-  patients.init()
-
-  // create doctor list
+  // create our lists
+  patient.init()
   doctor.init()
 
   // start polling to get user data

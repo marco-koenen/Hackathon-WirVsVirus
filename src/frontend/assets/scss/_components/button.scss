@@ -5,9 +5,9 @@
 button,
 .button {
   position: relative;
-  padding: 13px 25px;
+  padding: 15px 25px;
   background: $light;
-  color: $white;
+  color: $primary;
   border-radius: 22px;
   font-family: $font-semiBold;
   line-height: 14px;
@@ -23,8 +23,10 @@ button,
     clear: both;
   }
 
+  &.is-hover,
   &:hover {
     background: $primary;
+    color: $white;
 
     &.icon {
       &:after,

@@ -1,8 +1,4 @@
 import config from 'config'
-import modal from '@components/modal'
-import button from '@components/button'
-import storage from '@utils/localStorage'
-import remove from './remove'
 
 //
 // create a fallback text

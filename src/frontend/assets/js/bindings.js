@@ -1,7 +1,8 @@
 import config from 'config'
 import room from '@utils/room'
 import user from '@utils/user'
-import doctor from '@utils/doctor'
+import keys from '@utils/keys'
+import doctor from '@components/doctor'
 import button from '@components/button'
 
 //
@@ -28,4 +29,9 @@ export default () => {
   // handle button states
   const buttons = document.querySelector('button')
   buttons && buttons.addEventListener('click', event => button.state(event))
+
+  // submit search on 'enter' key
+  document.addEventListener('keypress', event => {
+    if (event.which === 13) keys.enter(event)
+  })
 }

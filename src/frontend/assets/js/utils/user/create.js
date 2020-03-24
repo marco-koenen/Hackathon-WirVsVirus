@@ -1,102 +1,96 @@
 import config from 'config'
 import storage from '@utils/localStorage'
-import patients from '@utils/patients'
+import patient from '@components/patient'
 import modal from '@components/modal'
 import button from '@components/button'
 import notification from './notification'
 import validate from '@utils/validate'
+import error from '@utils/error'
 
 //
 // create a new user
 // --------------------------------------------------
 
 export default () => {
-  const inputPhone = document.querySelector(config.userPhone)
-  const phone = inputPhone.value
-  const inputFirstName = document.querySelector(config.userFirstName)
-  const firstName = inputFirstName.value
-  const inputName = document.querySelector(config.userName)
-  const doctorSelect = document.querySelector(config.doctorSelect)
-  const doctor = doctorSelect.value
-  const wrapper = inputName.parentNode
-  const room = config.room
-  let name = inputName.value
+  const phone = document.querySelector(config.userPhone)
+  const firstName = document.querySelector(config.userFirstName)
+  const lastName = document.querySelector(config.userLastName)
+  const doctor = document.querySelector(config.doctorSelect)
+  const wrapper = phone.parentNode
 
   // required fields
-  if (!phone || !room || !name || !firstName) {
+  if (!firstName.value || !lastName.value || !phone.value || !config.room) {
     modal.create(false, config._missingField, wrapper)
     return
   }
 
   // force at least one doctor
-  if (!doctor) {
+  if (!doctor.value) {
     modal.create(false, config._doctorMissing, wrapper)
     return
   }
 
   // validate phone numnber
-  if (!validate.phone(phone)) {
+  if (!validate.phone(phone.value)) {
     modal.create(false, config._wrongPhone, wrapper)
     return
   }
 
-  const body = {
-    phone: phone,
-    room: room
-  }
-
+  // create new user
   fetch(config.fetch.endpoint + 'user/create', {
     method: 'POST',
     headers: config.fetch.headers,
     mode: config.fetch.mode,
-    body: JSON.stringify(body)
+    body: JSON.stringify({
+      phone: phone.value,
+      room: config.room
+    })
   })
     .then(response => {
       return response.json()
     })
-    .then(data => {
-      const user = data.user_hash
+    .then(response => {
+      const user = response.user_hash
+      const name = firstName.value + ' ' + lastName.value
       const time = new Date(Date.now())
 
-      if (user) {
-        let storagePatients = storage.get('patients')
-        name = firstName + ' ' + name
+      // remove button state
+      button.state()
 
-        // create dom elements
-        patients.create(name, phone, user, doctor, time)
-
-        // remove error states
-        inputPhone.classList.remove(config.isError)
-        inputName.classList.remove(config.isError)
-        inputFirstName.classList.remove(config.isError)
-        doctorSelect.classList.remove(config.isError)
-
-        // clear inputs
-        inputPhone.value = ''
-        inputName.value = ''
-        inputFirstName.value = ''
-
-        // save the user to local storage
-        storagePatients = storagePatients === null ? [] : storagePatients
-        storagePatients.push({
-          user: user,
-          name: name,
-          phone: phone,
-          doctor: doctor,
-          time: time
-        })
-
-        storage.set('patients', storagePatients)
-
-        // send new patient his dashboard link
-        notification(user)
+      // something went wrong, we did not get the user hash
+      if (!user) {
+        modal.create(false, config._errorGeneral)
+        return
       }
 
-      button.state()
+      // save the user to local storage
+      let storagePatients = storage.get('patients')
+      const data = {
+        user: user,
+        name: name,
+        phone: phone.value,
+        doctor: doctor.value,
+        time: time
+      }
+
+      storagePatients = storagePatients === null ? [] : storagePatients
+      storagePatients.push(data)
+      storage.set('patients', storagePatients)
+
+      // create patient dom element
+      patient.init([data])
+
+      // send new patient his dashboard link
+      notification(user)
+
+      // remove error states
+      error.remove(wrapper)
     })
-    .catch(error => {
+
+    // show error message to user
+    .catch(err => {
       modal.create(false, config._errorGeneral)
       button.state()
-      console.warn(error)
+      console.warn(err)
     })
 }
