@@ -1,12 +1,14 @@
 import config from 'config'
 import modal from '@components/modal'
 import button from '@components/button'
+import patient from '@components/patient'
+import storage from '@utils/localStorage'
 
 //
 // send user a notification
 // --------------------------------------------------
 
-export default (user, doctor = false) => {
+export default (user, doctor = null, removedPatient = null) => {
   const message = doctor ? doctor + ' ' + config._messageCall : config._messageLink + ' ' + config.origin + '/#' + user
 
   // only log message for development
@@ -28,7 +30,22 @@ export default (user, doctor = false) => {
     })
     .then(data => {
       const success = data.success === 'sent'
-      modal.create(success, success ? config._messageSuccess : config._errorGeneral)
+
+      if (success) {
+        modal.create(true, config._messageSuccess)
+      } else {
+        modal.create(false, config._messageError)
+
+        // create removed patient again
+        if (removedPatient) {
+          let storagePatients = storage.get('patients')
+
+          storagePatients.push(removedPatient)
+          storage.set('patients', storagePatients)
+          patient.init([removedPatient])
+        }
+      }
+
       button.state()
     })
     .catch(error => {
