@@ -1,1 +1,1 @@
-nix-build python-env.nix -o python-environment
+nix-build nix/python-env.nix -o python-environment
