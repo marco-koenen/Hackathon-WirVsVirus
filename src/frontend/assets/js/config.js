@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 //
 // global settings
 // --------------------------------------------------
@@ -65,7 +67,7 @@ const config = {
   _errorGeneral: 'Es ist leider ein Problem aufgetreten. Bitte versuchen Sie es später noch einmal.',
   _messageLink: 'Sie wurden in die Warteschlange aufgenommen. Den aktuellen Status finden Sie unter:',
   _messageCall: 'empfängt Sie jetzt. Bitte betreten Sie die Praxis.',
-  _messageError: 'Es ist leider ein Problem mit dem SMS-Provider aufgetreten. Bitte rufen Sie den Patienten an.',
+  _messageError: 'Es ist leider ein Problem mit dem SMS-Provider aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie den Patienten an.',
   _messageSuccess: 'Der Patient hat eine SMS erhalten.',
   _patientDelete: 'Der Patient wurde erfolgreich gelöscht.',
   _doctorExists: 'Dieser Arzt ist bereits in der Liste.',
