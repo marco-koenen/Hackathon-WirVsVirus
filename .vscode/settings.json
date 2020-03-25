@@ -81,6 +81,7 @@
   "files.exclude": {
     ".vscode/": true,
     ".github/": true,
+    ".idea/": true,
     "build/": true,
     "gulpfile.js/": true,
     "node_modules/": true,
