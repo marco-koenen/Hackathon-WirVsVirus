@@ -13,8 +13,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <style>body{width:100%;color:#000;font-family:EuclidCircularA-Medium,Helvetica,Arial,sans-serif;font-weight:400;line-height:19px;font-size:16px;background-color:#fff}.overlay{position:fixed;display:block;left:0;top:0;right:0;bottom:0;width:100%;height:100%;opacity:1;background:#fff;-webkit-transition:opacity .35s cubic-bezier(.75,.1,.175,1),visibility .35s cubic-bezier(.75,.1,.175,1);transition:opacity .35s cubic-bezier(.75,.1,.175,1),visibility .35s cubic-bezier(.75,.1,.175,1);z-index:1}.overlay.is-close{opacity:0;visibility:hidden}</style>
-    <link rel="preload" href="/assets/css/build.css?rel=4807422" as="style" onload="this.rel=&quot;stylesheet&quot;">
-    <link rel="preload" href="/assets/css/fonts.css?rel=4807422" as="style" onload="this.rel=&quot;stylesheet&quot;">
+    <link rel="preload" href="/assets/css/build.css?rel=3055441" as="style" onload="this.rel=&quot;stylesheet&quot;">
+    <link rel="preload" href="/assets/css/fonts.css?rel=3055441" as="style" onload="this.rel=&quot;stylesheet&quot;">
     <script>
       (function(w){"use strict";var loadCSS=function(href,before,media){var doc=w.document;var ss=doc.createElement("link");var ref;if(before){ref=before}else{var refs=(doc.body||doc.getElementsByTagName("head")[0]).childNodes;ref=refs[refs.length-1]}var sheets=doc.styleSheets;ss.rel="stylesheet";ss.href=href;ss.media="only x";function ready(cb){if(doc.body){return cb()}setTimeout(function(){ready(cb)})}ready(function(){ref.parentNode.insertBefore(ss,(before?ref:ref.nextSibling))});var onloadcssdefined=function(cb){var resolvedHref=ss.href;var i=sheets.length;while(i--){if(sheets[i].href===resolvedHref){return cb()}}setTimeout(function(){onloadcssdefined(cb)})};function loadCB(){if(ss.addEventListener){ss.removeEventListener("load",loadCB)}ss.media=media||"all"}if(ss.addEventListener){ss.addEventListener("load",loadCB)}ss.onloadcssdefined=onloadcssdefined;onloadcssdefined(loadCB);return ss};if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}else{w.loadCSS=loadCSS}}(typeof global!=="undefined"?global:this));
       (function(w){if(!w.loadCSS){return}var rp=loadCSS.relpreload={};rp.support=function(){try{return w.document.createElement("link").relList.supports("preload")}catch(e){return!1}};rp.poly=function(){var links=w.document.getElementsByTagName("link");for(var i=0;i<links.length;i++){var link=links[i];if(link.rel==="preload"&&link.getAttribute("as")==="style"){w.loadCSS(link.href,link,link.getAttribute("media"));link.rel=null}}};if(!rp.support()){rp.poly();var run=w.setInterval(rp.poly,300);if(w.addEventListener){w.addEventListener("load",function(){rp.poly();w.clearInterval(run)})}if(w.attachEvent){w.attachEvent("onload",function(){w.clearInterval(run)})}}}(this));
@@ -22,10 +22,21 @@
     </script>
     <style></style>
     <noscript>
-      <link rel="stylesheet" href="assets/css/main.css?rel=4807422">
-      <link rel="stylesheet" href="assets/css/fonts.css?rel=4807422">
+      <link rel="stylesheet" href="assets/css/main.css?rel=3055441">
+      <link rel="stylesheet" href="assets/css/fonts.css?rel=3055441">
       <style></style>
     </noscript>
+    <script>
+      //- force https
+      if (!(window.location.host.startsWith('localhost')) && (window.location.protocol != 'https:')) {
+        window.location.protocol = "https";
+      }
+      
+      //- force www
+      if (!(window.location.host.startsWith('localhost')) && !window.location.host.startsWith('www')){
+        window.location = window.location.protocol + '//' + 'www.' + window.location.host + window.location.pathname;
+      }
+    </script>
   </head>
 </html>
 <body class="is-animating">
@@ -110,5 +121,5 @@
     <footer>
     </footer>
   </div>
-  <script src="/assets/js/build.js?rel=4807422" defer="defer"></script>
+  <script src="/assets/js/build.js?rel=3055441" defer="defer"></script>
 </body>
