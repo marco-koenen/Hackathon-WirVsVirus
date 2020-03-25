@@ -11,8 +11,8 @@ import storage from '@utils/localStorage'
 export default (user, doctor = null, removedPatient = null) => {
   const message = doctor ? doctor + ' ' + config._messageCall : config._messageLink + ' ' + config.origin + '/#' + user
 
-  // only log message for development
-  if (config.localhost) {
+  // only log message
+  if (config.localhost || !config.roomActivated) {
     console.warn(message)
     return
   }

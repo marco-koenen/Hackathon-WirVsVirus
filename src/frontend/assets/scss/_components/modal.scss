@@ -4,6 +4,7 @@
 
 .modal-wrapper {
   position: fixed;
+  display: block;
   top: 45px;
   right: 20px;
   z-index: 50;
@@ -29,6 +30,19 @@
       opacity: 1;
       transition: transform 0.65s $ease-transform, opacity 0.35s $ease-opacity;
       transform: translateY(0);
+    }
+
+    &.modal-room-activate {
+      max-width: 320px;
+      background: $grey;
+      pointer-events: all;
+
+      button {
+        float: none;
+        margin-top: 20px;
+        display: flex;
+        margin-left: auto;
+      }
     }
 
     p {

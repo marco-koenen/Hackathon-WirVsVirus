@@ -11,7 +11,9 @@ const config = {
   lang: document.documentElement.lang,
   localhost: window.location.hostname === 'localhost',
   room: localStorage.getItem('room') || null,
+  roomActivated: localStorage.getItem('roomActivated') || false,
   user: localStorage.getItem('user') || null,
+  mail: 'mako(at)4thmotion.com',
   fetch: {
     endpoint: 'https://backend.un-chain.us/',
     mode: 'cors',
@@ -48,6 +50,7 @@ const config = {
   doctorSelect: '.doctor-select',
   roomCreate: '.room-create',
   roomRemove: '.room-remove',
+  roomActivate: '.room-activate',
   userCreate: '.user-create',
   userFirstName: 'input.user-first-name',
   userLastName: 'input.user-name',
@@ -77,7 +80,8 @@ const config = {
   _statusWaiting: 'Sie befinden sich aktuell in der Warteschlange.',
   _statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis',
   _waitingTime: 'Wartezeit:',
-  _wrongPhone: 'Bitte geben Sie eine gültige Handynummer ein. (z.B. +491758462456)'
+  _wrongPhone: 'Bitte geben Sie eine gültige Handynummer ein. (z.B. +491758462456)',
+  _createRoom: 'TEst'
 }
 
 export default config

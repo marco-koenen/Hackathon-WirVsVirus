@@ -278,28 +278,6 @@ Detects support for SVG in `<embed>` or `<object>` elements.
   var oldSyntax = 'supportsCSS' in window;
   Modernizr.addTest('supports', newSyntax || oldSyntax);
 
-/*!
-{
-  "name": "ES6 Arrow Functions",
-  "property": "arrow",
-  "authors": ["Vincent Riemer"],
-  "tags": ["es6"]
-}
-!*/
-/* DOC
-Check if browser implements ECMAScript 6 Arrow Functions per specification.
-*/
-
-  Modernizr.addTest('arrow', function() {
-    try {
-      // eslint-disable-next-line
-      eval('()=>{}');
-    } catch (e) {
-      return false;
-    }
-    return true;
-  });
-
 
   /**
    * If the browsers follow the spec, then they would expose vendor-specific styles as:
@@ -871,6 +849,28 @@ Check if browser implements ECMAScript 6 Arrow Functions per specification.
 
   //https://github.com/Modernizr/Modernizr/issues/250
   Modernizr.addTest('userselect', testAllProps('userSelect', 'none', true));
+
+/*!
+{
+  "name": "ES6 Arrow Functions",
+  "property": "arrow",
+  "authors": ["Vincent Riemer"],
+  "tags": ["es6"]
+}
+!*/
+/* DOC
+Check if browser implements ECMAScript 6 Arrow Functions per specification.
+*/
+
+  Modernizr.addTest('arrow', function() {
+    try {
+      // eslint-disable-next-line
+      eval('()=>{}');
+    } catch (e) {
+      return false;
+    }
+    return true;
+  });
 
 
   // Run each test
