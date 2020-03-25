@@ -9,9 +9,7 @@ import storage from '@utils/localStorage'
 // --------------------------------------------------
 
 export default (user, doctor = null, removedPatient = null) => {
-  const message = doctor
-    ? doctor + ' ' + config._messageCall
-    : config._messageLink + ' https://www.' + window.location.hostname + '/#' + user
+  const message = doctor ? doctor + ' ' + config._messageCall : config._messageLink + ' ' + config.origin + '/#' + user
 
   // only log message for development
   if (config.localhost) {
