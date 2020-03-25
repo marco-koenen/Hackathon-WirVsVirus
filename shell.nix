@@ -1,10 +1,9 @@
-with import <nixpkgs> {};
-
 let
-myFlask = import ./patched-flask.nix;
-pythonEnv = import ./python-env.nix;
+  patchedWerkzeugOverlay = import ./nix/patched-werkzeug-overlay.nix;
+  pkgs = import <nixpkgs> { overlays = [patchedWerkzeugOverlay ]; };
+  pythonEnv = import ./nix/python-env.nix;
 in
-mkShell {
-  buildInputs = [myFlask pythonEnv];
+pkgs.mkShell {
+  buildInputs = [pkgs.python38Packages.flask pythonEnv];
 }
 

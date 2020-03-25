@@ -11,4 +11,10 @@ myWerkzeug = python38Packages.werkzeug.overrideAttrs (oldAttrs: rec {
   doCheck = false;
 });
 in
-python38Packages.flask.override { werkzeug = myWerkzeug; }
+pkgsself: pkgssuper: {
+  python38 = pkgssuper.python38.override {
+    packageOverrides = self: super: {
+      werkzeug = myWerkzeug;
+    };
+  };
+}
