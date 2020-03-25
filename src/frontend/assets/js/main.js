@@ -52,12 +52,6 @@ const app = () => {
 
   // start polling to get user data
   poll.start()
-
-  // only log message for development
-  if (config.localhost) {
-    console.log('room: ' + config.room)
-    console.log('user: ' + config.user)
-  }
 }
 
 // initiate dom

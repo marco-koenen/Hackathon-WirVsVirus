@@ -14,6 +14,7 @@ export default (user, doctor = null, removedPatient = null) => {
   // only log message
   if (config.localhost || !config.roomActivated) {
     console.warn(message)
+    console.error('The message was not sent')
     return
   }
 

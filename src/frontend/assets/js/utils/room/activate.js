@@ -22,6 +22,6 @@ export default () => {
 
   // TODO: disable SMS send button when the room has not been activated
   if (!config.roomActivated) {
-    console.warn('This room has not yet been activated. No message can be sent')
+    console.warn('This room has not yet been activated. No message can be sent.')
   }
 }
