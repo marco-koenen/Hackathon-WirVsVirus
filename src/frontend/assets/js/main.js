@@ -28,8 +28,6 @@ const app = () => {
   polyfill.closest()
   polyfill.append()
 
-  console.log('https://www.' + window.location.hostname)
-
   // get user hash from url
   user.hash()
 
