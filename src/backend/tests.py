@@ -10,8 +10,11 @@ HASH_SIZE = 32
 example_phone = "491706994326"
 example_phone2 = "4917513449251"
 
-from backend import app
+#FIXME! how to import the app/config here?
 
+class app():
+    pass
+app.config = {"DEBUG_USER": "debuguser", "DEBUG_PASSWORD": "random"}
 
 def get_new_room_hash():
     res = requests.post(f"{HOST}/room/create")
@@ -131,7 +134,7 @@ class TestBackendAPICalls(unittest.TestCase):
 
 class TestPhoneNumberVerifier(unittest.TestCase):
     def test_phone_number_cleaner(self):
-        from .validphone import cleaned_number
+        from validphone import cleaned_number
         test_cases = ["  004916083394427 ", "+49 170 839 59 30",
                       "Handy: +49/174-33-33-665", "4917039572839"]
 
@@ -144,7 +147,7 @@ class TestPhoneNumberVerifier(unittest.TestCase):
                     f"incorrectly cleaned: cleaned_number('{num}') != '{cleaned_results[idx]}'"
 
     def test_is_valid_phone_number(self):
-        from .validphone import is_valid_phone_number, check_validity_phone
+        from validphone import is_valid_phone_number, check_validity_phone
         validfmt_num = ['491707528531', '4915112732853']
         invalidfmt_num_country = ['11707528531', '4215112732853']
         invalidfmt_num_provider = ['49892356439']
