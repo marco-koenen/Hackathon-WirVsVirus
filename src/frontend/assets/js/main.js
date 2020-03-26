@@ -10,7 +10,6 @@ import bindings from 'bindings'
 import page from '@utils/page'
 import user from '@utils/user'
 import poll from '@utils/poll'
-import room from '@utils/room'
 import polyfill from '@utils/polyfill'
 import doctor from '@components/doctor'
 import patient from '@components/patient'
@@ -39,9 +38,6 @@ const app = () => {
 
   // open 'activate your room' modal
   config.room && modal.open('modal-room-activate')
-
-  // activate a room
-  room.activate()
 
   // add dom bindings
   bindings()
