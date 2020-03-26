@@ -9,7 +9,7 @@ export default (className) => {
   const modal = wrapper.querySelector('.' + className)
   const delay = 0
 
-  if (!wrapper.length) return
+  if (!modal) return
 
   setTimeout(() => modal.classList.add(config.isOpen), delay)
 }
