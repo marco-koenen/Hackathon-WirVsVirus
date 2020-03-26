@@ -216,7 +216,7 @@ def disable_otp(otp):
     otp.save()
     return "success"
 
-@app.route("otplog")
+@app.route("/otplog")
 @auth.login_required
 def get_otplog():
     with open("otplog.txt", "r") as f:
