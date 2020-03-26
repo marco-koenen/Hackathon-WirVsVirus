@@ -72,6 +72,7 @@ const config = {
   _messageCall: 'empfängt Sie jetzt. Bitte betreten Sie die Praxis.',
   _messageError: 'Es ist leider ein Problem mit dem SMS-Provider aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie den Patienten an.',
   _messageSuccess: 'Der Patient hat eine SMS erhalten.',
+  _roomNotActivated: 'Es können keine SMS verschickt werden, da dieser Warteraum noch nicht aktiviert ist.',
   _patientDelete: 'Der Patient wurde erfolgreich gelöscht.',
   _doctorExists: 'Dieser Arzt ist bereits in der Liste.',
   _doctorMissing: 'Sie müssen mindestens einen Arzt erstellen.',
