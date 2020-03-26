@@ -159,9 +159,9 @@ def is_room_activated(room_hash):
     room = Room.get_or_none(hash=room_hash)
 
     if not room:
-        return jsonify(success="invalidroom")
+        return jsonify(activated="invalidroom")
 
-    if (room.sms_activated):
+    if room.sms_activated:
         return jsonify(activated="True")
 
     return jsonify(activated="False")
