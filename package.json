@@ -19,9 +19,6 @@
     "lint": "./node_modules/.bin/eslint src/**/*.js --color --quiet --fix",
     "postlint": "./node_modules/.bin/stylelint src/**/*.scss --color --quiet --fix"
   },
-  "precommit": {
-    "run": "lint"
-  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
