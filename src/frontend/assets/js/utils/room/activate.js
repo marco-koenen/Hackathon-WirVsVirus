@@ -17,30 +17,37 @@ export default () => {
   }
 
   fetch(config.fetch.endpoint + 'room/' + config.room + '/activate', {
-    method: 'GET',
+    method: 'POST',
     headers: config.fetch.headers,
-    mode: config.fetch.mode
+    mode: config.fetch.mode,
+    body: JSON.stringify({
+      otp: code
+    })
   })
     .then((response) => {
       return response.json()
     })
     .then((response) => {
-      const success = response.success === 'success'
+      const success = response.success === 'activated'
+      const invalid = response.success === 'invalidotp'
 
       if (success) {
         modal.remove('modal-room-activate', 130)
+        modal.create(true, config._roomActivated)
         config.roomActivated = true
-        localStorage.setItem('roomActivated', config.roomActivated)
-        console.warn('room activated: ' + room)
       }
 
-      console.log(response.success)
+      if (invalid) {
+        modal.create(false, config._optInvalid)
+        config.roomActivated = false
+      }
 
+      localStorage.setItem('roomActivated', config.roomActivated)
       button.state()
     })
     .catch((error) => {
       console.warn('This room has not yet been activated. No message can be sent.')
-      modal.create(false, config._errorGeneral)
+      modal.create(false, config._roomCouldNotActivated)
       button.state()
       console.warn(error)
     })
