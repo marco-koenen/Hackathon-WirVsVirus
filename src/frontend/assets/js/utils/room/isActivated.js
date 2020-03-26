@@ -10,25 +10,27 @@ export default () => {
   const roomActivated = (activated) => {
     config.roomActivated = activated
     localStorage.setItem('roomActivated', config.roomActivated)
-    if (!activated) modal.open('modal-room-activate')
+    if (!activated || activated === 'false') modal.open('modal-room-activate')
   }
 
-  fetch(config.fetch.endpoint + 'room/' + config.room + '/activated', {
-    method: 'GET',
-    headers: config.fetch.headers,
-    mode: config.fetch.mode
-  })
-    .then((response) => {
-      return response.json()
-    })
-    .then((response) => {
-      console.log(response)
-      const activated = response.activated === true
+  // TODO: backend fetch is currently not available
+  roomActivated(config.roomActivated)
 
-      roomActivated(!!activated)
-    })
-    .catch((error) => {
-      roomActivated(false)
-      console.warn(error)
-    })
+  // fetch(config.fetch.endpoint + 'room/' + config.room + '/activated', {
+  //   method: 'POST',
+  //   headers: config.fetch.headers,
+  //   mode: config.fetch.mode,
+  //   body: JSON.stringify({})
+  // })
+  //   .then((response) => {
+  //     return response.json()
+  //   })
+  //   .then((response) => {
+  //     const activated = response.activated === true
+  //     roomActivated(!!activated)
+  //   })
+  //   .catch((error) => {
+  //     roomActivated(false)
+  //     console.warn(error)
+  //   })
 }
