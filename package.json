@@ -4,6 +4,10 @@
   "description": "",
   "author": "Marco Koenen, Felix Scheinost, Max Duell",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marco-koenen/Hackathon-WirVsVirus"
+  },
   "scripts": {
     "prestart": "git checkout develop -q",
     "start": "npm run build && gulp",
