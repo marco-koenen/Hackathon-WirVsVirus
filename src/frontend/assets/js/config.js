@@ -39,6 +39,7 @@ const config = {
   // global classNames
   view: '.view',
   modal: '.modal-wrapper',
+  modalClose: '.modal-close',
   userDashboard: '.user-dashboard',
   waitingRoom: '.waiting-room',
   createWaitingRoom: '.create-waiting-room',
