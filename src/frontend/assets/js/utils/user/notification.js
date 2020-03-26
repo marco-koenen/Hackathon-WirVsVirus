@@ -11,10 +11,22 @@ import storage from '@utils/localStorage'
 export default (user, doctor = null, removedPatient = null) => {
   const message = doctor ? doctor + ' ' + config._messageCall : config._messageLink + ' ' + config.origin + '/#' + user
 
-  // only log message
+  // create removed patient again
+  const createPatientAgain = () => {
+    if (!removedPatient) return
+    let storagePatients = storage.get('patients')
+
+    storagePatients.push(removedPatient)
+    storage.set('patients', storagePatients)
+    patient.init([removedPatient])
+  }
+
+  // message cannot be sent because the room is not yet activated
   if (config.localhost || !config.roomActivated) {
+    modal.create(false, config._roomNotActivated)
+    createPatientAgain()
     console.warn(message)
-    console.error('The message was not sent')
+    console.error('The message was not sent.')
     return
   }
 
@@ -37,15 +49,7 @@ export default (user, doctor = null, removedPatient = null) => {
         modal.create(true, config._messageSuccess)
       } else {
         modal.create(false, data.success === 'notactivated' ? config._roomNotActivated : config._messageError)
-
-        // create removed patient again
-        if (removedPatient) {
-          let storagePatients = storage.get('patients')
-
-          storagePatients.push(removedPatient)
-          storage.set('patients', storagePatients)
-          patient.init([removedPatient])
-        }
+        createPatientAgain() // create removed patient again
       }
 
       button.state()
