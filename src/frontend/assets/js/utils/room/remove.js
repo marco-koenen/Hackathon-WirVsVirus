@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import config from 'config'
 import page from '@utils/page'
 import storage from '@utils/localStorage'
@@ -7,17 +8,21 @@ import storage from '@utils/localStorage'
 // --------------------------------------------------
 
 export default () => {
-  storage.set('patients', null)
-  localStorage.removeItem('room')
-  localStorage.removeItem('user')
-  config.room = ''
-  config.user = ''
-  page.view()
+  const prompt = window.confirm(config._roomDelete)
 
-  // clear the waiting room
-  const patients = document.querySelectorAll('.patient-wrapper')
-  const doctors = document.querySelector(config.doctorSelect).querySelectorAll('option')
+  if (prompt) {
+    storage.set('patients', null)
+    localStorage.removeItem('room')
+    localStorage.removeItem('user')
+    config.room = ''
+    config.user = ''
+    page.view()
 
-  patients.forEach(patient => patient.remove())
-  doctors.forEach(doctor => doctor.remove())
+    // clear the waiting room
+    const patients = document.querySelectorAll('.patient-wrapper')
+    const doctors = document.querySelector(config.doctorSelect).querySelectorAll('option')
+
+    patients.forEach((patient) => patient.remove())
+    doctors.forEach((doctor) => doctor.remove())
+  }
 }
