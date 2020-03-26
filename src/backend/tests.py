@@ -10,7 +10,7 @@ HASH_SIZE = 32
 example_phone = "491706994326"
 example_phone2 = "4917513449251"
 
-from .backend import app
+from backend import app
 
 
 def get_new_room_hash():
