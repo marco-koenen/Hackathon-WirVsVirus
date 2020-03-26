@@ -73,7 +73,7 @@ const config = {
   _messageCall: 'empfängt Sie jetzt. Bitte betreten Sie die Praxis.',
   _messageError: 'Es ist leider ein Problem mit dem SMS-Provider aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie den Patienten an.',
   _messageSuccess: 'Der Patient hat eine SMS erhalten.',
-  _roomDelete: 'Sind Sie sicher? Alle Daten werden gelösscht.',
+  _roomDelete: 'Sind Sie sicher? Alle Daten werden gelöscht.',
   _roomActivated: 'Der Warteraum wurde erfolgreich freigeschaltet.',
   _roomNotActivated: 'Es können keine SMS verschickt werden, da dieser Warteraum noch nicht aktiviert ist.',
   _roomCouldNotActivated: 'Ihr Warteraum konnte nicht aktiviert werden. Bitte kontaktieren Sie unseren Support!',
@@ -88,7 +88,7 @@ const config = {
   _statusReady: 'Sie wurden aufgerufen. Bitte betreten Sie die Praxis.',
   _waitingTime: 'Wartezeit:',
   _wrongPhone: 'Bitte geben Sie eine gültige Handynummer ein. (z.B. +491758462456)',
-  _optInvalid: 'Ihr eingebener Code ist nicht falsch.'
+  _optInvalid: 'Ihr eingebener Code ist falsch.'
 }
 
 export default config
