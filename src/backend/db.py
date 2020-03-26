@@ -2,6 +2,7 @@ from peewee import *
 import os
 import logging
 from datetime import datetime
+from playhouse.migrate import SqliteMigrator
 
 db = SqliteDatabase('app.sqlite3')
 
@@ -18,6 +19,8 @@ class BaseModel(Model):
 class Room(BaseModel):
     id = AutoField()
     hash = FixedCharField(32, null=False, unique=True, default=random_hash)
+    sms_activated = BooleanField(null=False, default=lambda: False)
+    credits = IntegerField(null=False, default=lambda: 0)
 
 
 class User(BaseModel):

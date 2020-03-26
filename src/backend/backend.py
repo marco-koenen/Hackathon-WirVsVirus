@@ -65,15 +65,27 @@ def get_user(user_hash):
 @cross_origin()
 def call_user(user_hash):
     user = User.get_or_none(hash=user_hash)
+
     if not user:
         return jsonify(success="usererror")
 
+
     try:
         json = request.get_json(force=True)
-        notify_text = json.get("notify_text", app.config["DEFAULT_NOTIFY_TEXT"])
 
     except:
-        notify_text = app.config["DEFAULT_NOTIFY_TEXT"]
+        return jsonify(success="jsonerror")
+
+    notify_text = json.get("notify_text", app.config["DEFAULT_NOTIFY_TEXT"])
+
+    req_room_hash = json.get("room_hash", None)
+    user_room_hash = User.room.hash
+    if not req_room_hash == user_room_hash:
+        return jsonify(success="roominvalid")
+
+    if not user.room.sms_activated:
+        return jsonify(success="notactivated")
+
 
     if do_send_sms(user.phone, notify_text):
         return jsonify(success="sent")
@@ -112,3 +124,22 @@ def verify_password(username, password):
 def get_smslog():
     with open("smslog.txt", "r") as f:
         return Response(f.read(), mimetype="text/plain")
+
+
+@app.route("/room/<room_hash>/activate_debug", methods=["GET"])
+@auth.login_required
+def activate_room_debug(room_hash):
+    room = Room.get_or_none(hash=room_hash)
+
+    if not room:
+        return jsonify(success="invalidroom")
+
+    activate = bool(int(request.args.get("activate", "1")))
+
+    room.sms_activated = activate
+    room.save()
+    if activate:
+        return jsonify(success="activated")
+    else:
+        return jsonify(success="deactivated")
+
