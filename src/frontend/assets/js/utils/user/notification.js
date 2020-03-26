@@ -46,10 +46,10 @@ export default (user, doctor = null, removedPatient = null) => {
       room_hash: config.room
     })
   })
-    .then((response) => {
+    .then(response => {
       return response.json()
     })
-    .then((data) => {
+    .then(data => {
       const success = data.success === 'sent'
 
       if (success) {
@@ -61,7 +61,7 @@ export default (user, doctor = null, removedPatient = null) => {
 
       button.state()
     })
-    .catch((error) => {
+    .catch(error => {
       modal.create(false, config._errorGeneral)
       button.state()
       console.warn(error)

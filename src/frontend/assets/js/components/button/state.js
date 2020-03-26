@@ -4,7 +4,7 @@ import config from 'config'
 // handle button state
 // --------------------------------------------------
 
-export default (event) => {
+export default event => {
   // add isLoading state when the button was clicked
   if (event) {
     event.target.classList.add(config.isLoading)

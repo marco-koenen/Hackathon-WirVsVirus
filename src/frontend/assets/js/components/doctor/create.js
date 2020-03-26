@@ -27,7 +27,7 @@ export default () => {
   const options = select.querySelectorAll('option')
   let doctorExists = false
 
-  options.forEach((option) => {
+  options.forEach(option => {
     if (option.value === doctor) doctorExists = true
   })
 

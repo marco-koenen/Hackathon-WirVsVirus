@@ -37,10 +37,10 @@ export default () => {
 
   // handle button states
   const buttons = document.querySelector('button')
-  buttons && buttons.addEventListener('click', (event) => button.state(event))
+  buttons && buttons.addEventListener('click', event => button.state(event))
 
   // submit search on 'enter' key
-  document.addEventListener('keypress', (event) => {
+  document.addEventListener('keypress', event => {
     if (event.which === 13) keys.enter(event)
   })
 }

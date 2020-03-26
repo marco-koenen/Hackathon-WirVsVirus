@@ -2,7 +2,7 @@
 // start a timer
 // --------------------------------------------------
 
-export default (time) => {
+export default time => {
   let date = time
 
   if (typeof date !== 'object') {

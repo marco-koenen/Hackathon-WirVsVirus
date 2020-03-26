@@ -5,12 +5,12 @@ import validate from '@utils/validate'
 // add error class to elements
 // --------------------------------------------------
 
-export default (wrapper) => {
+export default wrapper => {
   if (!wrapper) return
 
   const fields = wrapper.querySelectorAll('input, select')
 
-  fields.forEach((field) => {
+  fields.forEach(field => {
     const value = field.value
     const isPhone = field.type === 'tel'
 

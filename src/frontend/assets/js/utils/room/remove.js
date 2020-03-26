@@ -23,8 +23,8 @@ export default () => {
     const patients = document.querySelectorAll('.patient-wrapper')
     const doctors = document.querySelector(config.doctorSelect).querySelectorAll('option')
 
-    patients.forEach((patient) => patient.remove())
-    doctors.forEach((doctor) => doctor.remove())
+    patients.forEach(patient => patient.remove())
+    doctors.forEach(doctor => doctor.remove())
 
     // refresh page
     setTimeout(() => window.location.reload(), config.pageTransitionTime)

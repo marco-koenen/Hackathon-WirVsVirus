@@ -52,10 +52,10 @@ export default () => {
       room: config.room
     })
   })
-    .then((response) => {
+    .then(response => {
       return response.json()
     })
-    .then((response) => {
+    .then(response => {
       const invalid = response.success === 'invalid-room'
       const user = response.user_hash
       const name = firstName.value + ' ' + lastName.value
@@ -101,7 +101,7 @@ export default () => {
     })
 
     // show error message to user
-    .catch((err) => {
+    .catch(err => {
       modal.create(false, config._errorGeneral)
       button.state()
       console.warn(err)
