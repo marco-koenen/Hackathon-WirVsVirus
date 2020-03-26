@@ -13,7 +13,7 @@ export default (success, message, wrapper) => {
   const animationTime = 400
 
   // check if some input fields need an error class
-  error.add(wrapper)
+  wrapper && error.add(wrapper)
 
   // create the modal
   div.className += 'modal '

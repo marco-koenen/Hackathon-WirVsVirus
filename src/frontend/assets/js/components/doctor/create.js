@@ -10,22 +10,24 @@ import init from './init'
 
 export default () => {
   const lastName = document.querySelector(config.doctorLastName)
+  const firstName = document.querySelector(config.doctorFirstName)
   const title = document.querySelector(config.doctorTitle)
   const wrapper = lastName.parentNode
 
-  // force at least the last name
-  if (!lastName.value) {
+  // force at least the last name and we need
+  // the title when no first name is given
+  if (!lastName.value || (!firstName.value && title.value === 'null')) {
     modal.create(false, config._missingField, wrapper)
     return
   }
 
   // check if doctor is already in list
-  const doctor = title.value + ' ' + lastName.value
+  const doctor = (title.value === 'null' ? firstName.value : title.value) + ' ' + lastName.value
   const select = document.querySelector(config.doctorSelect)
   const options = select.querySelectorAll('option')
   let doctorExists = false
 
-  options.forEach(option => {
+  options.forEach((option) => {
     if (option.value === doctor) doctorExists = true
   })
 

@@ -20,7 +20,7 @@
       //- patient list
       .col-12.col-xl-11.patient-list
         label Digitaler Warteraum
-        p Aktuell sind keine Patienten eingetragen
+        p Aktuell sind keine Patienten eingetragen.
         //- label.patient-count 3 Patienten
 
       //- create doctor
@@ -29,6 +29,7 @@
           label(for='doctor-name') Ärzte hinzufügen
           .select-wrapper
             select.doctor-title
+              option(value='null', selected='selected') Kein Titel
               option(value='Dr.') Dr.
               option(value='Dr. med.') Dr. med.
               option(value='Prof.') Prof.
@@ -41,7 +42,10 @@
       //- doctor list
       .col-12.col-lg-9.col-xl-7.doctor-list
         label Ärzteliste
-        p Aktuell sind keine Ärzte eingetragen
+        p Aktuell sind keine Ärzte eingetragen.
 
-
-    //- button.room-remove.primary Warteraum entfernen
+      //- delete data
+      .col-12.col-lg-9.col-xl-7.room-remove
+        label Daten löschen
+        p Hier kannst du deinen Warteraum und alle gespeicherten Daten löschen.
+        a.room-remove.is-dangerous(href='javascript:void(0);') Alle Daten löschen

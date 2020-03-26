@@ -61,9 +61,10 @@
 }
 
 .doctor-list {
+  margin-bottom: 50px;
+
   p {
     font-size: 14px;
-    font-family: $font-regular;
     line-height: 18px;
   }
   .list-inner {
@@ -80,7 +81,6 @@
 
   p {
     font-size: 14px;
-    font-family: $font-regular;
     line-height: 18px;
   }
 

@@ -9,10 +9,10 @@ import config from 'config'
 import bindings from 'bindings'
 import page from '@utils/page'
 import user from '@utils/user'
-import doctor from '@components/doctor'
-import patient from '@components/patient'
 import poll from '@utils/poll'
 import polyfill from '@utils/polyfill'
+import doctor from '@components/doctor'
+import patient from '@components/patient'
 
 __webpack_public_path__ = config.webpack
 
@@ -44,12 +44,6 @@ const app = () => {
 
   // start polling to get user data
   poll.start()
-
-  // only log message for development
-  if (config.localhost) {
-    console.log('room: ' + config.room)
-    console.log('user: ' + config.user)
-  }
 }
 
 // initiate dom

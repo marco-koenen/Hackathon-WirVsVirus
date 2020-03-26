@@ -1,4 +1,5 @@
 import config from 'config'
+import room from '@utils/room'
 
 //
 // handle different page views
@@ -33,6 +34,7 @@ export default (init = false) => {
       waitingRoom && waitingRoom.classList.remove(config.isHidden)
       localStorage.removeItem('user')
       config.user = ''
+      room.isActivated()
     }
 
     // show createWaitingRoom

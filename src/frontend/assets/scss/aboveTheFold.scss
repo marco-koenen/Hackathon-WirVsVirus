@@ -14,5 +14,5 @@ body {
   background-color: $bg-body;
 }
 
-// show overlay on init
 @import '_fragments/overlay.scss';
+@import '_components/modal.scss';
