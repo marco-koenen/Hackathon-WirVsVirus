@@ -17,6 +17,7 @@ export default () => {
   const lastName = document.querySelector(config.userLastName)
   const doctor = document.querySelector(config.doctorSelect)
   const wrapper = phone.parentNode
+  let phoneNumber
 
   // required fields
   if (!firstName.value || !lastName.value || !phone.value || !config.room) {
@@ -30,8 +31,13 @@ export default () => {
     return
   }
 
+  // remove all white spaces from phone number
+  if (phone.value) {
+    phoneNumber = phone.value.replace(/ /g, '')
+  }
+
   // validate phone numnber
-  if (!validate.phone(phone.value)) {
+  if (!validate.phone(phoneNumber)) {
     modal.create(false, config._wrongPhone, wrapper)
     return
   }
@@ -42,7 +48,7 @@ export default () => {
     headers: config.fetch.headers,
     mode: config.fetch.mode,
     body: JSON.stringify({
-      phone: phone.value,
+      phone: phoneNumber,
       room: config.room
     })
   })
@@ -75,7 +81,7 @@ export default () => {
       const data = {
         user: user,
         name: name,
-        phone: phone.value,
+        phone: phoneNumber,
         doctor: doctor.value,
         time: time
       }

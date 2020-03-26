@@ -9,7 +9,7 @@ import storage from '@utils/localStorage'
 // --------------------------------------------------
 
 export default (user, doctor = null, removedPatient = null) => {
-  const message = doctor ? doctor + ' ' + config._messageCall : config._messageLink + ' ' + config.origin + '/#' + user
+  const message = doctor ? doctor + ' ' + config._messageCall : config._messageLink
 
   // create removed patient again
   const createPatientAgain = () => {
