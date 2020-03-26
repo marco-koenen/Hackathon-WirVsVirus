@@ -30,7 +30,7 @@ phone_length_country = \
 
 
 def cleaned_number(num):
-    num_digitsonly = re.sub(r'[^\d]*', '', num)
+    num_digitsonly = re.sub(r'[^\d]', '', num)
     num_cleaned = re.sub(r'^0*', '', num_digitsonly)
     return num_cleaned
 

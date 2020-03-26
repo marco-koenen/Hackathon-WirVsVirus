@@ -9,6 +9,9 @@ setup(
     zip_safe=False,
     install_requires=[
         'flask',
-        'flask-cors', 'boto3'
+        'flask-cors',
+        'boto3',
+        'flask-httpauth',
+        'requests',
     ],
 )

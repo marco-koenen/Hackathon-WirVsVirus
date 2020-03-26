@@ -7,22 +7,38 @@ import time
 HOST = "http://localhost:5000"
 HASH_SIZE = 32
 
-example_phone = "123456789"
+example_phone = "491706994326"
+example_phone2 = "4917513449251"
 
+#FIXME! how to import the app/config here?
+
+class app():
+    pass
+app.config = {"DEBUG_USER": "debuguser", "DEBUG_PASSWORD": "random"}
 
 def get_new_room_hash():
     res = requests.post(f"{HOST}/room/create")
     return res.json().get("room_hash")
 
 
-def get_new_user_hash():
-    room_hash = get_new_room_hash()
-    phone = example_phone
+def get_new_user_hash(room_hash=None, phone=example_phone):
+    if not room_hash:
+        room_hash = get_new_room_hash()
     res = requests.post(f"{HOST}/user/create",
                         json={"room": room_hash, "phone": phone})
 
     return res.json().get("user_hash")
 
+
+from requests.auth import HTTPBasicAuth
+def activate_room(room_hash=None):
+    response = requests.get(f"{HOST}/room/{room_hash}/activate_debug",
+                            auth=HTTPBasicAuth(app.config["DEBUG_USER"],
+                                               app.config["DEBUG_PASSWORD"]))
+    print("activation:", response)
+    json = response.json()
+    print(json)
+    return json["success"] == "activated"
 
 class TestBackendAPICalls(unittest.TestCase):
     def test_api_create_room(self):
@@ -41,9 +57,8 @@ class TestBackendAPICalls(unittest.TestCase):
            Test /user/create
         """
         room_hash = get_new_room_hash()
-        phone = "987654321"
         res = requests.post(f"{HOST}/user/create",
-                            json={"room": room_hash, "phone": phone})
+                            json={"room": room_hash, "phone": example_phone})
         res_json = res.json()
         assert(res_json)
         user_hash = res_json["user_hash"]
@@ -53,37 +68,68 @@ class TestBackendAPICalls(unittest.TestCase):
     def test_api_query_user(self):
         """
            Test /user/<hash> """
-        user_hash = get_new_user_hash()
+        user_hash = get_new_user_hash(phone=example_phone)
         res = requests.get(f"{HOST}/user/{user_hash}")
+        print(res.json())
         assert(res.ok)
         assert(res.json()['phone'] == example_phone)
-        print(res.json())
 
-    def test_api_user_call(self):
+
+    def test_api_user_call_inactive(self):
         """
-           Test /user/<hash>/call
+           Test /user/<hash>/call with activated room
         """
-        user_hash = get_new_user_hash()
-        res = requests.get(f"{HOST}/user/{user_hash}/call")
+        room_hash = get_new_room_hash()
+        user_hash = get_new_user_hash(room_hash=room_hash)
+        res = requests.get(f"{HOST}/user/{user_hash}/call", json={"room_hash": room_hash})
         assert res.ok, "Error during API call"
 
         json = res.json()
-        print(json)
+        print("call inactive:", res, json)
+
+        assert json['success'] == 'notactivated', "Error sending SMS"
+
+    def test_api_user_call_activated(self):
+        """
+           Test /user/<hash>/call with inactive room
+        """
+        room_hash = get_new_room_hash()
+        user_hash = get_new_user_hash(room_hash=room_hash)
+        res = requests.get(f"{HOST}/user/{user_hash}/call",json={"room_hash": room_hash})
+        assert res.ok, "Error during API call"
+
+        json = res.json()
+        print("pre_activation", json)
+        assert json['success'] == 'notactivated', "Room should not be activated"
+
+        activate_room(room_hash)
+
+        res = requests.get(f"{HOST}/user/{user_hash}/call", json={"room_hash": room_hash})
+        assert res.ok, "Error during API call"
+
+        json = res.json()
+        print("post_activation", json)
         assert json['success'] == 'sent', "Error sending SMS"
+
+
+
+
+
 
     def test_api_user_call_custom_text(self):
         """
            Test /user/<hash>/call with custom text
         """
-        user_hash = get_new_user_hash()
+        room_hash = get_new_room_hash()
+        user_hash = get_new_user_hash(room_hash=room_hash)
+        activate_room(room_hash)
         res = requests.get(f"{HOST}/user/{user_hash}/call",
                            json={"notify_text":
-                                 "Sie wurden von Dr. Maier aufgerufen."})
+                                 "Sie wurden von Dr. Maier aufgerufen.",
+                                 "room_hash": room_hash})
+        print("call custom:", res, res.json())
         assert(res.ok)
-
-        json = res.json()
-        print(json)
-        assert json['success'] == 'sent', "Error sending SMS"
+        assert res.json()['success'] == 'sent', "Error sending SMS"
 
 
 class TestPhoneNumberVerifier(unittest.TestCase):
