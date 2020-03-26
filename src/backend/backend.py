@@ -179,8 +179,8 @@ def activate_room_debug(room_hash):
 @auth.login_required
 def list_otps():
     otps = OTP.select()
-    otp_list = [(o.otp, o.label) for o in otps if not o.used]
-    return str(otp_list)
+    otp_list = [{"otp": o.otp, "label": o.label} for o in otps if not o.used]
+    return jsonify(otp_list)
 
 
 @app.route("/otp/create")
@@ -189,14 +189,14 @@ def create_otp():
     label = request.args.get("label","")
     new_otp = OTP.create(label=label)
     new_otp.save()
-    return str(new_otp)
+    return jsonify(str(new_otp))
 
 @app.route("/otp/<otp>/disable")
 @auth.login_required
 def disable_otp(otp):
     otp = OTP.get_or_none(otp=otp)
     if not otp:
-        return "failed"
+        return "success"
     otp.used = True
     otp.save()
     return "success"
