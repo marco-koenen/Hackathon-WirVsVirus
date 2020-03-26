@@ -152,6 +152,19 @@ def activate_room(room_hash):
     return jsonify(success="activated")
 
 
+@app.route("/room/<room_hash>/activated")
+def is_room_activated(room_hash):
+    room = Room.get_or_none(hash=room_hash)
+
+    if not room:
+        return jsonify(success="invalidroom")
+
+    if (room.sms_activated):
+        return jsonify(activated="True")
+
+    return jsonify(activated="False")
+
+
 # for debugging
 import flask_httpauth
 from werkzeug.security import generate_password_hash, check_password_hash
