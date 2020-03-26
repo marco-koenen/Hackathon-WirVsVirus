@@ -22,9 +22,15 @@ export default (user, doctor = null, removedPatient = null) => {
   }
 
   // message cannot be sent because the room is not yet activated
-  if (config.localhost || !config.roomActivated) {
+  if (!config.roomActivated) {
     modal.create(false, config._roomNotActivated)
     createPatientAgain()
+    console.warn(message)
+    console.error('The message was not sent.')
+    return
+  }
+
+  if (config.localhost) {
     console.warn(message)
     console.error('The message was not sent.')
     return
