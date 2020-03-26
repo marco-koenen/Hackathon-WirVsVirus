@@ -7,7 +7,7 @@ import modal from '@components/modal'
 
 export default () => {
   // set roomActivated and show modal if neccessary
-  const roomActivated = (activated) => {
+  const roomActivated = activated => {
     config.roomActivated = activated
     localStorage.setItem('roomActivated', config.roomActivated)
     if (!activated || activated === 'false') modal.open('modal-room-activate')

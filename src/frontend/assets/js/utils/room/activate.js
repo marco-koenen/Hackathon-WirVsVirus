@@ -24,10 +24,10 @@ export default () => {
       otp: code
     })
   })
-    .then((response) => {
+    .then(response => {
       return response.json()
     })
-    .then((response) => {
+    .then(response => {
       const success = response.success === 'activated'
       const invalid = response.success === 'invalidotp'
 
@@ -45,7 +45,7 @@ export default () => {
       localStorage.setItem('roomActivated', config.roomActivated)
       button.state()
     })
-    .catch((error) => {
+    .catch(error => {
       console.warn('This room has not yet been activated. No message can be sent.')
       modal.create(false, config._roomCouldNotActivated)
       button.state()
