@@ -21,6 +21,7 @@
     transition: transform 0.65s $ease-transform 0.75s, opacity 0.35s $ease-opacity;
     transform: translateY(15px);
     margin-bottom: 20px;
+    z-index: 60;
 
     &.is-error {
       background: $error;
