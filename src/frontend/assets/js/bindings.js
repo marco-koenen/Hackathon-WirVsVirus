@@ -17,7 +17,7 @@ export default () => {
 
   // activate room
   const roomActivate = document.querySelector(config.roomActivate)
-  roomActivate && roomActivate.addEventListener('click', room.sendActivation)
+  roomActivate && roomActivate.addEventListener('click', room.activate)
 
   // remove waiting room
   const roomRemove = document.querySelector(config.roomRemove)

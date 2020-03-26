@@ -1,5 +1,5 @@
 import config from 'config'
-import modal from '@components/modal'
+import room from '@utils/room'
 
 //
 // handle different page views
@@ -34,7 +34,7 @@ export default (init = false) => {
       waitingRoom && waitingRoom.classList.remove(config.isHidden)
       localStorage.removeItem('user')
       config.user = ''
-      modal.open('modal-room-activate')
+      room.isActivated()
     }
 
     // show createWaitingRoom

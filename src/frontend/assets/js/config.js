@@ -75,6 +75,7 @@ const config = {
   _messageSuccess: 'Der Patient hat eine SMS erhalten.',
   _roomDelete: 'Sind Sie sicher? Alle Daten werden gelösscht.',
   _roomNotActivated: 'Es können keine SMS verschickt werden, da dieser Warteraum noch nicht aktiviert ist.',
+  _roomCouldNotActivated: 'Ihr Warteraum konnte nicht aktiviert werden. Bitte kontaktieren Sie unseren Support!',
   _patientDelete: 'Der Patient wurde erfolgreich gelöscht.',
   _doctorExists: 'Dieser Arzt ist bereits in der Liste.',
   _doctorMissing: 'Sie müssen mindestens einen Arzt erstellen.',
@@ -85,6 +86,7 @@ const config = {
   _statusReady: 'Sie sind als nächstes dran. Machen Sie sich bitte auf den Weg in die Praxis',
   _waitingTime: 'Wartezeit:',
   _wrongPhone: 'Bitte geben Sie eine gültige Handynummer ein. (z.B. +491758462456)',
+  _optInvalid: 'Ihr eingebener Code ist nicht falsch.'
 }
 
 export default config

@@ -13,7 +13,6 @@ import poll from '@utils/poll'
 import polyfill from '@utils/polyfill'
 import doctor from '@components/doctor'
 import patient from '@components/patient'
-import modal from '@components/modal'
 
 __webpack_public_path__ = config.webpack
 
@@ -35,9 +34,6 @@ const app = () => {
   // update global variables and change view
   page.vars()
   page.view(true)
-
-  // open 'activate your room' modal
-  config.room && modal.open('modal-room-activate')
 
   // add dom bindings
   bindings()
