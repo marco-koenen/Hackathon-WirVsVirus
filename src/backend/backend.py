@@ -4,6 +4,7 @@ from .sms import *
 import peewee
 from .db import * # Import after app is defined
 from .validphone import is_valid_phone_number, cleaned_number
+from datetime import datetime
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -20,12 +21,22 @@ for k in app.config:
 CORS(app, origin=app.config["CORS_ORIGIN"])
 
 
+def log_otp_usage(otp, room_hash, fail=False):
+    logentry = f"[{datetime.now()}] OTP '{otp}' unlock: room '{room_hash}'"
+    if fail:
+        logentry += " INCORRECT OTP"
+    print(logentry)
+    with open("otplog.txt", "a") as f:
+        f.write(logentry+"\n")
+
+
 def is_valid_otp(otp):
     otp_instance = OTP.get_or_none(otp=otp)
     if not otp_instance:
         return False
+    print("otp", otp_instance, otp_instance.otp, otp_instance.label, otp_instance.used)
 
-    return otp_instance.used
+    return not otp_instance.used
 
 
 def deactivate_otp(otp):
@@ -126,10 +137,14 @@ def activate_room(room_hash):
         return jsonify(success="invalidroom")
 
     json = request.get_json(force=True)
-    if not is_valid_otp(json["otp"]):
+    otp = json["otp"]
+    if not is_valid_otp(otp):
+        log_otp_usage(otp, room_hash, fail=True)
         return jsonify(success="invalidotp")
 
-    deactivate_otp(otp)
+    # should deactivate otp after use here
+    log_otp_usage(otp, room_hash)
+    #deactivate_otp(otp)
 
     room.sms_activated = True
     room.save()
@@ -200,3 +215,12 @@ def disable_otp(otp):
     otp.used = True
     otp.save()
     return "success"
+
+@app.route("otplog")
+@auth.login_required
+def get_otplog():
+    with open("otplog.txt", "r") as f:
+        return Response(f.read(), mimetype="text/plain")
+
+
+
