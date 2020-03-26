@@ -155,7 +155,7 @@ def activate_room(room_hash):
 
 @app.route("/room/<room_hash>/activated")
 @cross_origin
-def is_room_activated(room_hash):
+def room_is_activated(room_hash):
     room = Room.get_or_none(hash=room_hash)
 
     if not room:
