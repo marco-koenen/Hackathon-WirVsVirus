@@ -4,6 +4,7 @@ from .sms import *
 import peewee
 from .db import * # Import after app is defined
 from .validphone import is_valid_phone_number, cleaned_number
+from datetime import datetime
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -18,6 +19,30 @@ for k in app.config:
     print(f"{k}={app.config[k]}")
 
 CORS(app, origin=app.config["CORS_ORIGIN"])
+
+
+def log_otp_usage(otp, room_hash, fail=False):
+    logentry = f"[{datetime.now()}] OTP '{otp}' unlock: room '{room_hash}'"
+    if fail:
+        logentry += " INCORRECT OTP"
+    print(logentry)
+    with open("otplog.txt", "a") as f:
+        f.write(logentry+"\n")
+
+
+def is_valid_otp(otp):
+    otp_instance = OTP.get_or_none(otp=otp)
+    if not otp_instance:
+        return False
+    print("otp", otp_instance, otp_instance.otp, otp_instance.label, otp_instance.used)
+
+    return not otp_instance.used
+
+
+def deactivate_otp(otp):
+    otp_instance = OTP.get_or_none(otp=otp)
+    otp_instance.used = True
+    opt_instance.save()
 
 
 @app.route("/user/create", methods=["POST", "GET"])
@@ -104,6 +129,28 @@ def do_create_room():
     room = Room.create()
     return room.hash
 
+@app.route("/room/<room_hash>/activate", methods=["POST"])
+def activate_room(room_hash):
+    room = Room.get_or_none(hash=room_hash)
+
+    if not room:
+        return jsonify(success="invalidroom")
+
+    json = request.get_json(force=True)
+    otp = json["otp"]
+    if not is_valid_otp(otp):
+        log_otp_usage(otp, room_hash, fail=True)
+        return jsonify(success="invalidotp")
+
+    # should deactivate otp after use here
+    log_otp_usage(otp, room_hash)
+    #deactivate_otp(otp)
+
+    room.sms_activated = True
+    room.save()
+
+    return jsonify(success="activated")
+
 
 # for debugging
 import flask_httpauth
@@ -142,4 +189,38 @@ def activate_room_debug(room_hash):
         return jsonify(success="activated")
     else:
         return jsonify(success="deactivated")
+
+@app.route("/otp/list")
+@auth.login_required
+def list_otps():
+    otps = OTP.select()
+    otp_list = [{"otp": o.otp, "label": o.label} for o in otps if not o.used]
+    return jsonify(otp_list)
+
+
+@app.route("/otp/create")
+@auth.login_required
+def create_otp():
+    label = request.args.get("label","")
+    new_otp = OTP.create(label=label)
+    new_otp.save()
+    return jsonify(str(new_otp))
+
+@app.route("/otp/<otp>/disable")
+@auth.login_required
+def disable_otp(otp):
+    otp = OTP.get_or_none(otp=otp)
+    if not otp:
+        return "success"
+    otp.used = True
+    otp.save()
+    return "success"
+
+@app.route("/otplog")
+@auth.login_required
+def get_otplog():
+    with open("otplog.txt", "r") as f:
+        return Response(f.read(), mimetype="text/plain")
+
+
 
