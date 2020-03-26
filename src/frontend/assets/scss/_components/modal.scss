@@ -16,12 +16,13 @@
     max-width: 210px;
     padding: 15px;
     opacity: 0;
+    visibility: hidden;
     background: $primary;
     border-radius: $border-radius;
-    transition: transform 0.65s $ease-transform 0.75s, opacity 0.35s $ease-opacity;
+    transition: transform 0.65s $ease-transform 0.75s, opacity 0.35s $ease-opacity, visibility 0.35s $ease-opacity;
     transform: translateY(15px);
-    margin-bottom: 20px;
     z-index: 60;
+    margin-bottom: 20px;
 
     &.is-error {
       background: $error;
@@ -29,7 +30,8 @@
 
     &.is-open {
       opacity: 1;
-      transition: transform 0.65s $ease-transform, opacity 0.35s $ease-opacity;
+      visibility: visible;
+      transition: transform 0.65s $ease-transform, opacity 0.35s $ease-opacity, visibility 0.35s $ease-opacity;
       transform: translateY(0);
     }
 
@@ -50,9 +52,9 @@
 
       a {
         display: block;
-        margin-top: 20px;
         font-family: $font-semiBold;
         line-height: 18px;
+        margin-top: 20px;
         font-size: 14px;
       }
 
