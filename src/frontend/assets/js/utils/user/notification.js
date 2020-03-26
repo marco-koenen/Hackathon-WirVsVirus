@@ -30,6 +30,7 @@ export default (user, doctor = null, removedPatient = null) => {
     return
   }
 
+  // do not send messages in development mode
   if (config.localhost) {
     console.warn(message)
     console.error('The message was not sent.')
