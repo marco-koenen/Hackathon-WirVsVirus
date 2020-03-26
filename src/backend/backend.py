@@ -20,6 +20,20 @@ for k in app.config:
 CORS(app, origin=app.config["CORS_ORIGIN"])
 
 
+def is_valid_otp(otp):
+    otp_instance = OTP.get_or_none(otp=otp)
+    if not otp_instance:
+        return False
+
+    return otp_instance.used
+
+
+def deactivate_otp(otp):
+    otp_instance = OTP.get_or_none(otp=otp)
+    otp_instance.used = True
+    opt_instance.save()
+
+
 @app.route("/user/create", methods=["POST", "GET"])
 @cross_origin()
 def user_create():
@@ -104,6 +118,22 @@ def do_create_room():
     room = Room.create()
     return room.hash
 
+@app.route("/room/<room_hash>/activate", methods=["POST"])
+def activate_room(room_hash):
+    room = Room.get_or_none(hash=room_hash)
+
+    if not room:
+        return jsonify(success="invalidroom")
+
+    json = request.get_json(force=True)
+    if not is_valid_otp(json["otp"]):
+        return jsonify(success="invalidotp")
+
+    room.sms_activated = activate
+    room.save()
+
+    return jsonify(success="activated")
+
 
 # for debugging
 import flask_httpauth
@@ -143,3 +173,28 @@ def activate_room_debug(room_hash):
     else:
         return jsonify(success="deactivated")
 
+@app.route("/otp/list")
+@auth.login_required
+def list_otps():
+    otps = OTP.select()
+    otp_list = [(o.otp, o.label) for o in otps if not o.used]
+    return str(otp_list)
+
+
+@app.route("/otp/create")
+@auth.login_required
+def create_otp():
+    label = request.args.get("label","")
+    new_otp = OTP.create(label=label)
+    new_otp.save()
+    return str(new_otp)
+
+@app.route("/otp/<otp>/disable")
+@auth.login_required
+def disable_otp(otp):
+    otp = OTP.get_or_none(otp=otp)
+    if not otp:
+        return "failed"
+    otp.used = True
+    otp.save()
+    return "success"

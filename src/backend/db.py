@@ -3,6 +3,7 @@ import os
 import logging
 from datetime import datetime
 from playhouse.migrate import SqliteMigrator
+from .activationOTP import generate_otp
 
 db = SqliteDatabase('app.sqlite3')
 
@@ -15,12 +16,10 @@ class BaseModel(Model):
         database = db
 
 
-
 class Room(BaseModel):
     id = AutoField()
     hash = FixedCharField(32, null=False, unique=True, default=random_hash)
     sms_activated = BooleanField(null=False, default=lambda: False)
-    credits = IntegerField(null=False, default=lambda: 0)
 
 
 class User(BaseModel):
@@ -32,5 +31,12 @@ class User(BaseModel):
     time_created = DateTimeField(default=datetime.now)
 
 
-db.create_tables(models=[User, Room])
+class OTP(BaseModel):
+    id = AutoField()
+    otp = FixedCharField(6, null=False, unique=True, default=generate_otp)
+    used = BooleanField(null=False, default=lambda: False)
+    label = FixedCharField(256, default=lambda: "")
+
+
+db.create_tables(models=[User, Room, OTP])
 
