@@ -129,7 +129,9 @@ def activate_room(room_hash):
     if not is_valid_otp(json["otp"]):
         return jsonify(success="invalidotp")
 
-    room.sms_activated = activate
+    deactivate_otp(otp)
+
+    room.sms_activated = True
     room.save()
 
     return jsonify(success="activated")
