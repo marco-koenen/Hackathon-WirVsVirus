@@ -21,6 +21,7 @@ This prototype is developed with [Pug](https://pugjs.org/api/getting-started.htm
 - [Build system](#build)
 - [Tasks](#tasks)
 - [Codebase structure](#codebase-structure)
+- [Backend documentation](/README_backend.md)
 - [Contributing](/docs/contributing.md)
 - [Pull request](/docs/pull_request.md)
 <br/>
