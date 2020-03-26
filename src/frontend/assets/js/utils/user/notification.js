@@ -23,19 +23,20 @@ export default (user, doctor = null, removedPatient = null) => {
     headers: config.fetch.headers,
     mode: config.fetch.mode,
     body: JSON.stringify({
-      notify_text: message
+      notify_text: message,
+      room_hash: config.room
     })
   })
-    .then(response => {
+    .then((response) => {
       return response.json()
     })
-    .then(data => {
+    .then((data) => {
       const success = data.success === 'sent'
 
       if (success) {
         modal.create(true, config._messageSuccess)
       } else {
-        modal.create(false, config._messageError)
+        modal.create(false, data.success === 'notactivated' ? config._roomNotActivated : config._messageError)
 
         // create removed patient again
         if (removedPatient) {
@@ -49,7 +50,7 @@ export default (user, doctor = null, removedPatient = null) => {
 
       button.state()
     })
-    .catch(error => {
+    .catch((error) => {
       modal.create(false, config._errorGeneral)
       button.state()
       console.warn(error)
