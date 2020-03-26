@@ -14,6 +14,7 @@ export default () => {
     storage.set('patients', null)
     localStorage.removeItem('room')
     localStorage.removeItem('user')
+    localStorage.removeItem('roomActivated')
     config.room = ''
     config.user = ''
     page.view()
@@ -24,5 +25,8 @@ export default () => {
 
     patients.forEach((patient) => patient.remove())
     doctors.forEach((doctor) => doctor.remove())
+
+    // refresh page
+    setTimeout(() => window.location.reload(), config.pageTransitionTime)
   }
 }
