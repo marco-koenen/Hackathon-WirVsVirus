@@ -22,14 +22,15 @@ export default () => {
   //   mode: config.fetch.mode,
   //   body: JSON.stringify({})
   // })
-  //   .then((response) => {
+  //   .then(response => {
   //     return response.json()
   //   })
-  //   .then((response) => {
+  //   .then(response => {
   //     const activated = response.activated === true
+  //     console.log(activated)
   //     roomActivated(!!activated)
   //   })
-  //   .catch((error) => {
+  //   .catch(error => {
   //     roomActivated(false)
   //     console.warn(error)
   //   })
