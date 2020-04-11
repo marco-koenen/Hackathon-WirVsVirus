@@ -1,0 +1,1 @@
+ls *.pdf  | parallel inkscape -l `basename {} .pdf`.svg {}
