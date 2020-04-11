@@ -130,6 +130,7 @@ def do_create_room():
     return room.hash
 
 @app.route("/room/<room_hash>/activate", methods=["POST"])
+@cross_origin
 def activate_room(room_hash):
     room = Room.get_or_none(hash=room_hash)
 
@@ -150,6 +151,19 @@ def activate_room(room_hash):
     room.save()
 
     return jsonify(success="activated")
+
+
+@app.route("/room/<room_hash>/activated")
+def is_room_activated(room_hash):
+    room = Room.get_or_none(hash=room_hash)
+
+    if not room:
+        return jsonify(activated="invalidroom")
+
+    if room.sms_activated:
+        return jsonify(activated="True")
+
+    return jsonify(activated="False")
 
 
 # for debugging
