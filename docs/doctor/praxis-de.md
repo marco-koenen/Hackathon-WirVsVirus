@@ -33,7 +33,7 @@ wird ein Digitaler Warteraum für Ihre Praxis erstellt.
    [PatientPager](https://www.patientpager.com) angezeigt. Um Ihren 
    persönlichen digitalen Warteraum zu erstellen, klicken sie dort einfach
    auf den grünen Knopf "Warteraum erstellen".  
-   ![](images/01-splash.svg)  
+   ![](screenshots/01-splash.svg)  
 
 2. Freischalten der SMS-Funktion (oder Testbetrieb)  
    Um Missbrauch der SMS-Funktion zu verhindern ist es momentan erforderlich,
@@ -43,11 +43,11 @@ wird ein Digitaler Warteraum für Ihre Praxis erstellt.
    in dem Sie im Feld "xxxxxx" Ihr persönliches Aktivierungs-Passwort eingeben, und 
    anschließend durch Klicken auf "Jetzt aktivieren" die SMS-Funktion freischalten
    können.  
-   ![](images/02-roomcreated.svg)
+   ![](screenshots/02-roomcreated.svg)
 
 Das war's. Mit diesen einfachen Schritten haben Sie Ihren persönlichen Digitalen
 Warteraum erstellt, und Sie haben den Hauptbildschirm von PatientPager vor sich.  
-   ![](images/03-mainscreen.svg) 
+   ![](screenshots/03-mainscreen.svg) 
 
 *Hinweise zur Freischaltung:* Das 
    Freischalt-Passwort sollten Sie entweder bereits von uns persönlich
@@ -67,12 +67,12 @@ anlegen.
 
 1. Um einen Arzt einzutragen, geben Sie dessen Namen und Titel in den 
 Eingabefeldern unter "Ärzte hinzufügen" ein, beispielsweise:  
-   ![](images/06-doctorcreate.svg)
+   ![](screenshots/06-doctorcreate.svg)
 
 2. Wenn der Name korrekt eingetragen ist, wird der
 Arzt durch Klicken auf den runden "+"-Knopf zur Ärzteliste hinzugefügt
 und erscheint dort als neuer Eintrag.  
-   ![](images/07-doctorappears.svg)  
+   ![](screenshots/07-doctorappears.svg)  
    *Tipp:* 
    Sollten Sie sich vertippt haben, ist das kein Problem. Sie können
    den Arzt jederzeit durch Klicken auf das "x"-Symbol, welches sich
@@ -95,7 +95,7 @@ PatientPager an:
    die Nummer im Format "+4916011223344" an.  
    Zuletzt wird im Feld "Behandlender Arzt" ein bereits 
    angelegter Arzt ausgewählt. In unserem Beispiel ist das "Dr. McCoy".  
-   ![](images/08-userdata.svg)
+   ![](screenshots/08-userdata.svg)
 
 2. Bevor Sie den Patienten durch Klicken auf den "+"-Knopf unter 
    "Patienten einchecken" anlegen, prüfen Sie am Besten noch einmal,
@@ -105,7 +105,7 @@ PatientPager an:
    aus.  
    Erstens erscheint der neu angelegte Patient in Ihrem digitalen
    Warteraum.  
-    ![](images/10-userappears-no-topright-no-sms-box.svg)  
+    ![](screenshots/10-userappears-no-topright-no-sms-box.svg)  
    Zweitens wird dem neu angelegten Patienten eine Informations-SMS 
    geschickt, dass er sich im digitalen Warteraum Ihrer Praxis befindet.  
    *Empfehlung:* Warten Sie zusammen mit dem Patienten den Erhalt der
@@ -114,7 +114,7 @@ PatientPager an:
    korrekt hergestellt werden kann.  
    Unser Beispielpatient "James T. Kirk" hat für seinen Termin bei "Dr. McCoy"
    die folgende Informations-SMS erhalten:  
-   ![](images/Patient-Pgr1.png)  
+   ![](screenshots/Patient-Pgr1.png)  
    
 3. Zum Aufruf eines eingetragenen Patienten aus Ihrem Warteraum
    betätigen Sie den Knopf "SMS SCHICKEN" neben dem entsprechenden Patienten
@@ -122,7 +122,7 @@ PatientPager an:
    Zeit die Aufruf-SMS, die ihn zum Wahrnehmen seines Termins auffordert.
    Unser Beispielpatient "James T. Kirk" hat für seinen Termin bei "Dr. McCoy"
    die folgende Aufruf-SMS erhalten:  
-      ![](images/Patient-Pgr2.png)  
+      ![](screenshots/Patient-Pgr2.png)  
    *Hinweis:* Idealerweise senden Sie die Aufruf-SMS mit ein paar Minuten 
     Vorlaufzeit, denn reale Patienten können sich, im Gegensatz zu unserem
     Beispielpatienten, in der Regel nicht so einfach vor die Tür des
