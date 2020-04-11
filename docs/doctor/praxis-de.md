@@ -58,8 +58,6 @@ Warteraum erstellt, und Sie haben den Hauptbildschirm von PatientPager vor sich.
    ebenfalls zu Patient-Pager gelangen, um sich mit dessen Bedienung und
    Funktionalität vertraut zu machen.
 
-[//]: oder unter [http://www.patient-pager.com/freischalten](http://www.patient-pager.com/freischalten)   
-      
 ## 2. Eintragen eines behandelnden Arztes
 Nach dem erstmaligen Erstellen des Warteraums sollten Sie mindestens
 einen behandelnden Arzt oder Therapeut aus Ihrer Praxis in PatientPager
