@@ -5,3 +5,5 @@ Requirements: puppeteer
 To convert the pdf's to svgs using inkscape from the terminal, one can use the
 script makesvg.
 
+Fake-SMS screenshots have been generated using https://ifaketextmessage.com/
+
