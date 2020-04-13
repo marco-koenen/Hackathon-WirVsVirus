@@ -17,7 +17,7 @@ Mit-Patienten einzuhalten.
 
 Mit PatientPager kann das Wartezimmer ganz einfach auf die unmittelbare Umgebung
 der Praxis ausgedehnt werden, indem geeignete ausgewählte oder freiwillige Patienten
-durch ein SMS über Ihr privates Handy aufgerufen werden können. Diesen Patienten
+durch eine SMS über Ihr privates Handy aufgerufen werden können. Diesen Patienten
 kann damit ermöglicht werden, außerhalb der Praxis zu warten, beispielsweise mit
 dem nötigen Sicherheitsabstand im Hausflur oder ein Paar Meter außerhalb der
 Praxis auf der nächsten Parkbank.
