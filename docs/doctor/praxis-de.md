@@ -5,19 +5,22 @@ PatientPager ist ein Software-Tool zum einfachen digitalen Patientenaufruf per S
 ## Warum PatientPager?
 
 Das Warten vor einem Arzttermin ist ein lästiges aber unausweichliches Problem,
-dass jedem Patient, Praxismitarbeiter und Arzt wohlbekannt ist. Selbst die
-sorgfältigste Planung und größte Selbstdisziplin seitens des Praxisteams kann
-einer spontanen Anhäufung von Notfällen den unliebsamen Wartezeiten nur wenig
-entgegensetzen. Dies macht es auch den vorbildlichsten Patienten in der aktuellen 
-Covid-Situation sehr schwer, den allgemein geforderten Mindestabstand zu Ihren
-Mit-Patienten im überfüllten Wartezimmer einzuhalten.
+das jedem Patient, Praxismitarbeiter und Arzt wohlbekannt ist. Selbst die
+sorgfältigste Planung und größte organisatorische Selbstdisziplin seitens des
+Praxisteams kann beispielsweise einer spontanen Anhäufung von Notfällen und
+den daraus resultierenden unliebsamen Wartezeiten nur wenig entgegensetzen. 
+In der aktuellen Covid-19-Situation ist natürlich das Auftreten eines solchen
+oder ähnlicher unvorteilhafter Szenarien häufiger und gleichzeitig besonders
+riskant. Denn auch den vorbildlichsten Patienten wird es in überfüllten
+Wartezimmern schwer fallen, den allgemein empfohlenen Mindestabstand zu Ihren
+Mit-Patienten einzuhalten.
 
 Mit PatientPager kann das Wartezimmer ganz einfach auf die unmittelbare Umgebung
 der Praxis ausgedehnt werden, indem geeignete ausgewählte oder freiwillige Patienten
-per SMS auf Ihr privates Handy aufgerufen werden können. Diesen Patienten kann damit ermöglicht
-werden, außerhalb der Praxis zu warten, beispielsweise mit dem nötigen
-Sicherheitsabstand im Hausflur oder ein Paar Meter außerhalb der Praxis auf der
-nächsten Parkbank.
+durch ein SMS über Ihr privates Handy aufgerufen werden können. Diesen Patienten
+kann damit ermöglicht werden, außerhalb der Praxis zu warten, beispielsweise mit
+dem nötigen Sicherheitsabstand im Hausflur oder ein Paar Meter außerhalb der
+Praxis auf der nächsten Parkbank.
 
 Das PatientPager-System ist so einfach wie möglich gehalten, und sollte 
 größtenteils selbsterklärend sein.
@@ -64,7 +67,9 @@ einen behandelnden Arzt oder Therapeut aus Ihrer Praxis in PatientPager
 anlegen.
 
 1. Um einen Arzt einzutragen, geben Sie dessen Namen und Titel in den 
-Eingabefeldern unter "Ärzte hinzufügen" ein, beispielsweise:  
+Eingabefeldern unter "Ärzte hinzufügen" ein.  
+Beispiel: Um einen Dr. Leonard McCoy anzulegen, wählen sie im Titelfeld "Dr.",
+geben Vornamen und Namen des Arztes ein:  
    ![](screenshots/06-doctorcreate.svg)
 
 2. Wenn der Name korrekt eingetragen ist, wird der
@@ -113,7 +118,7 @@ PatientPager an:
    Unser Beispielpatient "James T. Kirk" hat für seinen Termin bei "Dr. McCoy"
    die folgende Informations-SMS erhalten:  
    ![](screenshots/Patient-Pgr1.png)  
-   
+
 3. Zum Aufruf eines eingetragenen Patienten aus Ihrem Warteraum
    betätigen Sie den Knopf "SMS SCHICKEN" neben dem entsprechenden Patienten
    aus Ihrem digitalen Warteraum. Der Patient erhält dann innerhalb kurzer
@@ -124,7 +129,11 @@ PatientPager an:
    *Hinweis:* Idealerweise senden Sie die Aufruf-SMS mit ein paar Minuten 
     Vorlaufzeit, denn reale Patienten können sich, im Gegensatz zu unserem
     Beispielpatienten, in der Regel nicht so einfach vor die Tür des
-    Behandlungszimmers zurückbeamen lassen.
+    Behandlungszimmers zurückbeamen lassen.  
+
+4. Sie können bei Bedarf einen Patienten auch aus dem digitalen Warteraum
+   löschen, ohne eine Aufruf-SMS zu versenden. Hierfür klicken sie auf das 
+   Löschen-Symbol "x" im entsprechenden Patienteneintrag.
 
 ## Datenschutz und Löschen Ihrer Daten
 
